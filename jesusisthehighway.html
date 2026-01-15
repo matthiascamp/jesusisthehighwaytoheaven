@@ -4,145 +4,146 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Jesus is the Highway to Heaven</title>
-<!-- header.html -->
-<header>
-  <div class="header-container">
-    <h1>Jesus is the Highway to Heaven</h1>
 
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="introduction.html">Introduction</a></li>
-        <li><a href="abide.html">Abide in Me</a></li>
-        <li><a href="truth.html">Truth</a></li>
-        <li><a href="forward.html">Forward</a></li>
-        <li><a href="dontbeafraid.html">Don't Be Afraid</a></li>
-        <li><a href="testimony.html">Testimony</a></li>
-        <li><a href="contents.html">Contents</a></li>
-      </ul>
-    </nav>
-
-    <div class="search-wrapper">
-      <input type="text" placeholder="Search..." />
-    </div>
-  </div>
-</header>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-  header {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    background: #ffffff;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-    padding: 2rem 2rem; /* slightly more vertical padding */
+  /* GLOBAL BODY STYLES */
+  body {
     font-family: 'Inter', Arial, sans-serif;
+    background: #eef2f7;
+    color: #1e293b;
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
   }
-
-  .header-container {
-    max-width: 1200px;
-    margin: 0 auto;
+  
+  /* HERO SLIDESHOW */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 35vh;
+    min-height: 200px;
+    overflow: hidden;
+  }
+  
+  .hero-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 2s ease;
+  }
+  
+  .hero-slide.active { opacity: 1; }
+  
+  /* OVERLAY */
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.45));
+    z-index: 1;
+  }
+  
+  /* HERO CONTENT */
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 1.5rem; /* increased spacing between elements */
-  }
-
-  header h1 {
-    font-size: 2.25rem;
-    font-weight: 800;
-    color: #1e3a8a;
-    margin: 0;
     text-align: center;
+    color: white;
+    padding: 1rem 2rem;
   }
-
-  nav ul {
+  
+  .hero-content h1 {
+    margin: 0 0 0.5rem 0;
+    font-size: clamp(3rem, 6vw, 3.9rem);
+    text-shadow: 0 12px 40px rgba(0,0,0,0.9);
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+  .hero-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    margin-bottom: 1rem;
+  }
+  
+  /* HERO MENU */
+  .banner-menu {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem; /* slightly more space between links */
+    gap: 1rem;
     list-style: none;
+    margin-top: 1rem;
     padding: 0;
-    margin: 0;
-    font-weight: 600;
   }
-
-  nav ul li a {
+  
+  .banner-menu a {
     position: relative;
-    padding: 0.6rem 1.2rem; /* slightly larger clickable area */
+    padding: 0.6rem 1.2rem;
     border-radius: 0.75rem;
-    color: #1e293b;
+    color: white;
     text-decoration: none;
+    font-weight: 600;
     transition: all 0.3s ease;
   }
-
-  nav ul li a::after {
+  
+  .banner-menu a::after {
     content: '';
     position: absolute;
     left: 50%;
     bottom: -4px;
     width: 0;
     height: 2px;
-    background-color: #3b82f6;
-    transition: all 0.3s ease;
+    background: #38bdf8;
+    transition: 0.3s;
     transform: translateX(-50%);
-    border-radius: 2px;
   }
-
-  nav ul li a:hover {
-    color: #0369a1;
+  
+  .banner-menu a:hover {
+    color: #bae6fd;
   }
-
-  nav ul li a:hover::after {
+  
+  .banner-menu a:hover::after {
     width: 60%;
   }
-
-  .search-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-
-  header input {
-    padding: 0.6rem 1.2rem; /* slightly more padding */
+  
+  /* SEARCH */
+  .search-wrapper input {
+    padding: 0.6rem 1.2rem;
     border-radius: 9999px;
     border: 1px solid #cbd5e1;
     width: 60%;
     max-width: 400px;
-    transition: all 0.3s ease;
     font-size: 1rem;
   }
-
-  header input:focus {
+  
+  .search-wrapper input:focus {
     outline: none;
     border-color: #3b82f6;
     box-shadow: 0 0 10px rgba(59,130,246,0.2);
   }
-
-  @media (max-width: 768px) {
-    nav ul {
+  
+  /* RESPONSIVE HERO */
+  @media (max-width:768px){
+    .banner-menu {
       flex-direction: column;
-      gap: 0.75rem; /* more breathing room vertically */
+      gap: 0.75rem;
     }
-
-    header input {
+  
+    .search-wrapper input {
       width: 90%;
     }
   }
-</style>
-
-<!-- Tailwind -->
-<script src="https://cdn.tailwindcss.com"></script>
-
-<style>
-  body {
-    font-family: 'Inter', Arial, sans-serif;
-    background: #eef2f7;
-    color: #1e293b;
-    line-height: 1.7;
-  }
-
-  /* Chapter navigation */
+  
+  /* CHAPTER NAVIGATION */
   .chapter-nav {
     display: flex;
     justify-content: space-between;
@@ -152,7 +153,7 @@
     gap: 1rem;
     padding: 0 1rem;
   }
-
+  
   .chapter-nav button {
     flex: 1;
     background: linear-gradient(135deg,#e0e7ff,#c7d2fe);
@@ -164,17 +165,17 @@
     transition: all 0.3s;
     font-size: 1rem;
   }
-
+  
   .chapter-nav button:hover:not(:disabled) {
     background: linear-gradient(135deg,#c7d2fe,#a5b4fc);
     transform: translateY(-2px);
   }
-
+  
   .chapter-nav button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
   }
-
+  
   .current-chapter {
     flex: 2;
     text-align: center;
@@ -182,10 +183,15 @@
     font-size: 1.25rem;
     color: #1e293b;
   }
-
-  /* PDF viewer content box */
+  
+  @media (max-width:768px){
+    .chapter-nav { flex-direction: column; gap: 1rem; }
+    .chapter-nav button, .current-chapter { width: 100%; text-align: center; flex: none; }
+  }
+  
+  /* PDF VIEWER - BIGGER */
   .content {
-    max-width: 1000px;
+    max-width: 1200px;        /* wider container */
     margin: 0 auto 6rem auto;
     background: #ffffff;
     border-radius: 2rem;
@@ -193,25 +199,38 @@
     box-shadow: 0 30px 60px rgba(0,0,0,0.08);
     transition: all 0.3s;
   }
-
+  
   .content:hover {
     transform: translateY(-3px);
     box-shadow: 0 35px 70px rgba(0,0,0,0.12);
   }
-
+  
   iframe {
     width: 100%;
+    height: 1400px;           /* taller iframe */
     border-radius: 1.5rem;
     border: none;
-    height: 1200px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.08);
     transition: all 0.3s;
   }
-
+  
   iframe:hover {
-    box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+    box-shadow: 0 30px 70px rgba(0,0,0,0.12);
   }
-
+  
+  /* RESPONSIVE PDF VIEWER */
+  @media (max-width: 768px) {
+    .content {
+      padding: 2rem;
+      max-width: 95%;
+    }
+  
+    iframe {
+      height: 1000px;   /* smaller on mobile */
+    }
+  }
+  
+  /* FOOTER */
   footer {
     background: #1e293b;
     color: white;
@@ -220,117 +239,151 @@
     font-size: 0.95rem;
     letter-spacing: 0.5px;
   }
-
-  @media (max-width:768px){
-    .chapter-nav { flex-direction: column; gap: 1rem; }
-    .chapter-nav button, .current-chapter { width: 100%; text-align: center; flex: none; }
-  }
-</style>
+  </style>
+  
 </head>
 
 <body>
+<!-- HERO HEADER -->
+<header class="main-header">
+  <div class="hero">
+    <div class="hero-slideshow">
+      <div class="hero-slide" style="background-image:url('HeaderBanner1.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('HeaderBanner2.jpg')"></div>
+      <div class="hero-slide active" style="background-image:url('HeaderBanner3.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('HeaderBanner4.jpg')"></div>
+    </div>
 
-<!-- HEADER INCLUDE -->
-<div id="header-placeholder"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <h1>Jesus is the Highway to Heaven!</h1>
+      <p class="hero-subtitle">“I am the way, the truth, and the life.” — John 14:6</p>
+
+      <!-- MENU INSIDE HERO -->
+      <ul class="banner-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="introduction.html">Introduction</a></li>
+        <li><a href="abide.html">Abide in Me</a></li>
+        <li><a href="truth.html">Truth</a></li>
+        <li><a href="forward.html">Forward</a></li>
+        <li><a href="dontbeafraid.html">Don't Be Afraid</a></li>
+        <li><a href="testimony.html">Testimony</a></li>
+        <li><a href="contents.html">Contents</a></li>
+      </ul>
+
+      
+    </div>
+  </div>
+</header>
+
 <script>
-  fetch('header.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('header-placeholder').innerHTML = data;
-    })
-    .catch(err => console.error('Error loading header:', err));
+document.addEventListener('DOMContentLoaded', () => {
+  const slides = document.querySelectorAll('.hero-slide');
+  let i = 0;
+  setInterval(()=>{
+    slides.forEach(s => s.classList.remove('active'));
+    i = (i + 1) % slides.length;
+    slides[i].classList.add('active');
+  }, 6000);
+});
 </script>
 
 <main>
+<!-- CHAPTER NAVIGATION -->
+<div class="chapter-nav">
+  <button id="prevBtn"></button>
+  <div class="current-chapter" id="currentChapter"></div>
+  <button id="nextBtn"></button>
+</div>
 
-  <!-- CHAPTER NAVIGATION -->
-  <div class="chapter-nav">
-    <button id="prevBtn"></button>
-    <div class="current-chapter" id="currentChapter"></div>
-    <button id="nextBtn"></button>
-  </div>
+<!-- PDF DISPLAY -->
+<div class="content">
+  <iframe id="pdfViewer" loading="lazy"></iframe>
+</div>
 
-  <!-- PDF DISPLAY -->
-  <div class="content">
-    <iframe
-      id="pdfViewer"
-      loading="lazy"
-    ></iframe>
-  </div>
-
-</main>
-
-<footer>
-  © 2026 Jesus is the Highway to Heaven
-</footer>
-
+<!-- CHAPTER LIST (HIDDEN) -->
 <ul class="chapter-list hidden">
-  <!-- Now each chapter has a `data-files` JSON array -->
-  <li class="chapter-item" data-files='["chapter1.pdf","intro-map.png","intro-sermon.mp4"]'>Chapter 1: Introduction</li>
-  <li class="chapter-item" data-files='["chapter2.pdf","abide-notes.pdf"]'>Chapter 2: Abide in Me</li>
-  <li class="chapter-item" data-files='["chapter3.pdf"]'>Chapter 3: Truth</li>
-  <li class="chapter-item" data-files='["chapter4.pdf"]'>Chapter 4: Forward</li>
-  <li class="chapter-item" data-files='["chapter5.pdf"]'>Chapter 5: Don't Be Afraid</li>
-  <!-- ... continue up to Chapter 77 -->
+  <li data-id="3.1" class="chapter-item" data-files='["Chapter_3.1.pdf"]'>Chapter 3.1: Personal References: Dr Len Yared</li>
+  <li data-id="23.1-23.3" class="chapter-item" data-files='["Chapter_23.1-23.3.pdf"]'>Chapter 23.1-23.3: Divorce Annexures</li>
+  <li data-id="29.1" class="chapter-item" data-files='["Chapter_29.1.pdf"]'>Chapter 29.1: Not to be a cover up</li>
+  <li data-id="30" class="chapter-item" data-files='["chapter_30.pdf"]'>Chapter 30: Police – Family Services Corruption</li>
+  <li data-id="38" class="chapter-item" data-files='["Chapter_38.pdf"]'>Chapter 38: Messages passed on from God</li>
+  <li data-id="63" class="chapter-item" data-files='["Chapter_63.pdf"]'>Chapter 63: Court Orders March 2003</li>
+  <li data-id="64" class="chapter-item" data-files='["Chapter_64-Clarify.pdf"]'>Chapter 64: Family Law Act 1975 – Reason for Judgement</li>
+  <li data-id="65" class="chapter-item" data-files='["Chapter_65.pdf"]'>Chapter 65: Letter from my Doctor Allan Miles, parental visitation rights</li>
+  <li data-id="71.1" class="chapter-item" data-files='["Chapter_71.1.pdf"]'>Chapter 71.1: Social Security Mrs Helen Lewis – Parenting Allowance</li>
+  <!-- Add remaining chapters up to 77 -->
+  
 </ul>
-
 <script>
-const chapters = Array.from(document.querySelectorAll('.chapter-item'));
-const pdfViewer = document.getElementById('pdfViewer'); // can be a div if you want multi-file
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-const currentChapterEl = document.getElementById('currentChapter');
-
-let currentIndex = 0;
-
-function loadChapter(index) {
-  if (index < 0) index = 0;
-  if (index >= chapters.length) index = chapters.length - 1;
-  currentIndex = index;
-
-  const files = JSON.parse(chapters[currentIndex].getAttribute('data-files'));
-
-  // If pdfViewer is a single iframe, we show the first file only
-  // You could also turn pdfViewer into a div and append all files dynamically
-  if (pdfViewer.tagName.toLowerCase() === "iframe") {
-    pdfViewer.src = files[0]; // first file only
-  } else {
-    // multi-file viewer
-    pdfViewer.innerHTML = "";
-    files.forEach(file => {
-      if (file.endsWith(".pdf")) {
-        const iframe = document.createElement("iframe");
-        iframe.src = file;
-        pdfViewer.appendChild(iframe);
-      } else if (file.endsWith(".png") || file.endsWith(".jpg") || file.endsWith(".jpeg") || file.endsWith(".gif")) {
-        const img = document.createElement("img");
-        img.src = file;
-        pdfViewer.appendChild(img);
-      } else if (file.endsWith(".mp4") || file.endsWith(".webm")) {
-        const video = document.createElement("video");
-        video.src = file;
-        video.controls = true;
-        pdfViewer.appendChild(video);
-      }
-    });
+  const chapters = Array.from(document.querySelectorAll('.chapter-item'));
+  const pdfViewer = document.getElementById('pdfViewer');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const currentChapterEl = document.getElementById('currentChapter');
+  
+  let currentIndex = 0;
+  
+  /* ------------------ URL Helpers ------------------ */
+  function getChapterFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("chapter");
   }
-
-  prevBtn.textContent = currentIndex > 0 ? chapters[currentIndex - 1].textContent : "";
-  nextBtn.textContent = currentIndex < chapters.length - 1 ? chapters[currentIndex + 1].textContent : "";
-
-  prevBtn.disabled = currentIndex === 0;
-  nextBtn.disabled = currentIndex === chapters.length - 1;
-
-  currentChapterEl.textContent = chapters[currentIndex].textContent;
-}
-
-// Navigation buttons
-prevBtn.addEventListener('click', () => loadChapter(currentIndex - 1));
-nextBtn.addEventListener('click', () => loadChapter(currentIndex + 1));
-
-// Clicking on chapters
-chapters.forEach((chapter, idx) => chapter.addEventListener('click', () => loadChapter(idx)));
-
-// Load first chapter by default
-loadChapter(0);
-</script>
+  
+  function setChapterInURL(id) {
+    const url = new URL(window.location);
+    url.searchParams.set("chapter", id);
+    history.pushState({}, "", url);
+  }
+  
+  /* ------------------ Core Loader ------------------ */
+  function loadChapter(index, updateURL = true) {
+    if (index < 0) index = 0;
+    if (index >= chapters.length) index = chapters.length - 1;
+  
+    currentIndex = index;
+  
+    const chapter = chapters[index];
+    const files = JSON.parse(chapter.dataset.files);
+    const id = chapter.dataset.id;
+  
+    pdfViewer.src = files[0];
+    currentChapterEl.textContent = chapter.textContent;
+  
+    prevBtn.textContent = index > 0 ? chapters[index - 1].textContent : "";
+    nextBtn.textContent = index < chapters.length - 1 ? chapters[index + 1].textContent : "";
+  
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === chapters.length - 1;
+  
+    if (updateURL) setChapterInURL(id);
+  }
+  
+  /* ------------------ Init from URL ------------------ */
+  function loadFromURL() {
+    const chapterID = getChapterFromURL();
+    const index = chapters.findIndex(c => c.dataset.id === chapterID);
+    loadChapter(index >= 0 ? index : 0, false);
+  }
+  
+  /* ------------------ Controls ------------------ */
+  prevBtn.onclick = () => loadChapter(currentIndex - 1);
+  nextBtn.onclick = () => loadChapter(currentIndex + 1);
+  chapters.forEach((c, i) => c.onclick = () => loadChapter(i));
+  
+  /* ------------------ Auto-initialise on page load ------------------ */
+  window.addEventListener("load", loadFromURL);
+  </script>
+  
+  
+  
+  </main>
+  
+  <footer>
+    © 2026 Jesus is the Highway to Heaven
+  </footer>
+  
+  </body>
+  </html>
+  
