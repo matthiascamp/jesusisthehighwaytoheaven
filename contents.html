@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contents — Jesus is the Highway to Heaven</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; }
+
+:root {
+  --ink:         #07101f;
+  --ink-mid:     #112038;
+  --ink-rich:    #1a2d58;
+  --gold:        #c9a84c;
+  --gold-hi:     #dfc06a;
+  --gold-pale:   #f0d98c;
+  --cream:       #fdfaf4;
+  --text:        #1a1208;
+  --text-mid:    #2e200e;
+  --muted:       #7a6648;
+  --border-gold: rgba(201,168,76,0.18);
+}
+
+@keyframes softGlow {
+  0%,100% { filter: drop-shadow(0 0 8px rgba(201,168,76,0.28)); }
+  50%     { filter: drop-shadow(0 0 20px rgba(201,168,76,0.55)); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+body {
+  font-family: 'Crimson Text', Georgia, serif;
+  background-color: var(--ink);
+  background-image:
+    radial-gradient(ellipse 110% 42% at 50% -1%, rgba(201,168,76,0.13) 0%, transparent 58%),
+    radial-gradient(ellipse 55% 50% at 5%  98%, rgba(10,20,48,0.95)    0%, transparent 52%),
+    radial-gradient(ellipse 55% 50% at 95% 98%, rgba(10,20,48,0.95)    0%, transparent 52%);
+  color: var(--text);
+  line-height: 1.78;
+}
+
+/* ── NAV ── */
+.site-nav {
+  position: sticky; top: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 42px;
+  background: rgba(7,16,31,0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-gold);
+  box-shadow: 0 1px 0 rgba(201,168,76,0.05), 0 4px 24px rgba(0,0,0,0.35);
+}
+.nav-brand {
+  font-family: 'Cinzel', serif; font-size: 0.67rem; font-weight: 700;
+  letter-spacing: 0.12em; color: var(--gold-pale);
+  text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+  white-space: nowrap;
+}
+.nav-brand .cross {
+  color: var(--gold);
+  animation: softGlow 5s ease-in-out infinite;
+}
+.nav-links { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.8rem; }
+.nav-links a {
+  font-family: 'Cinzel', serif; font-size: 0.56rem; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(253,249,241,0.48); text-decoration: none;
+  transition: color 0.2s ease;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+/* ── PAGE HEADER ── */
+.page-header {
+  margin-top: -42px;
+  padding: calc(4rem + 42px) 2rem 2.8rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-gold);
+}
+.hdr-slide {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: 0; transition: opacity 3s ease;
+}
+.hdr-slide.active { opacity: 1; }
+.hdr-dim {
+  position: absolute; inset: 0;
+  background: rgba(7,16,31,0.68);
+  z-index: 1;
+}
+.hdr-content {
+  position: relative; z-index: 3;
+  display: flex; flex-direction: column; align-items: center;
+}
+.page-header::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 2;
+  background: radial-gradient(ellipse 65% 80% at 50% 10%, rgba(201,168,76,0.09) 0%, transparent 62%);
+  pointer-events: none;
+}
+.page-header::after {
+  content: '';
+  position: absolute; bottom: -1px; left: 0; right: 0; height: 1px; z-index: 4;
+  background: linear-gradient(to right, transparent, var(--gold) 22%, rgba(201,168,76,0.55) 50%, var(--gold) 78%, transparent);
+}
+.hdr-cross {
+  display: block; font-size: 3.2rem; color: var(--gold);
+  line-height: 1; margin-bottom: 0.9rem;
+  animation: softGlow 4s ease-in-out infinite;
+  position: relative;
+}
+.hdr-eyebrow {
+  font-family: 'Cinzel', serif; font-size: 0.57rem; font-weight: 600;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--gold); opacity: 0.70; margin: 0 0 0.65rem;
+  position: relative;
+}
+.page-header h1 {
+  font-family: 'Cinzel', serif; font-size: clamp(1.4rem, 3.8vw, 2.8rem);
+  font-weight: 700; color: #fff; letter-spacing: 0.04em;
+  margin: 0 0 0.8rem; line-height: 1.2;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.60);
+  position: relative;
+}
+.hdr-rule {
+  width: 48px; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  border: none; margin: 0 auto 0.85rem;
+}
+.hdr-verse {
+  font-family: 'Crimson Text', serif; font-style: italic;
+  font-size: clamp(0.92rem, 1.9vw, 1.1rem); color: rgba(240,217,140,0.70);
+  margin: 0 0 1.8rem; letter-spacing: 0.02em;
+  position: relative;
+}
+
+/* ── QUICK-JUMP NAV ── */
+.quick-nav {
+  display: flex; flex-wrap: wrap;
+  justify-content: center; gap: 0.4rem 0.5rem;
+  list-style: none; margin: 0; padding: 0;
+  position: relative;
+}
+.quick-nav li a {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.52rem, 1vw, 0.64rem);
+  font-weight: 600; letter-spacing: 0.09em;
+  color: rgba(255,255,255,0.72);
+  text-decoration: none;
+  padding: 0.34rem 0.85rem;
+  border: 1px solid var(--border-gold);
+  border-radius: 0.22rem;
+  background: rgba(255,255,255,0.04);
+  transition: all 0.20s ease;
+  white-space: nowrap;
+}
+.quick-nav li a:hover {
+  color: var(--gold-pale);
+  background: rgba(201,168,76,0.10);
+  border-color: rgba(201,168,76,0.45);
+}
+
+/* ── MAIN ── */
+main {
+  max-width: 760px; margin: 3.5rem auto 5.5rem;
+  padding: 0 1.5rem;
+  animation: fadeUp 0.45s ease-out both;
+}
+
+/* ── CONTENT CARD ── */
+.content {
+  background: rgba(255,255,255,0.975);
+  border-radius: 0.55rem;
+  padding: 2.8rem 3.2rem;
+  box-shadow:
+    0 0 0 1px rgba(201,168,76,0.08),
+    0 4px 28px rgba(0,0,0,0.28),
+    0 20px 60px rgba(0,0,0,0.18);
+  border-top: 2px solid var(--gold);
+}
+
+/* ── HEADING ── */
+.content-heading {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 0.45rem; margin-bottom: 1.6rem; text-align: center;
+}
+.content-heading h2 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.45rem, 2.8vw, 2rem);
+  font-weight: 700; color: var(--ink-mid); margin: 0; letter-spacing: 0.12em;
+}
+.ornament { color: var(--gold); font-size: 0.95rem; letter-spacing: 0.5em; opacity: 0.72; }
+.divider {
+  width: 88%; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold) 20%, rgba(201,168,76,0.42) 50%, var(--gold) 80%, transparent);
+  margin-top: 0.2rem;
+}
+
+/* ── SEARCH BOX ── */
+.search-wrap { position: relative; margin-bottom: 1.5rem; }
+.search-icon {
+  position: absolute; left: 0.95rem; top: 50%;
+  transform: translateY(-50%); color: var(--gold);
+  font-size: 0.80rem; pointer-events: none; opacity: 0.60;
+}
+#chapterSearch {
+  width: 100%;
+  font-family: 'Crimson Text', serif; font-size: 1.04rem; color: var(--text);
+  background: rgba(201,168,76,0.03);
+  border: 1px solid var(--border-gold);
+  border-radius: 0.30rem;
+  padding: 0.68rem 1rem 0.68rem 2.4rem;
+  outline: none; transition: all 0.22s ease;
+}
+#chapterSearch::placeholder { color: var(--muted); font-style: italic; }
+#chapterSearch:focus {
+  border-color: rgba(201,168,76,0.48);
+  background: rgba(201,168,76,0.04);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.07);
+}
+
+/* ── CHAPTER COUNT ── */
+.chapter-count {
+  font-family: 'Cinzel', serif; font-size: 0.60rem;
+  letter-spacing: 0.12em; color: var(--muted);
+  text-align: right; margin-bottom: 0.8rem; text-transform: uppercase;
+}
+.chapter-count strong { color: var(--gold); font-weight: 700; }
+
+/* ── CHAPTER LIST ── */
+ul#chapterList { list-style: none; padding: 0; margin: 0; }
+
+#chapterList a {
+  display: flex; align-items: center; gap: 0.9rem;
+  padding: 0.65rem 0.9rem 0.65rem 1rem;
+  margin: 0.18rem 0;
+  border-radius: 0.28rem;
+  text-decoration: none; color: var(--ink-rich);
+  font-family: 'Crimson Text', Georgia, serif;
+  font-size: 1.08rem; font-weight: 600;
+  border: 1px solid transparent;
+  border-left: 2px solid transparent;
+  transition: all 0.20s ease;
+}
+#chapterList a .ch-num {
+  font-family: 'Cinzel', serif; font-size: 0.56rem;
+  font-weight: 700; letter-spacing: 0.04em;
+  color: rgba(201,168,76,0.42); min-width: 1.9rem;
+  text-align: right; flex-shrink: 0; transition: color 0.20s;
+}
+#chapterList a .ch-cross {
+  color: rgba(201,168,76,0.30); font-size: 0.60rem;
+  flex-shrink: 0; transition: all 0.20s;
+}
+#chapterList a .ch-title { flex: 1; }
+
+#chapterList a:hover {
+  background: linear-gradient(to right, rgba(201,168,76,0.06), rgba(253,250,244,0.55));
+  border-color: rgba(201,168,76,0.18);
+  border-left-color: var(--gold);
+  color: var(--ink-mid);
+  transform: translateX(4px);
+}
+#chapterList a:hover .ch-num  { color: var(--gold); }
+#chapterList a:hover .ch-cross { color: var(--gold); transform: scale(1.18) rotate(6deg); }
+
+/* ── STATES ── */
+.no-results { text-align: center; padding: 2.5rem 1rem; font-style: italic; color: var(--muted); font-size: 1rem; }
+.loading-msg { text-align: center; padding: 4rem 1rem; font-size: 1.1rem; color: var(--muted); font-style: italic; }
+.error-msg   { text-align: center; padding: 4rem 1rem; font-size: 1rem; color: #9b1c1c; }
+
+/* ── COMMENTS ── */
+.comments-section {
+  max-width: 760px; margin: 0 auto 4rem;
+  padding: 0 1.5rem;
+  animation: fadeUp 0.45s ease-out both;
+}
+.comments-card {
+  background: rgba(255,255,255,0.975);
+  border-radius: 0.55rem;
+  border-top: 2px solid var(--gold);
+  padding: 2.4rem 3.2rem;
+  box-shadow:
+    0 0 0 1px rgba(201,168,76,0.08),
+    0 4px 28px rgba(0,0,0,0.28),
+    0 20px 60px rgba(0,0,0,0.18);
+}
+.comments-heading {
+  display: flex; align-items: center; gap: 0.7rem;
+  margin-bottom: 1.8rem;
+}
+.comments-heading h3 {
+  font-family: 'Cinzel', serif; font-size: clamp(0.88rem, 1.6vw, 1.1rem);
+  font-weight: 700; color: var(--ink-mid); letter-spacing: 0.08em; margin: 0;
+}
+.comments-heading .ch-ornament { color: var(--gold); opacity: 0.70; font-size: 0.85rem; }
+.comment-list { display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 2rem; }
+.comment-item {
+  border-left: 2px solid rgba(201,168,76,0.30);
+  padding: 0.9rem 1.1rem;
+  background: rgba(201,168,76,0.03);
+  border-radius: 0 0.3rem 0.3rem 0;
+}
+.comment-meta {
+  display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 0.35rem;
+}
+.comment-author {
+  font-family: 'Cinzel', serif; font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.08em; color: var(--ink-mid);
+}
+.comment-date {
+  font-family: 'Crimson Text', serif; font-size: 0.82rem;
+  color: var(--muted); font-style: italic;
+}
+.comment-body {
+  font-family: 'Crimson Text', serif; font-size: 1.04rem;
+  color: var(--text-mid); line-height: 1.70; margin: 0;
+}
+.comment-divider {
+  width: 100%; height: 1px;
+  background: linear-gradient(to right, rgba(201,168,76,0.15), transparent);
+  border: none; margin: 0.2rem 0 0;
+}
+.like-row { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.8rem; }
+.like-btn {
+  display: flex; align-items: center; gap: 0.45rem;
+  font-family: 'Cinzel', serif; font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.10em; text-transform: uppercase;
+  color: var(--ink-mid); background: rgba(201,168,76,0.06);
+  border: 1px solid var(--border-gold);
+  border-radius: 2rem; padding: 0.52rem 1.2rem;
+  cursor: pointer; transition: all 0.22s ease; user-select: none;
+}
+.like-btn:hover { border-color: var(--gold); background: rgba(201,168,76,0.12); }
+.like-btn.liked { border-color: var(--gold); background: rgba(201,168,76,0.18); }
+.like-btn .heart { font-size: 1rem; line-height: 1; transition: transform 0.18s ease; }
+.like-btn.liked .heart { transform: scale(1.25); }
+.like-count { font-family: 'Crimson Text', serif; font-size: 0.94rem; color: var(--muted); font-style: italic; }
+.comment-form-heading {
+  font-family: 'Cinzel', serif; font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.14em; color: var(--gold); text-transform: uppercase;
+  margin: 0 0 1rem;
+}
+.comment-form { display: flex; flex-direction: column; gap: 0.75rem; }
+.comment-form input,
+.comment-form textarea {
+  font-family: 'Crimson Text', serif; font-size: 1.02rem; color: var(--text);
+  background: rgba(201,168,76,0.03);
+  border: 1px solid var(--border-gold);
+  border-radius: 0.28rem;
+  padding: 0.62rem 0.9rem;
+  outline: none; transition: all 0.22s ease; resize: vertical;
+}
+.comment-form input::placeholder,
+.comment-form textarea::placeholder { color: var(--muted); font-style: italic; }
+.comment-form input:focus,
+.comment-form textarea:focus {
+  border-color: rgba(201,168,76,0.48);
+  background: rgba(201,168,76,0.04);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.07);
+}
+.comment-form textarea { min-height: 100px; }
+.comment-submit {
+  align-self: flex-start;
+  font-family: 'Cinzel', serif; font-size: 0.64rem; font-weight: 700;
+  letter-spacing: 0.13em; text-transform: uppercase;
+  color: #fff; background: var(--ink-mid);
+  border: 1px solid rgba(201,168,76,0.40);
+  border-radius: 0.25rem; padding: 0.68rem 1.8rem;
+  cursor: pointer; transition: all 0.22s ease;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.22);
+}
+.comment-submit:hover {
+  background: var(--ink); border-color: var(--gold);
+  color: var(--gold-pale); transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(201,168,76,0.22);
+}
+@media (max-width: 768px) { .comments-card { padding: 2rem 1.8rem; } }
+@media (max-width: 480px) { .comments-card { padding: 1.5rem 1rem; } }
+
+/* ── FOOTER ── */
+footer {
+  text-align: center; padding: 3.2rem 2rem;
+  background: rgba(4,8,18,0.98);
+  position: relative;
+}
+footer::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold) 22%, rgba(201,168,76,0.55) 50%, var(--gold) 78%, transparent);
+}
+.footer-inner { max-width: 540px; margin: 0 auto; }
+.footer-cross { display: block; font-size: 1.6rem; color: var(--gold); margin-bottom: 0.5rem; }
+.footer-verse { font-family: 'Crimson Text', serif; font-style: italic; font-size: 0.96rem; color: rgba(240,217,140,0.58); margin: 0 0 0.8rem; line-height: 1.65; }
+.footer-divider { width: 36px; height: 1px; background: var(--border-gold); margin: 0 auto 0.7rem; }
+.footer-copy { font-family: 'Cinzel', serif; font-size: 0.57rem; letter-spacing: 0.14em; color: rgba(255,255,255,0.25); }
+
+/* ── HAMBURGER ── */
+.nav-hamburger {
+  display: none;
+  background: none; border: 1px solid var(--border-gold);
+  color: var(--gold-pale); font-size: 1.1rem;
+  cursor: pointer; padding: 0.2rem 0.55rem;
+  border-radius: 0.2rem; line-height: 1.4;
+  transition: all 0.18s ease;
+}
+.nav-hamburger:hover { color: var(--gold); border-color: var(--gold); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .site-nav { padding: 0 1.2rem; }
+  .page-header { padding: 3rem 1.5rem 2.2rem; }
+  .content { padding: 2rem 1.8rem; }
+  main { margin-top: 2.2rem; }
+}
+@media (max-width: 480px) {
+  .nav-hamburger { display: block; }
+  .nav-links {
+    display: none;
+    position: absolute; top: 42px; left: 0; right: 0;
+    flex-direction: column; gap: 0;
+    background: rgba(7,16,31,0.97);
+    border-bottom: 1px solid var(--border-gold);
+    padding: 0.4rem 0;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li { border-top: 1px solid rgba(201,168,76,0.08); }
+  .nav-links li:first-child { border-top: none; }
+  .nav-links a { padding: 0.72rem 1.5rem; display: block; font-size: 0.62rem; }
+  .page-header h1 { font-size: 1.2rem; }
+  .quick-nav li a { font-size: 0.57rem; padding: 0.30rem 0.62rem; }
+  .content { padding: 1.5rem 1rem; border-radius: 0.3rem; }
+  #chapterList a { font-size: 0.97rem; }
+  #chapterList a .ch-num { min-width: 1.6rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="site-nav">
+  <a class="nav-brand" href="index.html">
+    <span class="cross">✝</span> Jesus is the Highway to Heaven
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="read.html">Read</a></li>
+    <li><a href="contents.html" class="active">Contents</a></li>
+    <li><a href="audios/index.html">Audios</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">&#9776;</button>
+</nav>
+
+<!-- ── PAGE HEADER ── -->
+<header class="page-header">
+  <div class="hdr-slide" style="background-image:url('HeaderBanner1.jpg')"></div>
+  <div class="hdr-slide" style="background-image:url('HeaderBanner2.jpg')"></div>
+  <div class="hdr-slide active" style="background-image:url('HeaderBanner3.jpg')"></div>
+  <div class="hdr-slide" style="background-image:url('HeaderBanner4.jpg')"></div>
+  <div class="hdr-dim"></div>
+  <div class="hdr-content">
+    <span class="hdr-cross">✝</span>
+    <p class="hdr-eyebrow">Table of Contents</p>
+    <h1>Jesus is the Highway to Heaven</h1>
+    <hr class="hdr-rule">
+    <p class="hdr-verse">"I am the way, the truth, and the life." — John 14:6</p>
+    <ul class="quick-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="read.html">Introduction</a></li>
+      <li><a href="read.html">Abide in Me</a></li>
+      <li><a href="read.html">Truth</a></li>
+      <li><a href="read.html">Forward</a></li>
+      <li><a href="read.html">Don't Be Afraid</a></li>
+      <li><a href="read.html">Testimony</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <div class="content">
+    <div class="content-heading">
+      <span class="ornament">— ✝ —</span>
+      <h2>Contents</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="search-wrap">
+      <span class="search-icon">✦</span>
+      <input type="search" id="chapterSearch" placeholder="Search chapters..." autocomplete="off" />
+    </div>
+
+    <p class="chapter-count" id="chapterCount" style="display:none;">
+      Showing <strong id="visibleCount">0</strong> of <strong id="totalCount">0</strong> chapters
+    </p>
+
+    <ul id="chapterList">
+      <li class="loading-msg">Loading chapters...</li>
+    </ul>
+  </div>
+</main>
+
+<!-- ── COMMENTS ── -->
+<section class="comments-section">
+  <div class="comments-card">
+    <div class="comments-heading">
+      <span class="ch-ornament">✝</span>
+      <h3>Reflections &amp; Comments</h3>
+    </div>
+
+    <div class="like-row">
+      <button class="like-btn" id="likeBtn" onclick="toggleLike()">
+        <span class="heart">♡</span> Like
+      </button>
+      <span class="like-count" id="likeCount"></span>
+    </div>
+
+    <p class="comment-form-heading">Leave a Reflection</p>
+    <form class="comment-form" onsubmit="return false;">
+      <input type="text" placeholder="Your name" maxlength="80" />
+      <textarea placeholder="Share your thoughts or reflection..." maxlength="1000"></textarea>
+      <button type="submit" class="comment-submit">Post Reflection ✝</button>
+    </form>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-cross">✝</span>
+    <p class="footer-verse">"I am the way, the truth, and the life.<br>No one comes to the Father except through me." — John 14:6</p>
+    <div class="footer-divider"></div>
+    <p class="footer-copy">&copy; 2026 Jesus is the Highway to Heaven</p>
+  </div>
+</footer>
+
+<script>
+  const API_KEY   = 'AIzaSyDop159M8vugSx8i5JmdCsPgFqkYyqoN3w';
+  const FOLDER_ID = '1xg0zyukw67FFEyFLYkgcQqEX3GGMUD2X';
+
+  function leadingNumber(filename) {
+    const match = filename.match(/^(\d+(?:\.\d+)?)/);
+    return match ? parseFloat(match[1]) : Infinity;
+  }
+  function cleanTitle(filename) {
+    let name = filename.replace(/\.pdf$/i, '').trim();
+    name = name.replace(/^\d+(?:\.\d+)?\s+/, '').trim();
+    if (/^[\d]+(\.[\d]+)?/.test(name)) name = 'Chapter ' + name;
+    return name.trim();
+  }
+
+  async function fetchAllFiles() {
+    const BASE   = 'https://www.googleapis.com/drive/v3/files';
+    const FIELDS = 'nextPageToken,files(id,name)';
+    let allFiles  = [];
+    let pageToken = '';
+    do {
+      const params = new URLSearchParams({
+        q: `'${FOLDER_ID}' in parents and mimeType='application/pdf' and trashed=false`,
+        fields: FIELDS, pageSize: 100, key: API_KEY,
+        ...(pageToken && { pageToken })
+      });
+      const res  = await fetch(`${BASE}?${params}`);
+      const data = await res.json();
+      if (data.error) throw new Error(data.error.message);
+      allFiles  = allFiles.concat(data.files || []);
+      pageToken = data.nextPageToken || '';
+    } while (pageToken);
+    return allFiles;
+  }
+
+  let allItems = [];
+
+  function renderList(items) {
+    const list      = document.getElementById('chapterList');
+    const countEl   = document.getElementById('chapterCount');
+    const visibleEl = document.getElementById('visibleCount');
+    const totalEl   = document.getElementById('totalCount');
+
+    if (!items.length) {
+      list.innerHTML = '<li><p class="no-results">No chapters match your search.</p></li>';
+      countEl.style.display = 'block';
+      visibleEl.textContent = '0';
+      return;
+    }
+
+    list.innerHTML = items.map((f, idx) => `
+      <li>
+        <a href="read.html?chapter=${f.id}">
+          <span class="ch-num">${idx + 1}</span>
+          <span class="ch-cross">✝</span>
+          <span class="ch-title">${cleanTitle(f.name)}</span>
+        </a>
+      </li>
+    `).join('');
+
+    countEl.style.display  = 'block';
+    visibleEl.textContent  = items.length;
+    totalEl.textContent    = allItems.length;
+  }
+
+  document.getElementById('chapterSearch').addEventListener('input', function () {
+    const q = this.value.trim().toLowerCase();
+    if (!q) { renderList(allItems); return; }
+    renderList(allItems.filter(f => cleanTitle(f.name).toLowerCase().includes(q)));
+  });
+
+  async function init() {
+    const list = document.getElementById('chapterList');
+    try {
+      const files = await fetchAllFiles();
+      if (!files.length) {
+        list.innerHTML = '<li class="error-msg">&#9888;&#65039; No PDFs found. Make sure the folder is shared publicly.</li>';
+        return;
+      }
+      files.sort((a, b) => leadingNumber(a.name) - leadingNumber(b.name));
+      allItems = files;
+      document.getElementById('totalCount').textContent = files.length;
+      renderList(files);
+    } catch (err) {
+      console.error(err);
+      list.innerHTML = `<li class="error-msg">&#9888;&#65039; Could not load chapters: ${err.message}</li>`;
+    }
+  }
+
+  window.addEventListener('load', init);
+</script>
+
+<script>
+function toggleLike() {
+  const btn   = document.getElementById('likeBtn');
+  const count = document.getElementById('likeCount');
+  const liked = btn.classList.toggle('liked');
+  btn.querySelector('.heart').textContent = liked ? '♥' : '♡';
+  count.textContent = liked ? 'You liked this page.' : '';
+}
+</script>
+
+<script>
+(function(){
+  const hdrSlides = document.querySelectorAll('.hdr-slide');
+  let hi = 2;
+  setInterval(()=>{
+    hdrSlides[hi].classList.remove('active');
+    hi = (hi + 1) % hdrSlides.length;
+    hdrSlides[hi].classList.add('active');
+  }, 6000);
+})();
+</script>
+
+<script>
+(function(){
+  const btn   = document.getElementById('navHamburger');
+  const links = document.getElementById('navLinks');
+  if (!btn || !links) return;
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    links.classList.toggle('open');
+    btn.textContent = links.classList.contains('open') ? '\u2715' : '\u2630';
+  });
+  document.addEventListener('click', function() {
+    links.classList.remove('open');
+    btn.textContent = '\u2630';
+  });
+  links.addEventListener('click', function() {
+    links.classList.remove('open');
+    btn.textContent = '\u2630';
+  });
+})();
+</script>
+
+</body>
+</html>

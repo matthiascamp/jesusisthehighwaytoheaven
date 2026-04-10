@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Audios &amp; Evidence — Jesus is the Highway to Heaven</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; }
+
+:root {
+  --ink:         #07101f;
+  --ink-mid:     #112038;
+  --ink-rich:    #1a2d58;
+  --gold:        #c9a84c;
+  --gold-hi:     #dfc06a;
+  --gold-pale:   #f0d98c;
+  --cream:       #fdfaf4;
+  --text:        #1a1208;
+  --text-mid:    #2e200e;
+  --muted:       #7a6648;
+  --border-gold: rgba(201,168,76,0.18);
+}
+
+@keyframes softGlow {
+  0%,100% { filter: drop-shadow(0 0 8px rgba(201,168,76,0.28)); }
+  50%     { filter: drop-shadow(0 0 20px rgba(201,168,76,0.55)); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+body {
+  font-family: 'Crimson Text', Georgia, serif;
+  background-color: var(--ink);
+  background-image:
+    radial-gradient(ellipse 110% 42% at 50% -1%, rgba(201,168,76,0.13) 0%, transparent 58%),
+    radial-gradient(ellipse 55% 50% at 5%  98%, rgba(10,20,48,0.95)    0%, transparent 52%),
+    radial-gradient(ellipse 55% 50% at 95% 98%, rgba(10,20,48,0.95)    0%, transparent 52%);
+  color: var(--text);
+  line-height: 1.8;
+}
+
+/* ── NAV ── */
+.site-nav {
+  position: sticky; top: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 42px;
+  background: rgba(7,16,31,0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-gold);
+  box-shadow: 0 1px 0 rgba(201,168,76,0.05), 0 4px 24px rgba(0,0,0,0.35);
+}
+.nav-brand {
+  font-family: 'Cinzel', serif; font-size: 0.67rem; font-weight: 700;
+  letter-spacing: 0.12em; color: var(--gold-pale);
+  text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+  white-space: nowrap;
+}
+.nav-brand .cross { color: var(--gold); animation: softGlow 5s ease-in-out infinite; }
+.nav-links { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.8rem; position: relative; z-index: 1; }
+.nav-links a {
+  font-family: 'Cinzel', serif; font-size: 0.56rem; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(253,249,241,0.48); text-decoration: none;
+  transition: color 0.2s ease;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+/* ── PAGE HEADER ── */
+.page-header {
+  margin-top: -42px;
+  padding: calc(4.5rem + 42px) 2rem 4rem;
+  text-align: center;
+  position: relative; overflow: hidden;
+  border-bottom: 1px solid var(--border-gold);
+}
+.hdr-dim { position: absolute; inset: 0; background: rgba(7,16,31,0.78); z-index: 1; }
+.hdr-bg {
+  position: absolute; inset: 0;
+  background-image: url('../HeaderBanner2.jpg');
+  background-size: cover; background-position: center;
+  opacity: 0.55;
+}
+.hdr-content { position: relative; z-index: 3; display: flex; flex-direction: column; align-items: center; }
+.page-header::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 2;
+  background: radial-gradient(ellipse 65% 80% at 50% 10%, rgba(201,168,76,0.09) 0%, transparent 62%);
+  pointer-events: none;
+}
+.page-header::after {
+  content: '';
+  position: absolute; bottom: -1px; left: 0; right: 0; height: 1px; z-index: 4;
+  background: linear-gradient(to right, transparent, var(--gold) 22%, rgba(201,168,76,0.55) 50%, var(--gold) 78%, transparent);
+}
+.hdr-cross {
+  display: block; font-size: 3.4rem; color: var(--gold);
+  line-height: 1; margin-bottom: 1rem;
+  animation: softGlow 4s ease-in-out infinite; position: relative;
+}
+.hdr-eyebrow {
+  font-family: 'Cinzel', serif; font-size: 0.57rem; font-weight: 600;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--gold); opacity: 0.70; margin: 0 0 0.65rem; position: relative;
+}
+.page-header h1 {
+  font-family: 'Cinzel', serif; font-size: clamp(1.45rem, 4vw, 2.9rem);
+  font-weight: 700; color: #fff; letter-spacing: 0.04em;
+  margin: 0 0 0.8rem; line-height: 1.2;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.60); position: relative;
+}
+.hdr-rule {
+  width: 48px; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  border: none; margin: 0 auto 0.85rem; position: relative;
+}
+.hdr-verse {
+  font-family: 'Crimson Text', serif; font-style: italic;
+  font-size: clamp(0.92rem, 1.9vw, 1.12rem); color: rgba(240,217,140,0.72);
+  margin: 0; letter-spacing: 0.02em; position: relative;
+}
+
+/* ── MAIN ── */
+main {
+  max-width: 860px; margin: 3.5rem auto 6rem;
+  padding: 0 1.5rem;
+  display: flex; flex-direction: column; gap: 2rem;
+  animation: fadeUp 0.45s ease-out both;
+}
+
+/* ── SHARED CARD ── */
+.card {
+  background: rgba(255,255,255,0.975);
+  border-radius: 0.55rem;
+  border-top: 2px solid var(--gold);
+  box-shadow:
+    0 0 0 1px rgba(201,168,76,0.08),
+    0 4px 28px rgba(0,0,0,0.28),
+    0 20px 60px rgba(0,0,0,0.18);
+}
+
+/* ── INTRO CARD ── */
+.intro-card { padding: 2.6rem 3rem; text-align: center; }
+.intro-eyebrow {
+  font-family: 'Cinzel', serif; font-size: 0.60rem; font-weight: 600;
+  letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin: 0 0 0.5rem;
+}
+.intro-card h2 {
+  font-family: 'Cinzel', serif; font-size: clamp(1.1rem, 2.4vw, 1.6rem);
+  font-weight: 700; color: var(--ink-mid); letter-spacing: 0.06em;
+  margin: 0 0 0.4rem; line-height: 1.25;
+}
+.title-rule {
+  width: 64px; height: 2px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  border: none; margin: 0 auto 1.6rem; border-radius: 2px;
+}
+.intro-text {
+  font-size: clamp(1.02rem, 1.8vw, 1.15rem); color: var(--text-mid);
+  line-height: 1.85; max-width: 680px; margin: 0 auto;
+}
+.warning-strip {
+  display: flex; align-items: flex-start; gap: 0.85rem;
+  background: rgba(155,28,28,0.05);
+  border: 1px solid rgba(155,28,28,0.18);
+  border-left: 3px solid rgba(155,28,28,0.45);
+  border-radius: 0 0.3rem 0.3rem 0;
+  padding: 1rem 1.2rem; margin-top: 1.6rem; text-align: left;
+}
+.warning-icon { font-size: 1.1rem; flex-shrink: 0; line-height: 1.6; }
+.warning-text {
+  font-family: 'Crimson Text', serif; font-size: 0.98rem;
+  color: #6b1a1a; line-height: 1.65; margin: 0;
+}
+
+/* ── AUDIO CARD ── */
+.audio-card { overflow: hidden; }
+.audio-card-header {
+  padding: 1.8rem 2.4rem 1.4rem;
+  border-bottom: 1px solid var(--border-gold);
+}
+.audio-label {
+  font-family: 'Cinzel', serif; font-size: 0.58rem; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin: 0 0 0.3rem;
+}
+.audio-card-header h3 {
+  font-family: 'Cinzel', serif; font-size: clamp(0.95rem, 2vw, 1.28rem);
+  font-weight: 700; color: var(--ink-mid); letter-spacing: 0.05em;
+  margin: 0 0 0.9rem; line-height: 1.3;
+}
+.audio-desc {
+  font-family: 'Crimson Text', serif; font-size: 1.06rem;
+  color: var(--text-mid); line-height: 1.78; margin: 0;
+}
+.audio-embed {
+  background: rgba(7,16,31,0.04);
+  padding: 1.4rem 2.4rem 1.6rem;
+  border-top: 1px solid rgba(201,168,76,0.10);
+}
+.audio-embed-label {
+  font-family: 'Cinzel', serif; font-size: 0.56rem; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.7rem;
+}
+.audio-embed iframe {
+  width: 100%; height: 80px; border: none;
+  border-radius: 0.3rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+}
+
+/* ── TRANSCRIPT CARD ── */
+.transcript-card { overflow: hidden; }
+.transcript-header {
+  padding: 1.8rem 2.4rem 1.4rem;
+  border-bottom: 1px solid var(--border-gold);
+}
+.transcript-eyebrow {
+  font-family: 'Cinzel', serif; font-size: 0.58rem; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin: 0 0 0.3rem;
+}
+.transcript-header h3 {
+  font-family: 'Cinzel', serif; font-size: clamp(0.95rem, 2vw, 1.28rem);
+  font-weight: 700; color: var(--ink-mid); letter-spacing: 0.05em;
+  margin: 0 0 0.9rem; line-height: 1.3;
+}
+.transcript-intro {
+  font-family: 'Crimson Text', serif; font-size: 1.06rem;
+  color: var(--text-mid); line-height: 1.78; margin: 0;
+}
+.transcript-body { padding: 0 2.4rem 2.4rem; }
+.transcript-scroll {
+  margin-top: 1.4rem;
+  max-height: 540px;
+  overflow-y: auto;
+  border: 1px solid var(--border-gold);
+  border-radius: 0.3rem;
+  background: rgba(253,250,244,0.60);
+  padding: 1.6rem 2rem;
+  scroll-behavior: smooth;
+}
+.transcript-scroll::-webkit-scrollbar { width: 6px; }
+.transcript-scroll::-webkit-scrollbar-track { background: rgba(201,168,76,0.06); }
+.transcript-scroll::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.30); border-radius: 3px; }
+.transcript-witness {
+  font-family: 'Cinzel', serif; font-size: 0.70rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-mid); background: rgba(201,168,76,0.07);
+  border: 1px solid var(--border-gold); border-left: 3px solid var(--gold);
+  padding: 0.6rem 1rem; border-radius: 0 0.25rem 0.25rem 0;
+  margin: 1.4rem 0 1rem;
+}
+.transcript-oath {
+  font-family: 'Crimson Text', serif; font-style: italic;
+  font-size: 1rem; color: var(--muted);
+  border-bottom: 1px solid var(--border-gold);
+  padding-bottom: 1rem; margin-bottom: 1.2rem; line-height: 1.7;
+}
+.transcript-exchange { margin-bottom: 1rem; }
+.transcript-q {
+  font-family: 'Cinzel', serif; font-size: 0.64rem; font-weight: 700;
+  letter-spacing: 0.08em; color: var(--ink-rich); text-transform: uppercase;
+  margin: 0 0 0.18rem;
+}
+.transcript-a {
+  font-family: 'Crimson Text', serif; font-size: 1.06rem;
+  color: var(--text-mid); line-height: 1.74; margin: 0 0 0 0.5rem;
+  border-left: 2px solid rgba(201,168,76,0.22);
+  padding-left: 0.8rem;
+}
+.expand-btn {
+  display: block; width: 100%;
+  font-family: 'Cinzel', serif; font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold); background: none;
+  border: none; border-top: 1px solid var(--border-gold);
+  padding: 0.9rem 2.4rem; cursor: pointer;
+  text-align: left; transition: background 0.18s ease;
+}
+.expand-btn:hover { background: rgba(201,168,76,0.04); }
+.expand-btn::after { content: ' ▾'; }
+.expand-btn.open::after { content: ' ▴'; }
+
+/* ── COMMENTS / LIKE ── */
+.comments-card { overflow: hidden; }
+.comments-inner { padding: 1.8rem 2.4rem 2.2rem; }
+.comments-heading {
+  display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1.6rem;
+}
+.comments-heading h3 {
+  font-family: 'Cinzel', serif; font-size: clamp(0.88rem, 1.6vw, 1.1rem);
+  font-weight: 700; color: var(--ink-mid); letter-spacing: 0.08em; margin: 0;
+}
+.ch-ornament { color: var(--gold); opacity: 0.70; font-size: 0.85rem; }
+
+/* Like button */
+.like-row { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.8rem; }
+.like-btn {
+  display: flex; align-items: center; gap: 0.45rem;
+  font-family: 'Cinzel', serif; font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.10em; text-transform: uppercase;
+  color: var(--ink-mid); background: rgba(201,168,76,0.06);
+  border: 1px solid var(--border-gold);
+  border-radius: 2rem; padding: 0.52rem 1.2rem;
+  cursor: pointer; transition: all 0.22s ease;
+  user-select: none;
+}
+.like-btn:hover { border-color: var(--gold); background: rgba(201,168,76,0.12); color: var(--ink); }
+.like-btn.liked { border-color: var(--gold); background: rgba(201,168,76,0.18); color: var(--ink-mid); }
+.like-btn .heart { font-size: 1rem; line-height: 1; transition: transform 0.18s ease; }
+.like-btn.liked .heart { transform: scale(1.25); }
+.like-count {
+  font-family: 'Crimson Text', serif; font-size: 0.94rem;
+  color: var(--muted); font-style: italic;
+}
+
+/* Comment form */
+.comment-form-heading {
+  font-family: 'Cinzel', serif; font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.14em; color: var(--gold); text-transform: uppercase;
+  margin: 0 0 1rem;
+}
+.comment-form { display: flex; flex-direction: column; gap: 0.75rem; }
+.comment-form input,
+.comment-form textarea {
+  font-family: 'Crimson Text', serif; font-size: 1.02rem; color: var(--text);
+  background: rgba(201,168,76,0.03);
+  border: 1px solid var(--border-gold);
+  border-radius: 0.28rem;
+  padding: 0.62rem 0.9rem;
+  outline: none; transition: all 0.22s ease; resize: vertical;
+}
+.comment-form input::placeholder,
+.comment-form textarea::placeholder { color: var(--muted); font-style: italic; }
+.comment-form input:focus,
+.comment-form textarea:focus {
+  border-color: rgba(201,168,76,0.48);
+  background: rgba(201,168,76,0.04);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.07);
+}
+.comment-form textarea { min-height: 100px; }
+.comment-submit {
+  align-self: flex-start;
+  font-family: 'Cinzel', serif; font-size: 0.64rem; font-weight: 700;
+  letter-spacing: 0.13em; text-transform: uppercase;
+  color: #fff; background: var(--ink-mid);
+  border: 1px solid rgba(201,168,76,0.40);
+  border-radius: 0.25rem; padding: 0.68rem 1.8rem;
+  cursor: pointer; transition: all 0.22s ease;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.22);
+}
+.comment-submit:hover {
+  background: var(--ink); border-color: var(--gold);
+  color: var(--gold-pale); transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(201,168,76,0.22);
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center; padding: 3.2rem 2rem;
+  background: rgba(4,8,18,0.98); position: relative;
+}
+footer::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold) 22%, rgba(201,168,76,0.55) 50%, var(--gold) 78%, transparent);
+}
+.footer-inner { max-width: 540px; margin: 0 auto; }
+.footer-cross { display: block; font-size: 1.6rem; color: var(--gold); margin-bottom: 0.5rem; }
+.footer-verse { font-family: 'Crimson Text', serif; font-style: italic; font-size: 0.96rem; color: rgba(240,217,140,0.58); margin: 0 0 0.8rem; line-height: 1.65; }
+.footer-divider { width: 36px; height: 1px; background: var(--border-gold); margin: 0 auto 0.7rem; }
+.footer-copy { font-family: 'Cinzel', serif; font-size: 0.57rem; letter-spacing: 0.14em; color: rgba(255,255,255,0.25); }
+
+/* ── HAMBURGER ── */
+.nav-hamburger {
+  display: none;
+  background: none; border: 1px solid var(--border-gold);
+  color: var(--gold-pale); font-size: 1.1rem;
+  cursor: pointer; padding: 0.2rem 0.55rem;
+  border-radius: 0.2rem; line-height: 1.4;
+  transition: all 0.18s ease;
+}
+.nav-hamburger:hover { color: var(--gold); border-color: var(--gold); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .site-nav { padding: 0 1.2rem; }
+  .page-header { padding: 3.2rem 1.5rem 2.8rem; }
+  .intro-card { padding: 2rem 1.8rem; }
+  .audio-card-header, .transcript-header { padding: 1.4rem 1.6rem 1.2rem; }
+  .audio-embed { padding: 1.1rem 1.6rem 1.3rem; }
+  .transcript-body { padding: 0 1.6rem 1.8rem; }
+  .expand-btn { padding: 0.9rem 1.6rem; }
+  .transcript-scroll { padding: 1.2rem 1.2rem; }
+  .comments-inner { padding: 1.4rem 1.6rem 1.8rem; }
+}
+@media (max-width: 480px) {
+  .nav-hamburger { display: block; }
+  .nav-links {
+    display: none;
+    position: absolute; top: 42px; left: 0; right: 0;
+    flex-direction: column; gap: 0;
+    background: rgba(7,16,31,0.97);
+    border-bottom: 1px solid var(--border-gold);
+    padding: 0.4rem 0;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li { border-top: 1px solid rgba(201,168,76,0.08); }
+  .nav-links li:first-child { border-top: none; }
+  .nav-links a { padding: 0.72rem 1.5rem; display: block; font-size: 0.62rem; }
+  .page-header h1 { font-size: 1.2rem; }
+  .intro-card { padding: 1.5rem 1.1rem; }
+  .audio-card-header, .transcript-header { padding: 1.2rem 1.1rem 1rem; }
+  .audio-embed { padding: 0.9rem 1.1rem 1.1rem; }
+  .transcript-body { padding: 0 1.1rem 1.4rem; }
+  .expand-btn { padding: 0.9rem 1.1rem; }
+  .comments-inner { padding: 1.2rem 1.1rem 1.6rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="site-nav">
+  <a class="nav-brand" href="../index.html">
+    <span class="cross">✝</span> Jesus is the Highway to Heaven
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../read.html">Read</a></li>
+    <li><a href="../contents.html">Contents</a></li>
+    <li><a href="index.html" class="active">Audios</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">&#9776;</button>
+</nav>
+
+<!-- ── PAGE HEADER ── -->
+<header class="page-header">
+  <div class="hdr-bg"></div>
+  <div class="hdr-dim"></div>
+  <div class="hdr-content">
+    <span class="hdr-cross">✝</span>
+    <p class="hdr-eyebrow">Audio Evidence</p>
+    <h1>Audios &amp; Court Record</h1>
+    <hr class="hdr-rule">
+    <p class="hdr-verse">"The truth will set you free." — John 8:32</p>
+  </div>
+</header>
+
+<!-- ── MAIN ── -->
+<main>
+
+  <!-- INTRO -->
+  <div class="card intro-card">
+    <p class="intro-eyebrow">Edwin Lewis</p>
+    <h2>First-Hand Evidence</h2>
+    <hr class="title-rule">
+    <p class="intro-text">
+      The recordings and court documents on this page are presented by Edwin Lewis as first-hand evidence supporting the claims made in <em>Jesus is the Highway to Heaven</em>. They document a period of profound personal hardship — a custody dispute, false allegations, and a family torn apart. Edwin has carried the weight of these events for decades. He presents them here so that the truth, in his own words and in the words of the court, may finally stand on its own.
+    </p>
+    <div class="warning-strip">
+      <span class="warning-icon">⚠️</span>
+      <p class="warning-text">
+        <strong>Listener discretion advised.</strong> One recording contains a child in distress. All material is presented unedited and in its original form.
+      </p>
+    </div>
+  </div>
+
+  <!-- RECORDING 1: Kid Crying -->
+  <div class="card audio-card">
+    <div class="audio-card-header">
+      <p class="audio-label">Recording 1 of 2 &nbsp;·&nbsp; Audio Evidence</p>
+      <h3>Children — Recorded Distress</h3>
+      <p class="audio-desc">
+        This recording captures Edwin's children in a state of visible distress. Edwin presents it as direct evidence that his children did not want to be placed in the care of their mother, Helen, during the custody dispute. Their reaction speaks for itself. This recording should be understood alongside the court transcript below, which documents the proceedings in which Helen's father testified against Edwin — proceedings Edwin maintains were built on false and malicious allegations.
+      </p>
+    </div>
+    <div class="audio-embed">
+      <p class="audio-embed-label">Play Recording</p>
+      <iframe src="https://drive.google.com/file/d/1cAUi8qFispeSU-XxXKQOP2NPnA5NQLbh/preview" allow="autoplay"></iframe>
+    </div>
+  </div>
+
+  <!-- RECORDING 2: Father In Law CUT -->
+  <div class="card audio-card">
+    <div class="audio-card-header">
+      <p class="audio-label">Recording 2 of 2 &nbsp;·&nbsp; Audio Evidence</p>
+      <h3>Father-in-Law — Recorded Conversation</h3>
+      <p class="audio-desc">
+        This recording features Edwin's father-in-law, Alan Carty, whose testimony before the Family Court is transcribed in full below. Alan Carty testified on behalf of his daughter Helen, recounting events in a manner Edwin disputes. This audio recording was made by Edwin and is presented here as evidence of the wider conduct and character of those who testified against him. Read the court transcript alongside this recording to understand the full context of the allegations Edwin faced.
+      </p>
+    </div>
+    <div class="audio-embed">
+      <p class="audio-embed-label">Play Recording</p>
+      <iframe src="https://drive.google.com/file/d/1S0lG12WJ5HcqWbED3JHdVNBISLk6GB-r/preview" allow="autoplay"></iframe>
+    </div>
+  </div>
+
+  <!-- COURT TRANSCRIPT -->
+  <div class="card transcript-card">
+    <div class="transcript-header">
+      <p class="transcript-eyebrow">Court Record &nbsp;·&nbsp; Family Court Proceedings</p>
+      <h3>Transcript — Testimony of Alan Carty</h3>
+      <p class="transcript-intro">
+        The following is a transcript of court proceedings in the family law matter involving Edwin Lewis and his then-wife Helen. The witness, Alan Carty, is Helen's father. He testified under oath regarding the events surrounding the separation and the allegations made against Edwin — including a deeply serious allegation that Edwin contends was fabricated. Edwin presents this transcript so that readers may weigh the testimony themselves and understand the ordeal he endured.
+      </p>
+    </div>
+    <button class="expand-btn" id="transcriptToggle" onclick="toggleTranscript()">Read Full Transcript</button>
+    <div class="transcript-body" id="transcriptBody" style="display:none;">
+      <div class="transcript-scroll">
+
+        <!-- ── WITNESS 1: ALAN CARTY ── -->
+        <p class="transcript-witness">Witness 1 — Alan Carty (Helen's Father) · Examination-in-Chief</p>
+
+        <p class="transcript-oath">"The evidence which I shall give to the court shall be a proof of nothing but the truth. So help me God."</p>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Court — Witness identified</p>
+          <p class="transcript-a">Alan Carty. Resides at 12 Levitt Street, Redland Bay. Retired.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — Do you know the aggrieved spouse present in court today?</p>
+          <p class="transcript-a">Yes, I do. That's my daughter.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — I'm going to take you to late April — specifically the 28th of April 1970. Do you remember that day?</p>
+          <p class="transcript-a">Not specifically, no. I have so many things happen each day there, I'm not sure I can recall what happened.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — Do you recall what happened in April of this year, to do with your daughter and your son-in-law?</p>
+          <p class="transcript-a">Well, if you tell me whereabouts — around the day they separated, I remember that, yes.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — When was that?</p>
+          <p class="transcript-a">That was the 17th of March. It could have been.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — How long have you known your son-in-law?</p>
+          <p class="transcript-a">About six and a half to seven years.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — Have you witnessed he and your daughter's family relationship? How would you describe it?</p>
+          <p class="transcript-a">Most of the time I've been there they've been fairly happy. Different couples have disagreements from time to time — just an occasional argument, spread over a period. If you're referring to Eddie and Helen arguing, yes.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — Can you tell us what happened in the lead-up to the separation?</p>
+          <p class="transcript-a">I'm not sure of the exact date, but I think it was on a Tuesday. Helen rang us at our house and told us there were a few things, so we went over to her place to see what the problem was. When we went over there, Eddie's parents were there, and we discussed different things being said, and we came home. Then on the Friday morning, Helen rang us again about eight or nine o'clock — she was very upset. She briefly explained what had happened between herself and Eddie. I said to Mum, I think we'd better go over and see what's going on. So Mum and I went, and we found her very distressed. Apparently Eddie had gone to work that Friday morning, and before he left he threatened her — telling her she was not to leave the house with the children, and he gave her other instructions too.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — What happened as a result of your going over there?</p>
+          <p class="transcript-a">We decided there was no point in leaving our daughter in the situation we found her in. We were very upset and very concerned for her safety after he threatened her like he did. We told her to pack her goods and the children, and we'd take her with us. We packed her up and took her home, and then she went to see her solicitor at Victoria Point and spoke to her solicitor and barrister. After that, she and her mother got in the car and they went to Sydney for a fortnight to give her and the children a break.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — Did you have any contact with them while they were in Sydney?</p>
+          <p class="transcript-a">Yes, my wife rang periodically and I spoke to Helen a couple of times on the phone. I think she left on the Friday night for Sydney. On the Saturday night, I had a visit from two police detectives from Cleveland — they knocked on my door and asked if I knew the whereabouts of my daughter Helen Lewis and the three children. I said yes, I did. They asked if the children were well. I said yes, the children were in perfectly good condition. I told them I knew their whereabouts, and if they wanted any further contact with Helen they should contact Helen's solicitor, and I gave them the solicitor's name and phone number.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — What happened then?</p>
+          <p class="transcript-a">They rang my daughter Megan in Brisbane and asked that if Helen should ring her, she was to ask Helen to make contact with the Cleveland police, which she did. After Megan spoke to the police, she rang me. I rang Helen and told her to ring the police and tell them she was well and so were the children. When the police spoke to Helen, they said allegations had been made that two of the children were very sick. After receiving that, Helen took the children to a doctor in Sydney on the Monday, had the doctor medically examine all three children, and obtained a certificate that the three children were in good health.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — Have the police ever spoken to you about anything else?</p>
+          <p class="transcript-a">No. The police told Helen there were allegations made against her about different things, and Helen told me.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — Who were the police officers?</p>
+          <p class="transcript-a">Constable Mark Beedmore and his partner. They said they were tied up with the children's court, or something to that effect. I understood that they were representing the children's welfare.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — Did you have further dealings with these officers?</p>
+          <p class="transcript-a">Yes. A few weeks later, I was rung by Constable Beedmore and asked to attend a meeting at the police station, which I did. Could have been the 28th of April — I just couldn't tell you exactly.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — What happened on that day?</p>
+          <p class="transcript-a">I reported to the police station, roughly about three o'clock. Constable Beedmore and his mate took me into the office, sat me down in front of a camera, and questioned me — the evidence was taken on camera. When they'd finished, they thanked me and I left.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — Did you have legal representation?</p>
+          <p class="transcript-a">No. I couldn't see any need for the expense of a solicitor. I was told what the questioning would entail.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — What were you asked?</p>
+          <p class="transcript-a">The constable said, "A certain allegation has been made against you that you've been interfering with Justin Lewis, your grandson." I said, "Oh yeah — who made them?" He said, "The father, Eddie Lewis." One thing led to another — they were quite happy with what I had to say, and they dismissed me when I'd finished. They said nothing about charging me at all. They never said they'd charge me, and they never said they wouldn't charge me. They never mentioned a charge.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — Was this the first you knew of these alleged allegations?</p>
+          <p class="transcript-a">No. I'd heard previously from my daughter and through different family members — my wife, all my daughters: Helen, Megan and Anne — and I discussed it with my son, Greg, in Sydney. The first time was when Helen called us over on that Tuesday, around the 18th of March. That's the very first indication I'd ever got of allegations of me interfering with this man's eldest son. I'd never, ever heard of the allegations before.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — How did the police interview make you feel?</p>
+          <p class="transcript-a">How did it make anybody feel? Here I am, 64 years of age — and suddenly they've alleged that I've been interfering with a three-year-old child. For goodness sake. How would anybody feel? I was devastated. To think that this man had been told in November of the previous year that I'm supposed to have interfered with this child, and nothing was said to me or my family. Terrible. Goodness me.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — How would you describe your regard for the respondent?</p>
+          <p class="transcript-a">I held that man in very high regard and treated him as I would treat any of my sons. I enjoyed many, many lovely barbecues at his place — he was a grand host. I was devastated to hear him saying things like that about me. I still hold Eddie in high regard, even though he said these things about me. But I'm so sorry for the man that he's carrying this on his shoulders like he's doing. Goodness me, that's a terrible load to carry. My feelings towards him are of great disappointment — great disappointment for me and for himself.</p>
+        </div>
+
+        <!-- ── CROSS-EXAMINATION ── -->
+        <p class="transcript-witness">Alan Carty — Cross-Examination</p>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — Isn't it true that you went to your daughter and Eddie's house on Wednesday the 19th of March, and that you were asked to your face at that stage if those allegations were true?</p>
+          <p class="transcript-a">That's the first allegation I'd ever heard, yes.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — My client actually asked you if that was true, at his house when you were called over by your daughter?</p>
+          <p class="transcript-a">Yes, that's correct.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — And you didn't answer that — you went outside into the yard and kicked a ball about, didn't you?</p>
+          <p class="transcript-a">I did answer that. The man said to me, "Al, you wouldn't interfere with Justin, would you?" And I said, "No, of course not."</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — When the police came on the 21st of March — the day Helen went to Sydney — they were just asking the whereabouts of the children at that stage?</p>
+          <p class="transcript-a">That's right, yes.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — And it was later that you were asked to come to the police station in April, without legal representation — you felt you were quite capable to answer their questions?</p>
+          <p class="transcript-a">Yes.</p>
+        </div>
+
+        <!-- ── SUBMISSION & SECOND WITNESS ── -->
+        <p class="transcript-witness">Submission — Defence Application to Dismiss</p>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Defence submission</p>
+          <p class="transcript-a">"Your Worship, at this stage I'd make a submission that the application should be dismissed. On the evidence so far, there isn't sufficient evidence to satisfy this court that domestic violence has occurred at any stage, and there is no evidence before this court that it is likely to occur in the future. I would submit that the aggrieved spouse has not proved the case."</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Court</p>
+          <p class="transcript-a">"If you accept the evidence of the wife and the mother, at the very least there's been harassment — and that would come within harassment. In that case, I'll call my first witness."</p>
+        </div>
+
+        <!-- ── WITNESS 2: EDWIN LEWIS ── -->
+        <p class="transcript-witness">Witness 2 — Edwin (Leslie John) Lewis · Respondent · Examination-in-Chief</p>
+
+        <p class="transcript-oath">"The evidence that I shall give to the court shall be the truth, the whole truth, and nothing but the truth. So help me God."</p>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Court — Witness identified</p>
+          <p class="transcript-a">Leslie John Lewis. I reside with my parents at 1824 Craig Road, Cannon Hill. I am a contract mowing and general tidying up with BMD Construction. My relationship to the aggrieved spouse — she was my wife.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — In your own words, tell the court what happened on the evening of Monday 17th March.</p>
+          <p class="transcript-a">I came in through the door at five past six. Helen was up at the table with the two boys, and I saw that they were eating some yoghurt and some nachos. I just sat down, and Helen came and placed Thomas with me, and she just walked out through the door. While I was comforting him for the next 40 or so minutes, I didn't know where Helen had gone, and the two boys were quiet at the table, so I just presumed they were OK. Helen came back in about 40 minutes later. I asked where she'd been — no reply. She walked towards the dining table, saw that the boys had made a mess with their yoghurt, and got the stick off the cupboard. She hit it twice, and then she hit Justin with it once.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — What sort of stick was it?</p>
+          <p class="transcript-a">It usually has a thing with floppy feet on it that Helen got from the market. I just said, "Leave the children alone. Everything's OK. Just settle down." She came and got Thomas — the two boys were over each shoulder, just howling their eyes out. Helen had Thomas and was putting him on the breast, and Justin broke out of my grip and said, "Naughty mummy, naughty mummy, I'm going to go and smack mummy." I said no, just stay here. He went towards her, and she put out a kick and kicked him straight back into the tea chest in the middle of the room, and he went onto the ground. That's where I got up and said, "That's it — you just can't keep doing this to the children."</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — What happened then?</p>
+          <p class="transcript-a">She placed Thomas down, got up and started abusing me — "You haven't helped me out, you've just been laying on the couch." I said no, settle down — for the last 40 minutes I'd been trying to settle a four-month-old. I said the marriage would be over and we'd go our separate ways for the sake of the kids. When she came over to try to take the children and said she was taking them to her parents' place, I said no, the boys will be staying here. She reached out to get Justin's arm, and I just fended off her hand — that's the only thing I've ever done to her in my life. I took the two boys up for a shower.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — Why did you stop her taking the children?</p>
+          <p class="transcript-a">Because she was going to take them to her parents' place, and they were fine in my care.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — What happened then?</p>
+          <p class="transcript-a">About 15 to 20 minutes later she yelled out that she had the police on the way. I just yelled back — well, that's fine, contact the police, get them over here, I'll report you for belting the children with the stick. As soon as she said that, I jumped out of the shower, went and phoned my mother. I said, mum, I need your help — could you come down now. About 20 or so minutes after that, mum and dad came from Cannon Hill. By that stage, the police had arrived. I was upstairs with Justin and Clinton still in the shower. Helen yelled out that the police were here and to come down. I said no, I've got to turn the knobs off, dry the children, clothe them — I'll be down in five minutes.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — What happened when you went downstairs?</p>
+          <p class="transcript-a">Five minutes or so later I went downstairs with the children — one under each arm, like supermen. They were loving it, having a good time. I said to the police — Adrian Staples and Caroline Cox — "What's the problem here, why have you been called?" They said Helen had told them this and that. I said, "Mate, look at the children — there's nothing, no problem here. You've got more important things to do than come out to the house for this." They left the children in my care. They asked Helen if she had somewhere to go, and Helen said her mother lived five minutes away at Redland Bay. Then my parents came in, and the boys were ready for bedtime.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — Do you remember Wednesday the 19th of March?</p>
+          <p class="transcript-a">Yes, definitely. I rang Helen in the morning about a mowing job just up the road. She was quite OK. I said my parents were taking Justin and Clinton to Cannon Hill to get a change of clothes. Helen went berserk on the phone and said, "Your effing parents — they've interfered too much in our marriage. I'll be coming over and reminding them while you're out mowing." I said, "OK, you're the mother, fine." I went out mowing for a couple of hours, trying to think of what possible way I could tell my wife that there were allegations raised that her father had interfered with Justin.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — What time did you get home, and what happened?</p>
+          <p class="transcript-a">I got home at quarter to two. Helen was downstairs with Justin — I presume Clinton and Thomas were asleep. At about 3.30, Helen came down the internal stairs and went out to water the plants. I was going around the house trying to find a way to tell her about the allegations against her father. At quarter to four I'd had enough and I said, "Listen Helen, something's killing me here — there have been allegations raised by Kylie," my sister-in-law. Kylie and Helen were the best of friends.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — What were the allegations?</p>
+          <p class="transcript-a">Around Melbourne Cup time, when Helen was having our third child, Kylie asked Justin if he wanted to do a wee or a poo. He said, "No, no, no — you can't touch me there. That's where Poppy touches me there, and he hurts me a lot, especially when he sleeps with me."</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — When you told Helen, were you saying you were going to report it?</p>
+          <p class="transcript-a">No. I wanted her to ring Kylie and find out first-hand what the allegations were. But she replied back to me four times — yelling, "Why wasn't I told?" After that, she's still hosing the plants and I said, "Is there any chance your father is a paedophile?" And she said, "It's feasible." I'll go to my grave with that word.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — What happened after the phone call with Kylie?</p>
+          <p class="transcript-a">I demanded that Helen bring her father over so I could talk to him face-to-face. I said I didn't want her mother there — she'd just get in the way. But Helen insisted about seven times that she wanted her mother there too. They came over within five minutes. Helen's mother came in and sat on the sofa. About a minute later he was standing in front of me, five metres away. As soon as I saw him I just broke up — emotionally. I had a very good relationship with Helen's dad. We'd been out in the boat together on Helen's birthday. I was upset, I was crying.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — What happened when he arrived?</p>
+          <p class="transcript-a">Helen said to me, "You've got something to ask Dad." By her saying that, it put pressure on me to ask him. I said, "You haven't touched Justin in any way, have you? There are allegations from Kylie about paedophilia." He did not answer me. Helen's mother jumped up off the couch and said, "He's never done this before, he's never touched any children. He's never been left alone with the children by himself." Which I know to be incorrect — the girls always go out shopping together. I looked around a few minutes later and he was out there kicking a soccer ball around with Justin.</p>
+        </div>
+
+        <div class="transcript-exchange">
+          <p class="transcript-q">Q — What else was discussed?</p>
+          <p class="transcript-a">Helen's mother said Helen had organised counselling to try to keep the marriage together — that she was going to see Relationships Australia at Mountford, and had organised to see a psychiatrist. Everything was getting turned around.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- COMMENTS & LIKE -->
+  <div class="card comments-card">
+    <div class="comments-inner">
+      <div class="comments-heading">
+        <span class="ch-ornament">✝</span>
+        <h3>Reflections &amp; Comments</h3>
+      </div>
+
+      <div class="like-row">
+        <button class="like-btn" id="likeBtn" onclick="toggleLike()">
+          <span class="heart">♡</span> Like
+        </button>
+        <span class="like-count" id="likeCount"></span>
+      </div>
+
+      <p class="comment-form-heading">Leave a Reflection</p>
+      <form class="comment-form" onsubmit="return false;">
+        <input type="text" placeholder="Your name" maxlength="80" />
+        <textarea placeholder="Share your thoughts or reflection..." maxlength="1000"></textarea>
+        <button type="submit" class="comment-submit">Post Reflection ✝</button>
+      </form>
+    </div>
+  </div>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-cross">✝</span>
+    <p class="footer-verse">"I am the way, the truth, and the life.<br>No one comes to the Father except through me." — John 14:6</p>
+    <div class="footer-divider"></div>
+    <p class="footer-copy">&copy; 2026 Jesus is the Highway to Heaven &nbsp;·&nbsp; Written by Edwin Lewis</p>
+  </div>
+</footer>
+
+<script>
+function toggleTranscript() {
+  const body = document.getElementById('transcriptBody');
+  const btn  = document.getElementById('transcriptToggle');
+  const open = body.style.display === 'none';
+  body.style.display = open ? 'block' : 'none';
+  btn.textContent = (open ? 'Collapse Transcript' : 'Read Full Transcript');
+  btn.classList.toggle('open', open);
+}
+
+function toggleLike() {
+  const btn   = document.getElementById('likeBtn');
+  const count = document.getElementById('likeCount');
+  const liked = btn.classList.toggle('liked');
+  btn.querySelector('.heart').textContent = liked ? '♥' : '♡';
+  count.textContent = liked ? 'You liked this page.' : '';
+}
+</script>
+
+<script>
+(function(){
+  const btn   = document.getElementById('navHamburger');
+  const links = document.getElementById('navLinks');
+  if (!btn || !links) return;
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    links.classList.toggle('open');
+    btn.textContent = links.classList.contains('open') ? '\u2715' : '\u2630';
+  });
+  document.addEventListener('click', function() {
+    links.classList.remove('open');
+    btn.textContent = '\u2630';
+  });
+  links.addEventListener('click', function() {
+    links.classList.remove('open');
+    btn.textContent = '\u2630';
+  });
+})();
+</script>
+
+</body>
+</html>

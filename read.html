@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jesus is the Highway to Heaven — Read</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; }
+
+:root {
+  --ink:         #07101f;
+  --ink-mid:     #112038;
+  --ink-rich:    #1a2d58;
+  --gold:        #c9a84c;
+  --gold-hi:     #dfc06a;
+  --gold-pale:   #f0d98c;
+  --cream:       #fdfaf4;
+  --text:        #1a1208;
+  --text-mid:    #2e200e;
+  --muted:       #7a6648;
+  --warm:        #2a1e0a;
+  --border-gold: rgba(201,168,76,0.18);
+}
+
+@keyframes softGlow {
+  0%,100% { filter: drop-shadow(0 0 8px rgba(201,168,76,0.28)); }
+  50%     { filter: drop-shadow(0 0 20px rgba(201,168,76,0.55)); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+body {
+  font-family: 'Crimson Text', Georgia, serif;
+  background-color: var(--ink);
+  background-image:
+    radial-gradient(ellipse 110% 42% at 50% -1%, rgba(201,168,76,0.13) 0%, transparent 58%),
+    radial-gradient(ellipse 55% 50% at 5%  98%, rgba(10,20,48,0.95)    0%, transparent 52%),
+    radial-gradient(ellipse 55% 50% at 95% 98%, rgba(10,20,48,0.95)    0%, transparent 52%);
+  color: var(--cream);
+  line-height: 1.8;
+}
+
+/* ── NAV ── */
+.site-nav {
+  position: sticky; top: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 42px;
+  background: rgba(7,16,31,0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-gold);
+  box-shadow: 0 1px 0 rgba(201,168,76,0.05), 0 4px 24px rgba(0,0,0,0.35);
+}
+.nav-brand {
+  font-family: 'Cinzel', serif; font-size: 0.67rem; font-weight: 700;
+  letter-spacing: 0.12em; color: var(--gold-pale);
+  text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+  white-space: nowrap;
+}
+.nav-brand .cross {
+  color: var(--gold);
+  animation: softGlow 5s ease-in-out infinite;
+}
+.nav-links { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.8rem; }
+.nav-links a {
+  font-family: 'Cinzel', serif; font-size: 0.56rem; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(253,249,241,0.48); text-decoration: none;
+  transition: color 0.2s ease;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+/* ── PAGE HEADER ── */
+.page-header {
+  margin-top: -42px;
+  padding: calc(4rem + 42px) 2rem 3.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-gold);
+}
+.hdr-slide {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: 0; transition: opacity 3s ease;
+}
+.hdr-slide.active { opacity: 1; }
+.hdr-dim {
+  position: absolute; inset: 0;
+  background: rgba(7,16,31,0.68);
+  z-index: 1;
+}
+.hdr-content {
+  position: relative; z-index: 3;
+  display: flex; flex-direction: column; align-items: center;
+}
+.page-header::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 2;
+  background: radial-gradient(ellipse 65% 80% at 50% 10%, rgba(201,168,76,0.09) 0%, transparent 62%);
+  pointer-events: none;
+}
+.page-header::after {
+  content: '';
+  position: absolute; bottom: -1px; left: 0; right: 0; height: 1px; z-index: 4;
+  background: linear-gradient(to right, transparent, var(--gold) 22%, rgba(201,168,76,0.55) 50%, var(--gold) 78%, transparent);
+}
+.hdr-cross {
+  display: block; font-size: 3.2rem; color: var(--gold);
+  line-height: 1; margin-bottom: 0.9rem;
+  animation: softGlow 4s ease-in-out infinite;
+  position: relative;
+}
+.hdr-eyebrow {
+  font-family: 'Cinzel', serif; font-size: 0.57rem; font-weight: 600;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--gold); opacity: 0.70; margin: 0 0 0.65rem;
+  position: relative;
+}
+.page-header h1 {
+  font-family: 'Cinzel', serif; font-size: clamp(1.4rem, 3.8vw, 2.8rem);
+  font-weight: 700; color: #fff; letter-spacing: 0.04em;
+  margin: 0 0 0.8rem; line-height: 1.2;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.60);
+  position: relative;
+}
+.hdr-rule {
+  width: 48px; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  border: none; margin: 0 auto 0.85rem;
+}
+.hdr-verse {
+  font-family: 'Crimson Text', serif; font-style: italic;
+  font-size: clamp(0.92rem, 1.9vw, 1.1rem); color: rgba(240,217,140,0.70);
+  margin: 0; letter-spacing: 0.02em; position: relative;
+}
+
+/* ── CHAPTER NAV ── */
+.chapter-nav {
+  display: flex; align-items: stretch;
+  max-width: 900px; margin: 3rem auto 1.2rem;
+  gap: 0.8rem; padding: 0 1.5rem;
+}
+.chapter-nav button {
+  flex: 1;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.52rem, 0.88vw, 0.65rem);
+  font-weight: 600; letter-spacing: 0.06em;
+  color: rgba(201,168,76,0.82);
+  background: rgba(16,28,55,0.92);
+  border: 1px solid var(--border-gold);
+  padding: 0.82rem 1rem;
+  border-radius: 0.35rem;
+  cursor: pointer; transition: all 0.22s ease;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0;
+  box-shadow: 0 0 0 1px rgba(201,168,76,0.05), 0 2px 10px rgba(0,0,0,0.25);
+}
+.chapter-nav button:hover:not(:disabled) {
+  background: rgba(26,45,88,0.98);
+  border-color: var(--gold); color: var(--gold-hi);
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 1px rgba(201,168,76,0.10), 0 4px 18px rgba(201,168,76,0.14);
+}
+.chapter-nav button:disabled { opacity: 0.16; cursor: not-allowed; }
+#prevBtn::before { content: '← '; }
+#nextBtn::after  { content: ' →'; }
+
+.current-chapter {
+  flex: 2.5;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.76rem, 1.4vw, 0.98rem);
+  font-weight: 700; color: rgba(253,249,241,0.82);
+  letter-spacing: 0.06em; padding: 0.82rem 1rem; line-height: 1.4;
+  background: rgba(16,28,55,0.92);
+  border-radius: 0.35rem; border: 1px solid var(--border-gold);
+  box-shadow: 0 0 0 1px rgba(201,168,76,0.05), 0 2px 10px rgba(0,0,0,0.25);
+}
+
+/* ── MAIN ── */
+main {
+  max-width: 900px; margin: 0 auto 5.5rem;
+  padding: 0 1.5rem;
+}
+
+.content {
+  background: rgba(255,255,255,0.975);
+  border-radius: 0.55rem;
+  padding: 2rem;
+  box-shadow:
+    0 0 0 1px rgba(201,168,76,0.08),
+    0 6px 36px rgba(0,0,0,0.38),
+    0 20px 60px rgba(0,0,0,0.22);
+  border-top: 2px solid var(--gold);
+  animation: fadeUp 0.45s ease-out both;
+  color: var(--warm);
+}
+
+iframe {
+  width: 100%; height: 1400px;
+  border-radius: 0.3rem; border: none;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+  display: block;
+}
+
+.loading-msg { text-align: center; padding: 5rem 1rem; font-size: 1.1rem; color: var(--muted); font-style: italic; }
+.error-msg   { text-align: center; padding: 5rem 1rem; font-size: 1rem; color: #9b2020; }
+
+/* ── COMMENTS ── */
+.comments-section {
+  max-width: 900px; margin: 0 auto 4rem;
+  padding: 0 1.5rem;
+}
+.comments-card {
+  background: rgba(255,255,255,0.975);
+  border-radius: 0.55rem;
+  border-top: 2px solid var(--gold);
+  padding: 2.4rem 2.8rem;
+  box-shadow:
+    0 0 0 1px rgba(201,168,76,0.08),
+    0 6px 36px rgba(0,0,0,0.38),
+    0 20px 60px rgba(0,0,0,0.22);
+}
+.comments-heading {
+  display: flex; align-items: center; gap: 0.7rem;
+  margin-bottom: 1.8rem;
+}
+.comments-heading h3 {
+  font-family: 'Cinzel', serif; font-size: clamp(0.88rem, 1.6vw, 1.1rem);
+  font-weight: 700; color: var(--ink-mid); letter-spacing: 0.08em; margin: 0;
+}
+.comments-heading .ch-ornament { color: var(--gold); opacity: 0.70; font-size: 0.85rem; }
+.comment-list { display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 2rem; }
+.comment-item {
+  border-left: 2px solid rgba(201,168,76,0.30);
+  padding: 0.9rem 1.1rem;
+  background: rgba(201,168,76,0.03);
+  border-radius: 0 0.3rem 0.3rem 0;
+}
+.comment-meta {
+  display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 0.35rem;
+}
+.comment-author {
+  font-family: 'Cinzel', serif; font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.08em; color: var(--ink-mid);
+}
+.comment-date {
+  font-family: 'Crimson Text', serif; font-size: 0.82rem;
+  color: var(--muted); font-style: italic;
+}
+.comment-body {
+  font-family: 'Crimson Text', serif; font-size: 1.04rem;
+  color: var(--text-mid); line-height: 1.70; margin: 0;
+}
+.comment-divider {
+  width: 100%; height: 1px;
+  background: linear-gradient(to right, rgba(201,168,76,0.15), transparent);
+  border: none; margin: 0.2rem 0 0;
+}
+.like-row { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.8rem; }
+.like-btn {
+  display: flex; align-items: center; gap: 0.45rem;
+  font-family: 'Cinzel', serif; font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.10em; text-transform: uppercase;
+  color: var(--ink-mid); background: rgba(201,168,76,0.06);
+  border: 1px solid var(--border-gold);
+  border-radius: 2rem; padding: 0.52rem 1.2rem;
+  cursor: pointer; transition: all 0.22s ease; user-select: none;
+}
+.like-btn:hover { border-color: var(--gold); background: rgba(201,168,76,0.12); }
+.like-btn.liked { border-color: var(--gold); background: rgba(201,168,76,0.18); }
+.like-btn .heart { font-size: 1rem; line-height: 1; transition: transform 0.18s ease; }
+.like-btn.liked .heart { transform: scale(1.25); }
+.like-count { font-family: 'Crimson Text', serif; font-size: 0.94rem; color: var(--muted); font-style: italic; }
+.comment-form-heading {
+  font-family: 'Cinzel', serif; font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.14em; color: var(--gold); text-transform: uppercase;
+  margin: 0 0 1rem;
+}
+.comment-form { display: flex; flex-direction: column; gap: 0.75rem; }
+.comment-form input,
+.comment-form textarea {
+  font-family: 'Crimson Text', serif; font-size: 1.02rem; color: var(--text);
+  background: rgba(201,168,76,0.03);
+  border: 1px solid var(--border-gold);
+  border-radius: 0.28rem;
+  padding: 0.62rem 0.9rem;
+  outline: none; transition: all 0.22s ease; resize: vertical;
+}
+.comment-form input::placeholder,
+.comment-form textarea::placeholder { color: var(--muted); font-style: italic; }
+.comment-form input:focus,
+.comment-form textarea:focus {
+  border-color: rgba(201,168,76,0.48);
+  background: rgba(201,168,76,0.04);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.07);
+}
+.comment-form textarea { min-height: 100px; }
+.comment-submit {
+  align-self: flex-start;
+  font-family: 'Cinzel', serif; font-size: 0.64rem; font-weight: 700;
+  letter-spacing: 0.13em; text-transform: uppercase;
+  color: #fff; background: var(--ink-mid);
+  border: 1px solid rgba(201,168,76,0.40);
+  border-radius: 0.25rem; padding: 0.68rem 1.8rem;
+  cursor: pointer; transition: all 0.22s ease;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.22);
+}
+.comment-submit:hover {
+  background: var(--ink); border-color: var(--gold);
+  color: var(--gold-pale); transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(201,168,76,0.22);
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center; padding: 3.2rem 2rem;
+  background: rgba(4,8,18,0.98);
+  position: relative;
+}
+footer::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold) 22%, rgba(201,168,76,0.55) 50%, var(--gold) 78%, transparent);
+}
+.footer-inner { max-width: 540px; margin: 0 auto; }
+.footer-cross { display: block; font-size: 1.6rem; color: var(--gold); margin-bottom: 0.5rem; }
+.footer-verse { font-family: 'Crimson Text', serif; font-style: italic; font-size: 0.96rem; color: rgba(240,217,140,0.58); margin: 0 0 0.8rem; line-height: 1.65; }
+.footer-divider { width: 36px; height: 1px; background: var(--border-gold); margin: 0 auto 0.7rem; }
+.footer-copy { font-family: 'Cinzel', serif; font-size: 0.57rem; letter-spacing: 0.14em; color: rgba(255,255,255,0.25); }
+
+/* ── HAMBURGER ── */
+.nav-hamburger {
+  display: none;
+  background: none; border: 1px solid var(--border-gold);
+  color: var(--gold-pale); font-size: 1.1rem;
+  cursor: pointer; padding: 0.2rem 0.55rem;
+  border-radius: 0.2rem; line-height: 1.4;
+  transition: all 0.18s ease;
+}
+.nav-hamburger:hover { color: var(--gold); border-color: var(--gold); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  .site-nav { padding: 0 1.2rem; }
+  .page-header { padding: 3rem 1.5rem 2.6rem; }
+  .chapter-nav { flex-direction: column; }
+  .chapter-nav button { flex: none; width: 100%; }
+  .current-chapter { flex: none; width: 100%; order: -1; }
+  .content { padding: 1.2rem; }
+  iframe { height: 980px; }
+}
+@media (max-width: 460px) {
+  .nav-hamburger { display: block; }
+  .nav-links {
+    display: none;
+    position: absolute; top: 42px; left: 0; right: 0;
+    flex-direction: column; gap: 0;
+    background: rgba(7,16,31,0.97);
+    border-bottom: 1px solid var(--border-gold);
+    padding: 0.4rem 0;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li { border-top: 1px solid rgba(201,168,76,0.08); }
+  .nav-links li:first-child { border-top: none; }
+  .nav-links a { padding: 0.72rem 1.5rem; display: block; font-size: 0.62rem; }
+  .page-header h1 { font-size: 1.2rem; }
+  .content { padding: 0.9rem; border-radius: 0.3rem; }
+  iframe { height: 820px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="site-nav">
+  <a class="nav-brand" href="index.html">
+    <span class="cross">✝</span> Jesus is the Highway to Heaven
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="read.html" class="active">Read</a></li>
+    <li><a href="contents.html">Contents</a></li>
+    <li><a href="audios/index.html">Audios</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">&#9776;</button>
+</nav>
+
+<!-- ── PAGE HEADER ── -->
+<header class="page-header">
+  <div class="hdr-slide" style="background-image:url('HeaderBanner1.jpg')"></div>
+  <div class="hdr-slide" style="background-image:url('HeaderBanner2.jpg')"></div>
+  <div class="hdr-slide active" style="background-image:url('HeaderBanner3.jpg')"></div>
+  <div class="hdr-slide" style="background-image:url('HeaderBanner4.jpg')"></div>
+  <div class="hdr-dim"></div>
+  <div class="hdr-content">
+    <span class="hdr-cross">✝</span>
+    <p class="hdr-eyebrow">Sacred Writings</p>
+    <h1>Jesus is the Highway to Heaven</h1>
+    <hr class="hdr-rule">
+    <p class="hdr-verse">"I am the way, the truth, and the life." — John 14:6</p>
+  </div>
+</header>
+
+<!-- ── PAGE READER ── -->
+<main>
+  <div class="chapter-nav">
+    <button id="prevBtn" disabled></button>
+    <div class="current-chapter" id="currentChapter">Loading chapters...</div>
+    <button id="nextBtn" disabled></button>
+  </div>
+
+  <div class="content">
+    <div id="loadingMsg" class="loading-msg">Loading PDFs…</div>
+    <iframe id="pdfViewer" loading="lazy" style="display:none;"></iframe>
+  </div>
+</main>
+
+<audio id="bgMusic" loop style="display:none;"></audio>
+
+<!-- ── COMMENTS ── -->
+<section class="comments-section">
+  <div class="comments-card">
+    <div class="comments-heading">
+      <span class="ch-ornament">✝</span>
+      <h3>Reflections &amp; Comments</h3>
+    </div>
+
+    <div class="like-row">
+      <button class="like-btn" id="likeBtn" onclick="toggleLike()">
+        <span class="heart">♡</span> Like
+      </button>
+      <span class="like-count" id="likeCount"></span>
+    </div>
+
+    <p class="comment-form-heading">Leave a Reflection</p>
+    <form class="comment-form" onsubmit="return false;">
+      <input type="text" placeholder="Your name" maxlength="80" />
+      <textarea placeholder="Share your thoughts or reflection..." maxlength="1000"></textarea>
+      <button type="submit" class="comment-submit">Post Reflection ✝</button>
+    </form>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-cross">✝</span>
+    <p class="footer-verse">"I am the way, the truth, and the life.<br>No one comes to the Father except through me." — John 14:6</p>
+    <div class="footer-divider"></div>
+    <p class="footer-copy">&copy; 2026 Jesus is the Highway to Heaven &nbsp;·&nbsp; Written by Edwin Lewis</p>
+  </div>
+</footer>
+
+<script>
+  const API_KEY   = 'AIzaSyDop159M8vugSx8i5JmdCsPgFqkYyqoN3w';
+  const FOLDER_ID = '1xg0zyukw67FFEyFLYkgcQqEX3GGMUD2X';
+
+  const pdfViewer        = document.getElementById('pdfViewer');
+  const prevBtn          = document.getElementById('prevBtn');
+  const nextBtn          = document.getElementById('nextBtn');
+  const currentChapterEl = document.getElementById('currentChapter');
+  const loadingMsg       = document.getElementById('loadingMsg');
+
+  let chapters     = [];
+  let currentIndex = 0;
+  let bgMusicId    = null;
+  const bgMusic    = document.getElementById('bgMusic');
+
+  function getChapterFromURL() {
+    return new URLSearchParams(window.location.search).get('chapter');
+  }
+  function setChapterInURL(id) {
+    const url = new URL(window.location);
+    url.searchParams.set('chapter', id);
+    history.pushState({}, '', url);
+  }
+
+  async function fetchAllFiles() {
+    const BASE   = 'https://www.googleapis.com/drive/v3/files';
+    const FIELDS = 'nextPageToken,files(id,name)';
+    let allFiles  = [];
+    let pageToken = '';
+    do {
+      const params = new URLSearchParams({
+        q: `'${FOLDER_ID}' in parents and mimeType='application/pdf' and trashed=false`,
+        fields: FIELDS, pageSize: 100, key: API_KEY,
+        ...(pageToken && { pageToken })
+      });
+      const res  = await fetch(`${BASE}?${params}`);
+      const data = await res.json();
+      if (data.error) throw new Error(data.error.message || 'API error');
+      allFiles  = allFiles.concat(data.files || []);
+      pageToken = data.nextPageToken || '';
+    } while (pageToken);
+    return allFiles;
+  }
+
+  async function fetchAudioFiles() {
+    const params = new URLSearchParams({
+      q: `'${FOLDER_ID}' in parents and mimeType contains 'audio' and trashed=false`,
+      fields: 'files(id,name)',
+      key: API_KEY,
+    });
+    const res  = await fetch(`https://www.googleapis.com/drive/v3/files?${params}`);
+    const data = await res.json();
+    return data.files || [];
+  }
+
+  function previewURL(id) { return `https://drive.google.com/file/d/${id}/preview`; }
+  function leadingNumber(name) {
+    const m = name.match(/^(\d+(?:\.\d+)?)/);
+    return m ? parseFloat(m[1]) : Infinity;
+  }
+  function cleanTitle(name) {
+    let n = name.replace(/\.pdf$/i,'').trim().replace(/^\d+(?:\.\d+)?\s+/,'').trim();
+    if (/^\d+(\.[\d]+)?/.test(n)) n = 'Chapter ' + n;
+    return n;
+  }
+
+  function handleChapterMusic(fileNumber) {
+    if (fileNumber === 71 && bgMusicId) {
+      if (!bgMusic.src || !bgMusic.src.includes(bgMusicId)) {
+        bgMusic.src = `https://www.googleapis.com/drive/v3/files/${bgMusicId}?alt=media&key=${API_KEY}`;
+      }
+      bgMusic.play().catch(() => {});
+    } else {
+      bgMusic.pause();
+    }
+  }
+
+  function loadChapter(index, updateURL = true) {
+    if (index < 0) index = 0;
+    if (index >= chapters.length) index = chapters.length - 1;
+    currentIndex = index;
+    const ch = chapters[index];
+    loadingMsg.style.display = 'none';
+    pdfViewer.style.display  = 'block';
+    pdfViewer.src            = previewURL(ch.id);
+    currentChapterEl.textContent = ch.title;
+    prevBtn.textContent = chapters[index-1]?.title || '';
+    nextBtn.textContent = chapters[index+1]?.title || '';
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === chapters.length - 1;
+    if (updateURL) setChapterInURL(ch.id);
+    handleChapterMusic(ch.fileNumber);
+  }
+
+  async function init() {
+    try {
+      const [files, audioFiles] = await Promise.all([fetchAllFiles(), fetchAudioFiles()]);
+      const song = audioFiles.find(f => f.name.toLowerCase().includes('people get ready'));
+      if (song) bgMusicId = song.id;
+      if (!files.length) {
+        loadingMsg.className   = 'error-msg';
+        loadingMsg.textContent = '⚠️ No PDFs found. Make sure the folder is shared publicly.';
+        return;
+      }
+      files.sort((a,b) => leadingNumber(a.name) - leadingNumber(b.name));
+      chapters = files.map(f => ({ id: f.id, title: cleanTitle(f.name), fileNumber: leadingNumber(f.name) }));
+      const urlId = getChapterFromURL();
+      const idx   = urlId ? chapters.findIndex(c => c.id === urlId) : -1;
+      loadChapter(idx >= 0 ? idx : 0, idx < 0);
+    } catch (err) {
+      console.error(err);
+      loadingMsg.className   = 'error-msg';
+      loadingMsg.textContent = `⚠️ Could not load PDFs: ${err.message}.`;
+    }
+  }
+
+  prevBtn.onclick = () => loadChapter(currentIndex - 1);
+  nextBtn.onclick = () => loadChapter(currentIndex + 1);
+  window.addEventListener('load', init);
+</script>
+
+<script>
+function toggleLike() {
+  const btn   = document.getElementById('likeBtn');
+  const count = document.getElementById('likeCount');
+  const liked = btn.classList.toggle('liked');
+  btn.querySelector('.heart').textContent = liked ? '♥' : '♡';
+  count.textContent = liked ? 'You liked this page.' : '';
+}
+</script>
+
+<script>
+(function(){
+  const hdrSlides = document.querySelectorAll('.hdr-slide');
+  let hi = 2;
+  setInterval(()=>{
+    hdrSlides[hi].classList.remove('active');
+    hi = (hi + 1) % hdrSlides.length;
+    hdrSlides[hi].classList.add('active');
+  }, 6000);
+})();
+</script>
+
+<script>
+(function(){
+  const btn   = document.getElementById('navHamburger');
+  const links = document.getElementById('navLinks');
+  if (!btn || !links) return;
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    links.classList.toggle('open');
+    btn.textContent = links.classList.contains('open') ? '\u2715' : '\u2630';
+  });
+  document.addEventListener('click', function() {
+    links.classList.remove('open');
+    btn.textContent = '\u2630';
+  });
+  links.addEventListener('click', function() {
+    links.classList.remove('open');
+    btn.textContent = '\u2630';
+  });
+})();
+</script>
+
+</body>
+</html>

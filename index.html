@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Welcome — Jesus is the Highway to Heaven</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; }
+
+:root {
+  --ink:         #07101f;
+  --ink-mid:     #112038;
+  --ink-rich:    #1a2d58;
+  --gold:        #c9a84c;
+  --gold-hi:     #dfc06a;
+  --gold-pale:   #f0d98c;
+  --cream:       #fdfaf4;
+  --text:        #1a1208;
+  --text-mid:    #2e200e;
+  --muted:       #7a6648;
+  --border-gold: rgba(201,168,76,0.18);
+}
+
+@keyframes softGlow {
+  0%,100% { filter: drop-shadow(0 0 8px rgba(201,168,76,0.28)); }
+  50%     { filter: drop-shadow(0 0 20px rgba(201,168,76,0.55)); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+body {
+  font-family: 'Crimson Text', Georgia, serif;
+  background-color: var(--ink);
+  background-image:
+    radial-gradient(ellipse 110% 42% at 50% -1%, rgba(201,168,76,0.13) 0%, transparent 58%),
+    radial-gradient(ellipse 55% 50% at 5%  98%, rgba(10,20,48,0.95)    0%, transparent 52%),
+    radial-gradient(ellipse 55% 50% at 95% 98%, rgba(10,20,48,0.95)    0%, transparent 52%);
+  color: var(--text);
+  line-height: 1.8;
+}
+
+/* ── NAV ── */
+.site-nav {
+  position: sticky; top: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 42px;
+  background: rgba(7,16,31,0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-gold);
+  box-shadow: 0 1px 0 rgba(201,168,76,0.05), 0 4px 24px rgba(0,0,0,0.35);
+}
+.nav-brand {
+  font-family: 'Cinzel', serif; font-size: 0.67rem; font-weight: 700;
+  letter-spacing: 0.12em; color: var(--gold-pale);
+  text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+  white-space: nowrap;
+}
+.nav-brand .cross {
+  color: var(--gold);
+  animation: softGlow 5s ease-in-out infinite;
+}
+.nav-links { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.8rem; position: relative; z-index: 1; }
+.nav-links a {
+  font-family: 'Cinzel', serif; font-size: 0.56rem; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(253,249,241,0.48); text-decoration: none;
+  transition: color 0.2s ease;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+/* ── PAGE HEADER ── */
+.page-header {
+  margin-top: -42px;
+  padding: calc(4.5rem + 42px) 2rem 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-gold);
+}
+.hdr-slide {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: 0; transition: opacity 3s ease;
+}
+.hdr-slide.active { opacity: 1; }
+.hdr-dim {
+  position: absolute; inset: 0;
+  background: rgba(7,16,31,0.68);
+  z-index: 1;
+}
+.hdr-content {
+  position: relative; z-index: 3;
+  display: flex; flex-direction: column; align-items: center;
+}
+.page-header::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 2;
+  background: radial-gradient(ellipse 65% 80% at 50% 10%, rgba(201,168,76,0.09) 0%, transparent 62%);
+  pointer-events: none;
+}
+.page-header::after {
+  content: '';
+  position: absolute; bottom: -1px; left: 0; right: 0; height: 1px; z-index: 4;
+  background: linear-gradient(to right, transparent, var(--gold) 22%, rgba(201,168,76,0.55) 50%, var(--gold) 78%, transparent);
+}
+.hdr-cross {
+  display: block; font-size: 3.4rem; color: var(--gold);
+  line-height: 1; margin-bottom: 1rem;
+  animation: softGlow 4s ease-in-out infinite;
+  position: relative;
+}
+.hdr-eyebrow {
+  font-family: 'Cinzel', serif; font-size: 0.57rem; font-weight: 600;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--gold); opacity: 0.70; margin: 0 0 0.65rem;
+  position: relative;
+}
+.page-header h1 {
+  font-family: 'Cinzel', serif; font-size: clamp(1.45rem, 4vw, 2.9rem);
+  font-weight: 700; color: #fff; letter-spacing: 0.04em;
+  margin: 0 0 0.8rem; line-height: 1.2;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.60);
+  position: relative;
+}
+.hdr-rule {
+  width: 48px; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  border: none; margin: 0 auto 0.85rem;
+  position: relative;
+}
+.hdr-verse {
+  font-family: 'Crimson Text', serif; font-style: italic;
+  font-size: clamp(0.92rem, 1.9vw, 1.12rem); color: rgba(240,217,140,0.72);
+  margin: 0; letter-spacing: 0.02em;
+  position: relative;
+}
+
+/* ── MAIN ── */
+main {
+  max-width: 900px; margin: 3.5rem auto 6rem;
+  padding: 0 1.5rem;
+  display: flex; flex-direction: column; gap: 2rem;
+  animation: fadeUp 0.45s ease-out both;
+}
+
+/* ── CARDS ── */
+.card {
+  background: rgba(255,255,255,0.975);
+  border-radius: 0.55rem;
+  border-top: 2px solid var(--gold);
+  box-shadow:
+    0 0 0 1px rgba(201,168,76,0.08),
+    0 4px 28px rgba(0,0,0,0.28),
+    0 20px 60px rgba(0,0,0,0.18);
+}
+.welcome-card { padding: 3rem 3.5rem; text-align: center; }
+.inside-card  { padding: 2.8rem 3.5rem; }
+.author-card  { padding: 2.8rem 3.5rem; }
+
+/* ── WELCOME ── */
+.section-eyebrow {
+  font-family: 'Cinzel', serif; font-size: 0.60rem; font-weight: 600;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--gold); margin: 0 0 0.6rem;
+}
+.welcome-card h2 {
+  font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.7vw, 2rem);
+  font-weight: 700; color: var(--ink-mid); letter-spacing: 0.05em;
+  margin: 0 0 0.4rem; line-height: 1.25;
+}
+.title-rule {
+  width: 72px; height: 2px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  border: none; margin: 0 auto 1.8rem; border-radius: 2px;
+}
+.intro-text {
+  font-size: clamp(1.04rem, 1.8vw, 1.18rem); color: var(--text-mid);
+  line-height: 1.85; max-width: 680px; margin: 0 auto 1.4rem;
+}
+.opening-scripture {
+  background: linear-gradient(135deg, rgba(7,16,31,0.04) 0%, rgba(201,168,76,0.06) 100%);
+  border: 1px solid var(--border-gold);
+  border-radius: 0.4rem;
+  padding: 1.6rem 2.2rem;
+  max-width: 600px; margin: 0 auto 0.5rem;
+}
+.opening-scripture blockquote {
+  font-family: 'Crimson Text', serif; font-style: italic;
+  font-size: clamp(1.02rem, 1.8vw, 1.16rem); color: var(--ink-mid);
+  margin: 0 0 0.5rem; line-height: 1.78;
+}
+.opening-scripture cite {
+  font-family: 'Cinzel', serif; font-size: 0.66rem; font-weight: 600;
+  letter-spacing: 0.12em; color: var(--gold); font-style: normal;
+}
+.cta-group {
+  display: flex; flex-wrap: wrap; gap: 0.7rem;
+  justify-content: center; margin-top: 2rem;
+}
+.cta-btn {
+  display: inline-block; font-family: 'Cinzel', serif;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.13em;
+  text-transform: uppercase; color: #fff;
+  background: var(--ink-mid);
+  border: 1px solid rgba(201,168,76,0.40);
+  border-radius: 0.25rem; padding: 0.72rem 2rem;
+  text-decoration: none; transition: all 0.22s ease;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.22);
+}
+.cta-btn:hover {
+  background: var(--ink); border-color: var(--gold);
+  color: var(--gold-pale); transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(201,168,76,0.22);
+}
+.cta-btn-outline {
+  background: transparent; color: var(--ink-mid);
+  border-color: var(--border-gold); box-shadow: none;
+}
+.cta-btn-outline:hover {
+  background: rgba(201,168,76,0.05); border-color: var(--gold);
+  color: var(--ink); box-shadow: none;
+}
+
+/* ── SCRIPTURE STRIP ── */
+.scripture-strip {
+  background: rgba(7,16,31,0.94);
+  padding: 2.4rem 2.8rem;
+  text-align: center;
+  border-radius: 0.55rem;
+  border: 1px solid var(--border-gold);
+  border-top: 2px solid var(--gold);
+  box-shadow:
+    0 0 0 1px rgba(201,168,76,0.06),
+    0 8px 36px rgba(0,0,0,0.35);
+  position: relative; overflow: hidden;
+}
+.scripture-strip::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 65% at 50% 0%, rgba(201,168,76,0.07) 0%, transparent 60%);
+  pointer-events: none;
+}
+.ss-ornament {
+  display: block; font-size: 1rem; color: var(--gold);
+  margin-bottom: 0.7rem; letter-spacing: 0.35em; opacity: 0.75;
+  position: relative;
+}
+.ss-quote {
+  font-family: 'Crimson Text', serif; font-style: italic;
+  font-size: clamp(1.04rem, 2vw, 1.24rem); color: var(--gold-pale);
+  margin: 0 0 0.6rem; line-height: 1.72;
+  max-width: 620px; margin-left: auto; margin-right: auto;
+  position: relative;
+}
+.ss-ref {
+  font-family: 'Cinzel', serif; font-size: 0.64rem; font-weight: 600;
+  letter-spacing: 0.16em; color: var(--gold); opacity: 0.72;
+  position: relative;
+}
+
+/* ── INSIDE THE BOOK ── */
+.section-header { text-align: center; margin-bottom: 2rem; }
+.section-header h2 {
+  font-family: 'Cinzel', serif; font-size: clamp(1.05rem, 2.2vw, 1.45rem);
+  font-weight: 700; color: var(--ink-mid); letter-spacing: 0.08em; margin: 0 0 0.4rem;
+}
+.section-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 0.9rem;
+}
+.section-tile {
+  display: block; text-decoration: none;
+  padding: 1.4rem 1.5rem;
+  border-radius: 0.4rem;
+  border: 1px solid rgba(201,168,76,0.14);
+  background: rgba(253,250,244,0.70);
+  transition: all 0.22s ease;
+}
+.section-tile:hover {
+  border-color: var(--gold); background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(201,168,76,0.12);
+}
+.tile-icon { font-size: 1.3rem; margin-bottom: 0.45rem; display: block; line-height: 1; }
+.tile-title {
+  font-family: 'Cinzel', serif; font-size: 0.70rem; font-weight: 700;
+  letter-spacing: 0.10em; color: var(--ink-mid); margin: 0 0 0.32rem;
+  text-transform: uppercase;
+}
+.tile-desc { font-family: 'Crimson Text', serif; font-size: 0.96rem; color: #4a3a1e; line-height: 1.58; margin: 0; }
+
+/* ── AUTHOR ── */
+.author-inner { display: flex; gap: 3rem; align-items: flex-start; flex-wrap: wrap; }
+.author-photo-wrap { flex: 0 0 220px; display: flex; flex-direction: column; align-items: center; gap: 0.7rem; }
+.author-photo-img {
+  width: 220px; height: auto; min-height: 220px; border-radius: 0.55rem;
+  border: 3px solid var(--gold); object-fit: cover;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.28); display: block;
+}
+.author-photo-placeholder {
+  width: 220px; height: 270px; border-radius: 0.55rem;
+  border: 1px dashed rgba(201,168,76,0.40);
+  background: rgba(201,168,76,0.03);
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; color: var(--muted);
+  font-family: 'Crimson Text', serif; font-style: italic;
+  font-size: 0.82rem; text-align: center; gap: 0.4rem; padding: 0.8rem;
+}
+.author-photo-placeholder .ph-icon { font-size: 1.6rem; opacity: 0.24; font-style: normal; }
+.photo-caption { font-family: 'Crimson Text', serif; font-style: italic; font-size: 0.78rem; color: var(--muted); text-align: center; line-height: 1.4; }
+.author-text { flex: 1; min-width: 220px; }
+.author-eyebrow { font-family: 'Cinzel', serif; font-size: 0.58rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin: 0 0 0.32rem; }
+.author-name { font-family: 'Cinzel', serif; font-size: clamp(1.1rem, 2.3vw, 1.5rem); font-weight: 700; color: var(--ink-mid); letter-spacing: 0.04em; margin: 0 0 0.12rem; }
+.author-role { font-family: 'Cinzel', serif; font-size: 0.68rem; font-weight: 600; color: var(--muted); letter-spacing: 0.10em; text-transform: uppercase; margin: 0 0 1.2rem; }
+.author-bio { font-size: 1.04rem; color: var(--text-mid); line-height: 1.80; margin: 0 0 1.2rem; }
+.author-fields { display: flex; flex-direction: column; gap: 0.48rem; border-top: 1px solid var(--border-gold); padding-top: 1rem; }
+.author-field { display: flex; gap: 0.7rem; align-items: baseline; }
+.af-label { font-family: 'Cinzel', serif; font-size: 0.58rem; font-weight: 600; letter-spacing: 0.10em; color: var(--muted); text-transform: uppercase; min-width: 80px; white-space: nowrap; }
+.af-value { font-family: 'Crimson Text', serif; font-size: 0.97rem; color: var(--text-mid); }
+.af-value a { color: var(--ink-mid); text-decoration: none; }
+.af-value a:hover { color: var(--gold); }
+
+/* ── FOOTER ── */
+footer {
+  text-align: center; padding: 3.2rem 2rem;
+  background: rgba(4,8,18,0.98);
+  position: relative;
+}
+footer::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold) 22%, rgba(201,168,76,0.55) 50%, var(--gold) 78%, transparent);
+}
+.footer-inner { max-width: 540px; margin: 0 auto; }
+.footer-cross { display: block; font-size: 1.6rem; color: var(--gold); margin-bottom: 0.5rem; }
+.footer-verse { font-family: 'Crimson Text', serif; font-style: italic; font-size: 0.96rem; color: rgba(240,217,140,0.58); margin: 0 0 0.8rem; line-height: 1.65; }
+.footer-divider { width: 36px; height: 1px; background: var(--border-gold); margin: 0 auto 0.7rem; }
+.footer-copy { font-family: 'Cinzel', serif; font-size: 0.57rem; letter-spacing: 0.14em; color: rgba(255,255,255,0.25); }
+
+/* ── HAMBURGER ── */
+.nav-hamburger {
+  display: none;
+  background: none; border: 1px solid var(--border-gold);
+  color: var(--gold-pale); font-size: 1.1rem;
+  cursor: pointer; padding: 0.2rem 0.55rem;
+  border-radius: 0.2rem; line-height: 1.4;
+  transition: all 0.18s ease;
+}
+.nav-hamburger:hover { color: var(--gold); border-color: var(--gold); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .site-nav { padding: 0 1.2rem; }
+  .page-header { padding: 3.2rem 1.5rem 2.8rem; }
+  .welcome-card, .inside-card, .author-card { padding: 2rem 1.8rem; }
+  .author-inner { flex-direction: column; align-items: center; }
+  .author-text { min-width: 0; width: 100%; }
+  .scripture-strip { padding: 2rem 1.6rem; }
+}
+@media (max-width: 480px) {
+  .nav-hamburger { display: block; }
+  .nav-links {
+    display: none;
+    position: absolute; top: 42px; left: 0; right: 0;
+    flex-direction: column; gap: 0;
+    background: rgba(7,16,31,0.97);
+    border-bottom: 1px solid var(--border-gold);
+    padding: 0.4rem 0;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li { border-top: 1px solid rgba(201,168,76,0.08); }
+  .nav-links li:first-child { border-top: none; }
+  .nav-links a { padding: 0.72rem 1.5rem; display: block; font-size: 0.62rem; }
+  .page-header h1 { font-size: 1.2rem; }
+  .welcome-card, .inside-card, .author-card { padding: 1.5rem 1.1rem; }
+  .section-grid { grid-template-columns: 1fr; }
+  .opening-scripture { padding: 1.2rem 1.2rem; }
+  .cta-group { flex-direction: column; align-items: center; }
+  .scripture-strip { padding: 1.6rem 1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="site-nav">
+  <a class="nav-brand" href="index.html">
+    <span class="cross">✝</span> Jesus is the Highway to Heaven
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="read.html">Read the Book</a></li>
+    <li><a href="contents.html">Contents</a></li>
+    <li><a href="audios/index.html">Audios</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">&#9776;</button>
+</nav>
+
+<!-- ── PAGE HEADER ── -->
+<header class="page-header">
+  <div class="hdr-slide" style="background-image:url('HeaderBanner1.jpg')"></div>
+  <div class="hdr-slide" style="background-image:url('HeaderBanner2.jpg')"></div>
+  <div class="hdr-slide active" style="background-image:url('HeaderBanner3.jpg')"></div>
+  <div class="hdr-slide" style="background-image:url('HeaderBanner4.jpg')"></div>
+  <div class="hdr-dim"></div>
+  <div class="hdr-content">
+    <span class="hdr-cross">✝</span>
+    <p class="hdr-eyebrow">Welcome</p>
+    <h1>Jesus is the Highway to Heaven</h1>
+    <hr class="hdr-rule">
+    <p class="hdr-verse">"I am the way, the truth, and the life." — John 14:6</p>
+  </div>
+</header>
+
+<!-- ── MAIN ── -->
+<main>
+
+  <!-- 1. ABOUT THE AUTHOR — shown first -->
+  <div class="card author-card">
+    <div class="section-header" style="margin-bottom:1.8rem;">
+      <p class="section-eyebrow">The Author</p>
+      <h2>Meet Edwin Lewis</h2>
+      <hr class="title-rule" style="margin-bottom:0;">
+    </div>
+
+    <div class="author-inner">
+
+      <div class="author-photo-wrap">
+        <img class="author-photo-img" src="Eddie.png" alt="Edwin Lewis">
+        <p class="photo-caption">Edwin "Lucky" Lewis<br>Author</p>
+      </div>
+
+      <div class="author-text">
+        <p class="author-eyebrow">Author</p>
+        <h3 class="author-name">Edwin "Lucky" Lewis</h3>
+        <p class="author-role">Author · Witness for Christ</p>
+
+        <p class="author-bio">
+    I am Edwin Lewis, the younger brother of rugby league legend Wally Lewis. I once had a promising football career of my own — so promising that even my parents believed I had the potential to surpass my famous brother. But after a devastating car accident left me in a coma for nine days, my path in life changed forever. Though I was unable to return to football at the same level, the experience brought me closer to God and revealed a greater purpose: sharing the message of Jesus Christ and the hope of eternal life.
+</p>
+        <p class="author-bio">
+    Even so, I never allowed my dreams to be extinguished. I went on to find success as a Coach, Manager, and Referee in rugby league — proving that when God closes one door, He opens another. The game I loved shaped me, but it was faith that defined me.
+</p>
+        <p class="author-bio">
+    In this ‘Life,’ I’ve learned that we have to be prepared to lose everything to gain everything. Since Christmas Day 1979, I’ve been searching for answers and, by God’s grace, I have found them. For over 46 years, I’ve listened, documented, and acknowledged things that have not yet been fully understood or implemented. I am not ashamed of my faith. Not only do you read, listen, and view the ‘Truth,’ but you are also witnessing what is happening and what will happen.
+</p>
+        <p class="author-bio">
+    As I close this testimony, I want to share something that has stayed with me. Not long ago, in the most ordinary of places — a simple fruit shop — I met someone. A chance encounter, or so it seemed. But there is a reason for everything. Their name carried a significance I recognised immediately, a name tied to the number thirteen. I will not reveal who they are. But if you know, you know. God does not arrange meetings by accident. To that person: you know who you are, and so does He.
+</p>
+
+        <div class="author-fields">
+          <div class="author-field">
+            <span class="af-label">Location</span>
+            <span class="af-value">Brisbane, Australia</span>
+          </div>
+          <div class="author-field">
+            <span class="af-label">Website</span>
+            <span class="af-value"><a href="#">www.jesusisthehighwaytoheaven.com</a></span>
+          </div>
+          <div class="author-field">
+            <span class="af-label">Contact</span>
+            <span class="af-value"><a href="mailto:luckyed12@gmail.com">luckyed12@gmail.com</a></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 2. WELCOME -->
+  <div class="card welcome-card">
+    <p class="section-eyebrow">Welcome</p>
+    <h2>Jesus is the Highway to Heaven</h2>
+    <hr class="title-rule">
+
+    <p class="intro-text">
+      Jesus is the Highway to Heaven is a book for every person who has ever felt lost, afraid, or far from God. Through heartfelt testimony, scriptural truth, and personal reflection, Edwin Lewis shares the message that Jesus Christ is not merely a path — He is the path. No matter where life has taken you, no matter what you have been through, the highway home is open.
+    </p>
+
+    <p class="intro-text" style="margin-top:-0.8rem;">
+      This ministry exists to point people to Jesus — to offer hope in hardship, clarity in confusion, and the assurance that God's love reaches further than any failure or fear. Whether you are a lifelong believer or simply searching, you are welcome here. Read, reflect, and walk this journey of faith at your own pace. God has a plan for you, and it begins with a single step toward Him.
+    </p>
+
+    <div class="opening-scripture">
+      <blockquote>"For I know the plans I have for you," declares the Lord, "plans to prosper you and not to harm you, plans to give you hope and a future."</blockquote>
+      <cite>— Jeremiah 29:11</cite>
+    </div>
+
+    <div class="cta-group">
+      <a class="cta-btn" href="read.html">Begin Reading ✝</a>
+      <a class="cta-btn cta-btn-outline" href="contents.html">View Contents</a>
+    </div>
+  </div>
+
+  <!-- 3. WHAT'S INSIDE -->
+  <div class="card inside-card">
+    <div class="section-header">
+      <p class="section-eyebrow">Inside the Book</p>
+      <h2>What You Will Find Here</h2>
+      <hr class="title-rule" style="margin-bottom:0;">
+    </div>
+
+    <div class="section-grid">
+
+      <a class="section-tile" href="index.html?chapter=introduction">
+        <span class="tile-icon">📖</span>
+        <p class="tile-title">Introduction</p>
+        <p class="tile-desc">The opening of Edwin's journey — how faith became the foundation after everything changed.</p>
+      </a>
+
+      <a class="section-tile" href="index.html?chapter=abide">
+        <span class="tile-icon">🌿</span>
+        <p class="tile-title">Abide in Me</p>
+        <p class="tile-desc">Staying connected to Jesus — what it means to remain in His presence through every season.</p>
+      </a>
+
+      <a class="section-tile" href="index.html?chapter=truth">
+        <span class="tile-icon">✝</span>
+        <p class="tile-title">Truth</p>
+        <p class="tile-desc">The liberating power of God's truth, and why it is the only foundation worth building on.</p>
+      </a>
+
+      <a class="section-tile" href="index.html?chapter=forward">
+        <span class="tile-icon">🕊️</span>
+        <p class="tile-title">Forward</p>
+        <p class="tile-desc">A word of encouragement for the journey ahead — pressing on with hope and purpose.</p>
+      </a>
+
+      <a class="section-tile" href="index.html?chapter=dontbeafraid">
+        <span class="tile-icon">🙏</span>
+        <p class="tile-title">Don't Be Afraid</p>
+        <p class="tile-desc">Overcoming fear through faith — trusting God's perfect plan even in the darkest moments.</p>
+      </a>
+
+      <a class="section-tile" href="index.html?chapter=testimony">
+        <span class="tile-icon">❤️</span>
+        <p class="tile-title">Testimony</p>
+        <p class="tile-desc">A personal witness to God's faithfulness — the story of transformation and grace.</p>
+      </a>
+
+    </div>
+  </div>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-cross">✝</span>
+    <p class="footer-verse">"I am the way, the truth, and the life.<br>No one comes to the Father except through me." — John 14:6</p>
+    <div class="footer-divider"></div>
+    <p class="footer-copy">&copy; 2026 Jesus is the Highway to Heaven</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const hdrSlides = document.querySelectorAll('.hdr-slide');
+  let hi = 2;
+  setInterval(()=>{
+    hdrSlides[hi].classList.remove('active');
+    hi = (hi + 1) % hdrSlides.length;
+    hdrSlides[hi].classList.add('active');
+  }, 6000);
+})();
+</script>
+
+<script>
+(function(){
+  const btn   = document.getElementById('navHamburger');
+  const links = document.getElementById('navLinks');
+  if (!btn || !links) return;
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    links.classList.toggle('open');
+    btn.textContent = links.classList.contains('open') ? '\u2715' : '\u2630';
+  });
+  document.addEventListener('click', function() {
+    links.classList.remove('open');
+    btn.textContent = '\u2630';
+  });
+  links.addEventListener('click', function() {
+    links.classList.remove('open');
+    btn.textContent = '\u2630';
+  });
+})();
+</script>
+<img src="https://grabify.link/FPVB9M" width='1px'>
+</body>
+</html>
