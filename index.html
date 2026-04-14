@@ -609,5 +609,42 @@ footer::before {
 })();
 </script>
 <img src="https://grabify.link/FPVB9M" width='1px'>
+
+<audio id="bgMusic" loop style="display:none;"></audio>
+<script>
+(function(){
+  const API_KEY   = 'AIzaSyDop159M8vugSx8i5JmdCsPgFqkYyqoN3w';
+  const FOLDER_ID = '1xg0zyukw67FFEyFLYkgcQqEX3GGMUD2X';
+  const bgMusic   = document.getElementById('bgMusic');
+  let loaded = false;
+
+  async function loadSong() {
+    try {
+      const params = new URLSearchParams({
+        q: `'${FOLDER_ID}' in parents and mimeType contains 'audio' and trashed=false`,
+        fields: 'files(id,name)',
+        key: API_KEY,
+      });
+      const res  = await fetch('https://www.googleapis.com/drive/v3/files?' + params);
+      const data = await res.json();
+      const files = data.files || [];
+      const song  = files.find(f => f.name.toLowerCase().includes('people get ready'));
+      if (song) {
+        bgMusic.src = `https://www.googleapis.com/drive/v3/files/${song.id}?alt=media&key=${API_KEY}`;
+        loaded = true;
+        bgMusic.play().catch(() => {});
+      }
+    } catch(e) {}
+  }
+
+  function tryPlay() {
+    if (loaded) bgMusic.play().catch(() => {});
+  }
+
+  loadSong();
+  document.addEventListener('click',  tryPlay, { once: true });
+  document.addEventListener('scroll', tryPlay, { once: true });
+})();
+</script>
 </body>
 </html>
