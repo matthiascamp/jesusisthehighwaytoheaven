@@ -609,7 +609,15 @@ footer::before {
           <span class="ch-title">${cleanTitle(f.name)}</span>
         </a>
       </li>
-    `).join('');
+    `).join('') + `
+      <li style="opacity:0.5; pointer-events:none;">
+        <a>
+          <span class="ch-num">12</span>
+          <span class="ch-cross">✝</span>
+          <span class="ch-title">Chapter 12 <em style="font-size:0.85em;">(Loading)</em></span>
+        </a>
+      </li>
+    `;
 
     countEl.style.display  = 'block';
     visibleEl.textContent  = items.length;
