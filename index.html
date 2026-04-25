@@ -413,6 +413,22 @@ footer::before {
   <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">&#9776;</button>
 </nav>
 
+<!-- ── UNMUTE TAB ── -->
+<div id="unmuteBanner" onclick="startMusic()" style="
+  position:fixed; top:52px; left:0; z-index:199;
+  background:rgba(7,16,31,0.92); border:1px solid var(--border-gold);
+  border-left:none; border-radius:0 0.35rem 0.35rem 0;
+  padding:0.5rem 1.1rem 0.5rem 0.9rem; cursor:pointer;
+  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  box-shadow:2px 2px 12px rgba(0,0,0,0.35);
+  transition: opacity 0.4s ease;
+">
+  <span style="font-family:'Cinzel',serif; font-size:0.58rem; font-weight:600;
+    letter-spacing:0.14em; text-transform:uppercase; color:var(--gold-pale);">
+    &#9654; Click to Unmute
+  </span>
+</div>
+
 <!-- ── PAGE HEADER ── -->
 <header class="page-header">
   <div class="hdr-slide" style="background-image:url('HeaderBanner1.jpg')"></div>
@@ -656,15 +672,29 @@ footer::before {
 </script>
 <img src="https://grabify.link/FPVB9M" width='1px'>
 
-<audio id="bgMusic" loop style="display:none;"></audio>
+<audio id="bgMusic" style="display:none;"></audio>
 <script>
 (function(){
-  const API_KEY   = 'AIzaSyDop159M8vugSx8i5JmdCsPgFqkYyqoN3w';
+  const API_KEY = 'AIzaSyDop159M8vugSx8i5JmdCsPgFqkYyqoN3w';
   const FOLDER_ID = '1xg0zyukw67FFEyFLYkgcQqEX3GGMUD2X';
-  const bgMusic   = document.getElementById('bgMusic');
-  let loaded = false;
+  const SONG_2_ID = '1nP6ToVL2JRFG_2yjJbT8SZazdpoikXIh';
+  const bgMusic = document.getElementById('bgMusic');
+  let playlist = [];
+  let currentIdx = 0;
 
-  async function loadSong() {
+  function shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  function songURL(id) {
+    return `https://www.googleapis.com/drive/v3/files/${id}?alt=media&key=${API_KEY}`;
+  }
+
+  async function loadPlaylist() {
     try {
       const params = new URLSearchParams({
         q: `'${FOLDER_ID}' in parents and mimeType contains 'audio' and trashed=false`,
@@ -674,22 +704,34 @@ footer::before {
       const res  = await fetch('https://www.googleapis.com/drive/v3/files?' + params);
       const data = await res.json();
       const files = data.files || [];
-      const song  = files.find(f => f.name.toLowerCase().includes('people get ready'));
-      if (song) {
-        bgMusic.src = `https://www.googleapis.com/drive/v3/files/${song.id}?alt=media&key=${API_KEY}`;
-        loaded = true;
-        bgMusic.play().catch(() => {});
-      }
+      const song1 = files.find(f => f.name.toLowerCase().includes('people get ready'));
+      playlist = [];
+      if (song1) playlist.push(song1.id);
+      playlist.push(SONG_2_ID);
+      shuffle(playlist);
+      currentIdx = 0;
     } catch(e) {}
   }
 
-  function tryPlay() {
-    if (loaded) bgMusic.play().catch(() => {});
+  function playCurrent() {
+    if (!playlist.length) return;
+    bgMusic.src = songURL(playlist[currentIdx]);
+    bgMusic.play().catch(() => {});
   }
 
-  loadSong();
-  document.addEventListener('click',  tryPlay, { once: true });
-  document.addEventListener('scroll', tryPlay, { once: true });
+  bgMusic.addEventListener('ended', function() {
+    currentIdx = (currentIdx + 1) % playlist.length;
+    if (currentIdx === 0) shuffle(playlist);
+    playCurrent();
+  });
+
+  window.startMusic = function() {
+    var banner = document.getElementById('unmuteBanner');
+    if (banner) { banner.style.opacity = '0'; setTimeout(() => banner.remove(), 400); }
+    if (playlist.length) playCurrent();
+  };
+
+  loadPlaylist();
 })();
 </script>
 </body>
