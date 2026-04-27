@@ -377,12 +377,17 @@
   var overlay = document.getElementById('bookOverlay');
   if (!overlay) return;
   function autoScrollAfterDelay() {
+    var startY = window.scrollY;
     var userScrolled = false;
-    function onScroll() { userScrolled = true; }
+    function onScroll() {
+      if (Math.abs(window.scrollY - startY) > 30) userScrolled = true;
+    }
     window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('wheel', function() { userScrolled = true; }, { passive: true, once: true });
+    window.addEventListener('touchmove', function() { userScrolled = true; }, { passive: true, once: true });
     setTimeout(function() {
       window.removeEventListener('scroll', onScroll);
-      if (!userScrolled) {
+      if (!userScrolled && window.scrollY < 50) {
         var author = document.getElementById('author');
         if (author) author.scrollIntoView({ behavior: 'smooth' });
       }
