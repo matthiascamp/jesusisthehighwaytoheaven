@@ -3152,7 +3152,7 @@ body.has-player { padding-bottom: 64px; }
 .book-cover--front {
   position: absolute;
   inset: 0;
-  background: linear-gradient(155deg, #0a1020 0%, #131e38 35%, #0f1a30 65%, #0a1020 100%);
+  background: linear-gradient(170deg, #0a1020 0%, #131e38 25%, #1a2848 45%, #131e38 65%, #0e1628 80%, #0a1020 100%);
   border: 2px solid rgba(201,168,76,0.35);
   border-radius: 2px 8px 8px 2px;
   transform-origin: left center;
@@ -3180,17 +3180,24 @@ body.has-player { padding-bottom: 64px; }
   position: absolute;
   top: 0;
   left: -100%;
-  width: 50%;
+  width: 60%;
   height: 100%;
   background: linear-gradient(
     105deg,
-    transparent 30%,
-    rgba(201,168,76,0.06) 45%,
-    rgba(255,255,255,0.08) 50%,
-    rgba(201,168,76,0.06) 55%,
-    transparent 70%
+    transparent 25%,
+    rgba(201,168,76,0.08) 40%,
+    rgba(255,255,255,0.14) 50%,
+    rgba(201,168,76,0.08) 60%,
+    transparent 75%
   );
-  display: none;
+  animation: bookGleam 6s ease-in-out 2s infinite;
+  pointer-events: none;
+}
+
+@keyframes bookGleam {
+  0%, 70%  { left: -100%; opacity: 0; }
+  75%      { opacity: 1; }
+  100%     { left: 200%; opacity: 0; }
 }
 
 .book-cover-content {
