@@ -117,12 +117,13 @@
           <img src="Eddie.png" alt="Edwin Lewis">
           <p class="home-author-caption">Edwin "Lucky" Lewis<br>Author</p>
           <div style="margin-top:1.6rem;">
-            <p style="font-family:'Cinzel',serif; font-size:0.7rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin-bottom:0.8rem; text-align:center;">The Car Accident — Christmas Day 1979</p>
-            <img src="car1.jpg" alt="Car accident photo 1" style="width:100%; border-radius:0.3rem; margin-bottom:0.6rem;">
-            <img src="car2.jpg" alt="Car accident photo 2" style="width:100%; border-radius:0.3rem; margin-bottom:0.6rem;">
-            <img src="car3.jpg" alt="Car accident photo 3" style="width:100%; border-radius:0.3rem; margin-bottom:0.6rem;">
-            <img src="boys.jpg" alt="Ed's three boys" style="width:100%; border-radius:0.3rem;">
-            <p style="font-family:'Crimson Text',serif; font-size:0.85rem; font-style:italic; color:var(--muted); margin-top:0.4rem; text-align:center;">My three boys</p>
+            <p style="font-family:'Cinzel',serif; font-size:0.7rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin-bottom:0.8rem; text-align:center;">Car Accident</p>
+            <img src="car1.jpg" alt="Car accident photo 1" class="photo-enlarge" style="width:100%; border-radius:0.3rem; margin-bottom:0.6rem; cursor:pointer;">
+            <img src="car2.jpg" alt="Car accident photo 2" class="photo-enlarge" style="width:100%; border-radius:0.3rem; margin-bottom:0.6rem; cursor:pointer;">
+            <img src="car3.jpg" alt="Car accident photo 3" class="photo-enlarge" style="width:100%; border-radius:0.3rem; margin-bottom:0.6rem; cursor:pointer;">
+            <p style="font-family:'Cinzel',serif; font-size:0.7rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin-bottom:0.8rem; margin-top:1.2rem; text-align:center;">My Three Boys</p>
+            <img src="boys.jpg" alt="Ed's three boys" class="photo-enlarge" style="width:100%; border-radius:0.3rem; cursor:pointer;">
+            <p style="font-family:'Crimson Text',serif; font-size:0.75rem; font-style:italic; color:var(--muted); margin-top:0.5rem; text-align:center;">Click photos to enlarge</p>
           </div>
         </div>
 
@@ -168,7 +169,7 @@
     Jonathan Cahn is so of God. He has been revealing these mysteries for years. He prophesied October 7th, the night before — on Friday the 6th of October 2023, at Beth Israel in New Jersey, he shared a 3,000-year-old mystery from Leviticus that foretold an attack on Israel in the year 2023, in October, on a Sabbath. Before that night was over in America, Hamas invaded. <a href="https://www.youtube.com/watch?v=x8wu85uA9bY" target="_blank">Watch it here</a>. And now Purim and Operation Roaring Lion have fulfilled the ancient pattern of Esther before our eyes — <a href="https://www.youtube.com/watch?v=UUKstmztpoE" target="_blank">watch Jonathan Cahn reveal the mystery</a>.
 </p>
           <p class="home-bio">
-    On the 18th of April 2026, I rang Matthias. I was worried because he was going to a church the following morning that had not been speaking about the Rapture. I told him: we will know tomorrow — if the preacher does not bring up the Rapture, we will know it is not of the Spirit. On the 19th of April, Matthias rang me back and told me his preacher had spoken plainly about how desperate the hour is — the Rapture. All these churches out there — most of them are not talking about the Rapture at the moment. They must be.
+    On the 18th of April 2026, I rang Matthias — the thirteenth disciple. I was worried because he was going to a church the following morning that had not been speaking about the Rapture. I told him: we will know tomorrow — if the preacher does not bring up the Rapture, we will know it is not of the Spirit. On the 19th of April, Matthias rang me back and told me his preacher had spoken plainly about how desperate the hour is — the Rapture. All these churches out there — most of them are not talking about the Rapture at the moment. They must be.
 </p>
 
           <div class="home-author-fields">
@@ -196,7 +197,7 @@
     <div class="home-container home-container--narrow">
       <div class="home-section-header reveal">
         <p class="section-eyebrow">Inspiring Empowering Revelation</p>
-        <h2>People Get Ready — The Trumpets Are Sounding</h2>
+        <h2>People Get Ready — Jesus Is Coming</h2>
         <div class="home-rule"></div>
       </div>
 
@@ -373,13 +374,23 @@
 (function() {
   var overlay = document.getElementById('bookOverlay');
   if (!overlay) return;
+  function autoScrollAfterDelay() {
+    var userScrolled = false;
+    function onScroll() { userScrolled = true; }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    setTimeout(function() {
+      window.removeEventListener('scroll', onScroll);
+      if (!userScrolled) {
+        var author = document.getElementById('author');
+        if (author) author.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 3000);
+  }
+
   var seen = sessionStorage.getItem('bookIntroSeen');
   if (seen) {
     overlay.remove();
-    setTimeout(function() {
-      var author = document.getElementById('author');
-      if (author) author.scrollIntoView({ behavior: 'smooth' });
-    }, 3000);
+    autoScrollAfterDelay();
     return;
   }
   document.body.style.overflow = 'hidden';
@@ -391,10 +402,7 @@
     setTimeout(function() {
       overlay.remove();
       sessionStorage.setItem('bookIntroSeen', '1');
-      setTimeout(function() {
-        var author = document.getElementById('author');
-        if (author) author.scrollIntoView({ behavior: 'smooth' });
-      }, 3000);
+      autoScrollAfterDelay();
     }, 350);
   }
 
@@ -630,6 +638,28 @@
   }
 
   loadChapters();
+})();
+</script>
+<!-- PHOTO LIGHTBOX -->
+<div id="photoLightbox" style="display:none; position:fixed; inset:0; z-index:10001; background:rgba(0,0,0,0.92); cursor:pointer; align-items:center; justify-content:center;">
+  <img id="lightboxImg" style="max-width:92vw; max-height:92vh; border-radius:0.4rem; box-shadow:0 0 40px rgba(0,0,0,0.6);">
+  <p style="position:absolute; bottom:1.5rem; left:50%; transform:translateX(-50%); font-family:'Cinzel',serif; font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.5);">Click anywhere to close</p>
+</div>
+<script>
+(function() {
+  var lb = document.getElementById('photoLightbox');
+  var lbImg = document.getElementById('lightboxImg');
+  document.querySelectorAll('.photo-enlarge').forEach(function(img) {
+    img.addEventListener('click', function() {
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lb.style.display = 'flex';
+    });
+  });
+  lb.addEventListener('click', function() {
+    lb.style.display = 'none';
+    lbImg.src = '';
+  });
 })();
 </script>
 </body>
