@@ -2210,6 +2210,15 @@ body.has-player { padding-bottom: 64px; }
   padding-top: 64px;
 }
 
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
 .home-hero .hdr-dim {
   position: absolute;
   inset: 0;
@@ -2933,12 +2942,7 @@ body.has-player { padding-bottom: 64px; }
   position: fixed;
   inset: 0;
   z-index: 10000;
-  background:
-    radial-gradient(ellipse 55% 45% at 50% 45%, rgba(30,52,100,0.50) 0%, transparent 55%),
-    radial-gradient(ellipse 35% 40% at 25% 75%, rgba(60,30,80,0.25) 0%, transparent 50%),
-    radial-gradient(ellipse 40% 35% at 80% 20%, rgba(20,50,90,0.35) 0%, transparent 50%),
-    radial-gradient(ellipse 25% 30% at 50% 48%, rgba(201,168,76,0.08) 0%, transparent 45%),
-    linear-gradient(170deg, #02060e 0%, #081428 20%, #122550 45%, #0e1c38 65%, #060c1a 85%, #020408 100%);
+  background: rgba(2,4,8,0.55);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2948,6 +2952,15 @@ body.has-player { padding-bottom: 64px; }
   transition: opacity 0.7s ease;
   cursor: pointer;
   overflow: hidden;
+}
+
+.book-overlay-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
 }
 
 /* starfield — single static layer, no animation */
@@ -3037,15 +3050,16 @@ body.has-player { padding-bottom: 64px; }
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 600px;
-  height: 600px;
+  width: 900px;
+  height: 900px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   background: radial-gradient(
     ellipse at center,
-    rgba(201,168,76,0.15) 0%,
-    rgba(201,168,76,0.06) 30%,
-    transparent 60%
+    rgba(201,168,76,0.30) 0%,
+    rgba(201,168,76,0.18) 20%,
+    rgba(201,168,76,0.08) 40%,
+    transparent 65%
   );
   pointer-events: none;
 }
@@ -3065,8 +3079,8 @@ body.has-player { padding-bottom: 64px; }
 .book-cover--back {
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, #0a1628 0%, #112038 45%, #0e1a30 100%);
-  border: 2px solid rgba(201,168,76,0.28);
+  background: linear-gradient(160deg, #080c14 0%, #0e1628 45%, #0a101e 100%);
+  border: 2px solid rgba(201,168,76,0.22);
   border-radius: 2px 8px 8px 2px;
   box-shadow: 0 25px 70px rgba(0,0,0,0.55);
 }
@@ -3138,8 +3152,8 @@ body.has-player { padding-bottom: 64px; }
 .book-cover--front {
   position: absolute;
   inset: 0;
-  background: linear-gradient(155deg, #112038 0%, #1a2d58 35%, #152a4e 65%, #112038 100%);
-  border: 2px solid rgba(201,168,76,0.42);
+  background: linear-gradient(155deg, #0a1020 0%, #131e38 35%, #0f1a30 65%, #0a1020 100%);
+  border: 2px solid rgba(201,168,76,0.35);
   border-radius: 2px 8px 8px 2px;
   transform-origin: left center;
   transform-style: preserve-3d;
@@ -3181,27 +3195,27 @@ body.has-player { padding-bottom: 64px; }
 
 .book-cover-content {
   text-align: center;
-  padding: 3rem;
+  padding: 1.8rem 2rem;
   position: relative;
   z-index: 1;
 }
 
 .book-cover-cross {
-  font-size: 3.8rem;
+  font-size: 2.6rem;
   color: var(--gold);
   display: block;
-  margin-bottom: 1.4rem;
+  margin-bottom: 0.8rem;
   text-shadow: 0 0 30px rgba(201,168,76,0.35);
 }
 
 .book-cover-title {
   font-family: 'Cinzel', serif;
-  font-size: 1.4rem;
+  font-size: 1.7rem;
   font-weight: 700;
   color: var(--gold-pale);
   letter-spacing: 0.08em;
   line-height: 1.35;
-  margin: 0 0 1rem;
+  margin: 0 0 0.8rem;
   text-shadow: 0 1px 12px rgba(0,0,0,0.5);
 }
 
@@ -3209,8 +3223,18 @@ body.has-player { padding-bottom: 64px; }
   width: 55px;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  margin: 0 auto 1rem;
+  margin: 0 auto 0.8rem;
   position: relative;
+}
+
+.book-cover-photo {
+  width: 55%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(201,168,76,0.25);
+  margin-bottom: 0.8rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
 }
 
 .book-cover-rule::before,
@@ -3230,9 +3254,9 @@ body.has-player { padding-bottom: 64px; }
 
 .book-cover-author {
   font-family: 'Crimson Text', serif;
-  font-size: 1.05rem;
+  font-size: 1.3rem;
   font-style: italic;
-  color: rgba(240,217,140,0.58);
+  color: rgba(240,217,140,0.65);
   margin: 0;
   letter-spacing: 0.06em;
 }
