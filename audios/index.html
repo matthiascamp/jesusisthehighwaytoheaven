@@ -7,449 +7,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
 <style>
-*, *::before, *::after { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; }
-
-:root {
-  --ink:         #07101f;
-  --ink-mid:     #112038;
-  --ink-rich:    #1a2d58;
-  --gold:        #c9a84c;
-  --gold-hi:     #dfc06a;
-  --gold-pale:   #f0d98c;
-  --cream:       #fdfaf4;
-  --text:        #1a1208;
-  --text-mid:    #2e200e;
-  --muted:       #7a6648;
-  --border-gold: rgba(201,168,76,0.18);
-}
-
-@keyframes softGlow {
-  0%,100% { filter: drop-shadow(0 0 8px rgba(201,168,76,0.28)); }
-  50%     { filter: drop-shadow(0 0 20px rgba(201,168,76,0.55)); }
-}
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-body {
-  font-family: 'Crimson Text', Georgia, serif;
-  background-color: var(--ink);
-  background-image:
-    radial-gradient(ellipse 110% 42% at 50% -1%, rgba(201,168,76,0.13) 0%, transparent 58%),
-    radial-gradient(ellipse 55% 50% at 5%  98%, rgba(10,20,48,0.95)    0%, transparent 52%),
-    radial-gradient(ellipse 55% 50% at 95% 98%, rgba(10,20,48,0.95)    0%, transparent 52%);
-  color: var(--text);
-  line-height: 1.8;
-}
-
-/* ── NAV ── */
-.site-nav {
-  position: sticky; top: 0; z-index: 200;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 2rem; height: 42px;
-  background: rgba(7,16,31,0.82);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border-gold);
-  box-shadow: 0 1px 0 rgba(201,168,76,0.05), 0 4px 24px rgba(0,0,0,0.35);
-}
-.nav-brand {
-  font-family: 'Cinzel', serif; font-size: 0.67rem; font-weight: 700;
-  letter-spacing: 0.12em; color: var(--gold-pale);
-  text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
-  white-space: nowrap;
-}
-.nav-brand .cross { color: var(--gold); animation: softGlow 5s ease-in-out infinite; }
-.nav-links { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.8rem; position: relative; z-index: 1; }
-.nav-links a {
-  font-family: 'Cinzel', serif; font-size: 0.56rem; font-weight: 600;
-  letter-spacing: 0.16em; text-transform: uppercase;
-  color: rgba(253,249,241,0.48); text-decoration: none;
-  transition: color 0.2s ease;
-}
-.nav-links a:hover, .nav-links a.active { color: var(--gold); }
-
-/* ── PAGE HEADER ── */
-.page-header {
-  margin-top: -42px;
-  padding: calc(4.5rem + 42px) 2rem 4rem;
-  text-align: center;
-  position: relative; overflow: hidden;
-  border-bottom: 1px solid var(--border-gold);
-}
-.hdr-dim { position: absolute; inset: 0; background: rgba(7,16,31,0.78); z-index: 1; }
-.hdr-bg {
-  position: absolute; inset: 0;
-  background-image: url('../HeaderBanner2.jpg');
-  background-size: cover; background-position: center;
-  opacity: 0.55;
-}
-.hdr-content { position: relative; z-index: 3; display: flex; flex-direction: column; align-items: center; }
-.page-header::before {
-  content: '';
-  position: absolute; inset: 0; z-index: 2;
-  background: radial-gradient(ellipse 65% 80% at 50% 10%, rgba(201,168,76,0.09) 0%, transparent 62%);
-  pointer-events: none;
-}
-.page-header::after {
-  content: '';
-  position: absolute; bottom: -1px; left: 0; right: 0; height: 1px; z-index: 4;
-  background: linear-gradient(to right, transparent, var(--gold) 22%, rgba(201,168,76,0.55) 50%, var(--gold) 78%, transparent);
-}
-.hdr-cross {
-  display: block; font-size: 3.4rem; color: var(--gold);
-  line-height: 1; margin-bottom: 1rem;
-  animation: softGlow 4s ease-in-out infinite; position: relative;
-}
-.hdr-eyebrow {
-  font-family: 'Cinzel', serif; font-size: 0.57rem; font-weight: 600;
-  letter-spacing: 0.32em; text-transform: uppercase;
-  color: var(--gold); opacity: 0.70; margin: 0 0 0.65rem; position: relative;
-}
-.page-header h1 {
-  font-family: 'Cinzel', serif; font-size: clamp(1.45rem, 4vw, 2.9rem);
-  font-weight: 700; color: #fff; letter-spacing: 0.04em;
-  margin: 0 0 0.8rem; line-height: 1.2;
-  text-shadow: 0 2px 30px rgba(0,0,0,0.60); position: relative;
-}
-.hdr-rule {
-  width: 48px; height: 1px;
-  background: linear-gradient(to right, transparent, var(--gold), transparent);
-  border: none; margin: 0 auto 0.85rem; position: relative;
-}
-.hdr-verse {
-  font-family: 'Crimson Text', serif; font-style: italic;
-  font-size: clamp(0.92rem, 1.9vw, 1.12rem); color: rgba(240,217,140,0.72);
-  margin: 0; letter-spacing: 0.02em; position: relative;
-}
-
-/* ── MAIN ── */
-main {
-  max-width: 860px; margin: 3.5rem auto 6rem;
-  padding: 0 1.5rem;
-  display: flex; flex-direction: column; gap: 2rem;
-  animation: fadeUp 0.45s ease-out both;
-}
-
-/* ── SHARED CARD ── */
-.card {
-  background: rgba(255,255,255,0.975);
-  border-radius: 0.55rem;
-  border-top: 2px solid var(--gold);
-  box-shadow:
-    0 0 0 1px rgba(201,168,76,0.08),
-    0 4px 28px rgba(0,0,0,0.28),
-    0 20px 60px rgba(0,0,0,0.18);
-}
-
-/* ── INTRO CARD ── */
-.intro-card { padding: 2.6rem 3rem; text-align: center; }
-.intro-eyebrow {
-  font-family: 'Cinzel', serif; font-size: 0.60rem; font-weight: 600;
-  letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin: 0 0 0.5rem;
-}
-.intro-card h2 {
-  font-family: 'Cinzel', serif; font-size: clamp(1.1rem, 2.4vw, 1.6rem);
-  font-weight: 700; color: var(--ink-mid); letter-spacing: 0.06em;
-  margin: 0 0 0.4rem; line-height: 1.25;
-}
-.title-rule {
-  width: 64px; height: 2px;
-  background: linear-gradient(to right, transparent, var(--gold), transparent);
-  border: none; margin: 0 auto 1.6rem; border-radius: 2px;
-}
-.intro-text {
-  font-size: clamp(1.02rem, 1.8vw, 1.15rem); color: var(--text-mid);
-  line-height: 1.85; max-width: 680px; margin: 0 auto;
-}
-.warning-strip {
-  display: flex; align-items: flex-start; gap: 0.85rem;
-  background: rgba(155,28,28,0.05);
-  border: 1px solid rgba(155,28,28,0.18);
-  border-left: 3px solid rgba(155,28,28,0.45);
-  border-radius: 0 0.3rem 0.3rem 0;
-  padding: 1rem 1.2rem; margin-top: 1.6rem; text-align: left;
-}
-.warning-icon { font-size: 1.1rem; flex-shrink: 0; line-height: 1.6; }
-.warning-text {
-  font-family: 'Crimson Text', serif; font-size: 0.98rem;
-  color: #6b1a1a; line-height: 1.65; margin: 0;
-}
-
-/* ── AUDIO CARD ── */
-.audio-card { overflow: hidden; }
-.audio-card-header {
-  padding: 1.8rem 2.4rem 1.4rem;
-  border-bottom: 1px solid var(--border-gold);
-}
-.audio-label {
-  font-family: 'Cinzel', serif; font-size: 0.58rem; font-weight: 600;
-  letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin: 0 0 0.3rem;
-}
-.audio-card-header h3 {
-  font-family: 'Cinzel', serif; font-size: clamp(0.95rem, 2vw, 1.28rem);
-  font-weight: 700; color: var(--ink-mid); letter-spacing: 0.05em;
-  margin: 0 0 0.9rem; line-height: 1.3;
-}
-.audio-desc {
-  font-family: 'Crimson Text', serif; font-size: 1.06rem;
-  color: var(--text-mid); line-height: 1.78; margin: 0;
-}
-.audio-desc + .audio-desc {
-  margin-top: 1rem;
-}
-.audio-embed {
-  background: rgba(7,16,31,0.04);
-  padding: 1.4rem 2.4rem 1.6rem;
-  border-top: 1px solid rgba(201,168,76,0.10);
-}
-.audio-embed-label {
-  font-family: 'Cinzel', serif; font-size: 0.56rem; font-weight: 600;
-  letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.7rem;
-}
-.audio-embed iframe {
-  width: 100%; height: 80px; border: none;
-  border-radius: 0.3rem;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
-}
-
-/* ── TRANSCRIPT CARD ── */
-.transcript-card { overflow: hidden; }
-.transcript-header {
-  padding: 1.8rem 2.4rem 1.4rem;
-  border-bottom: 1px solid var(--border-gold);
-}
-.transcript-eyebrow {
-  font-family: 'Cinzel', serif; font-size: 0.58rem; font-weight: 600;
-  letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin: 0 0 0.3rem;
-}
-.transcript-header h3 {
-  font-family: 'Cinzel', serif; font-size: clamp(0.95rem, 2vw, 1.28rem);
-  font-weight: 700; color: var(--ink-mid); letter-spacing: 0.05em;
-  margin: 0 0 0.9rem; line-height: 1.3;
-}
-.transcript-intro {
-  font-family: 'Crimson Text', serif; font-size: 1.06rem;
-  color: var(--text-mid); line-height: 1.78; margin: 0;
-}
-.transcript-body { padding: 0 2.4rem 2.4rem; }
-.transcript-scroll {
-  margin-top: 1.4rem;
-  max-height: 540px;
-  overflow-y: auto;
-  border: 1px solid var(--border-gold);
-  border-radius: 0.3rem;
-  background: rgba(253,250,244,0.60);
-  padding: 1.6rem 2rem;
-  scroll-behavior: smooth;
-}
-.transcript-scroll::-webkit-scrollbar { width: 6px; }
-.transcript-scroll::-webkit-scrollbar-track { background: rgba(201,168,76,0.06); }
-.transcript-scroll::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.30); border-radius: 3px; }
-.transcript-witness {
-  font-family: 'Cinzel', serif; font-size: 0.70rem; font-weight: 700;
-  letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--ink-mid); background: rgba(201,168,76,0.07);
-  border: 1px solid var(--border-gold); border-left: 3px solid var(--gold);
-  padding: 0.6rem 1rem; border-radius: 0 0.25rem 0.25rem 0;
-  margin: 1.4rem 0 1rem;
-}
-.transcript-oath {
-  font-family: 'Crimson Text', serif; font-style: italic;
-  font-size: 1rem; color: var(--muted);
-  border-bottom: 1px solid var(--border-gold);
-  padding-bottom: 1rem; margin-bottom: 1.2rem; line-height: 1.7;
-}
-.transcript-exchange { margin-bottom: 1rem; }
-.transcript-q {
-  font-family: 'Cinzel', serif; font-size: 0.64rem; font-weight: 700;
-  letter-spacing: 0.08em; color: var(--ink-rich); text-transform: uppercase;
-  margin: 0 0 0.18rem;
-}
-.transcript-a {
-  font-family: 'Crimson Text', serif; font-size: 1.06rem;
-  color: var(--text-mid); line-height: 1.74; margin: 0 0 0 0.5rem;
-  border-left: 2px solid rgba(201,168,76,0.22);
-  padding-left: 0.8rem;
-}
-.expand-btn {
-  display: block; width: 100%;
-  font-family: 'Cinzel', serif; font-size: 0.62rem; font-weight: 600;
-  letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--gold); background: none;
-  border: none; border-top: 1px solid var(--border-gold);
-  padding: 0.9rem 2.4rem; cursor: pointer;
-  text-align: left; transition: background 0.18s ease;
-}
-.expand-btn:hover { background: rgba(201,168,76,0.04); }
-.expand-btn::after { content: ' ▾'; }
-.expand-btn.open::after { content: ' ▴'; }
-
-/* ── COMMENTS / LIKE ── */
-.comments-card { overflow: hidden; }
-.comments-inner { padding: 1.8rem 2.4rem 2.2rem; }
-.comments-heading {
-  display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1.6rem;
-}
-.comments-heading h3 {
-  font-family: 'Cinzel', serif; font-size: clamp(0.88rem, 1.6vw, 1.1rem);
-  font-weight: 700; color: var(--ink-mid); letter-spacing: 0.08em; margin: 0;
-}
-.ch-ornament { color: var(--gold); opacity: 0.70; font-size: 0.85rem; }
-
-/* Like button */
-.like-row { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.8rem; }
-.like-btn {
-  display: flex; align-items: center; gap: 0.45rem;
-  font-family: 'Cinzel', serif; font-size: 0.62rem; font-weight: 700;
-  letter-spacing: 0.10em; text-transform: uppercase;
-  color: var(--ink-mid); background: rgba(201,168,76,0.06);
-  border: 1px solid var(--border-gold);
-  border-radius: 2rem; padding: 0.52rem 1.2rem;
-  cursor: pointer; transition: all 0.22s ease;
-  user-select: none;
-}
-.like-btn:hover { border-color: var(--gold); background: rgba(201,168,76,0.12); color: var(--ink); }
-.like-btn.liked { border-color: var(--gold); background: rgba(201,168,76,0.18); color: var(--ink-mid); }
-.like-btn .heart { font-size: 1rem; line-height: 1; transition: transform 0.18s ease; }
-.like-btn.liked .heart { transform: scale(1.25); }
-.like-count {
-  font-family: 'Crimson Text', serif; font-size: 0.94rem;
-  color: var(--muted); font-style: italic;
-}
-
-/* Comment form */
-.comment-form-heading {
-  font-family: 'Cinzel', serif; font-size: 0.68rem; font-weight: 700;
-  letter-spacing: 0.14em; color: var(--gold); text-transform: uppercase;
-  margin: 0 0 1rem;
-}
-.comment-form { display: flex; flex-direction: column; gap: 0.75rem; }
-.comment-form input,
-.comment-form textarea {
-  font-family: 'Crimson Text', serif; font-size: 1.02rem; color: var(--text);
-  background: rgba(201,168,76,0.03);
-  border: 1px solid var(--border-gold);
-  border-radius: 0.28rem;
-  padding: 0.62rem 0.9rem;
-  outline: none; transition: all 0.22s ease; resize: vertical;
-}
-.comment-form input::placeholder,
-.comment-form textarea::placeholder { color: var(--muted); font-style: italic; }
-.comment-form input:focus,
-.comment-form textarea:focus {
-  border-color: rgba(201,168,76,0.48);
-  background: rgba(201,168,76,0.04);
-  box-shadow: 0 0 0 3px rgba(201,168,76,0.07);
-}
-.comment-form textarea { min-height: 100px; }
-.comment-submit {
-  align-self: flex-start;
-  font-family: 'Cinzel', serif; font-size: 0.64rem; font-weight: 700;
-  letter-spacing: 0.13em; text-transform: uppercase;
-  color: #fff; background: var(--ink-mid);
-  border: 1px solid rgba(201,168,76,0.40);
-  border-radius: 0.25rem; padding: 0.68rem 1.8rem;
-  cursor: pointer; transition: all 0.22s ease;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.22);
-}
-.comment-submit:hover {
-  background: var(--ink); border-color: var(--gold);
-  color: var(--gold-pale); transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(201,168,76,0.22);
-}
-.comment-list { display: flex; flex-direction: column; gap: 0.9rem; margin-bottom: 2rem; }
-.comment-item {
-  padding: 1.1rem 1.3rem;
-  background: rgba(201,168,76,0.04);
-  border-radius: 0.4rem;
-  border: 1px solid rgba(201,168,76,0.14);
-}
-.comment-header {
-  display: flex; align-items: flex-start; gap: 0.65rem; margin-bottom: 0.6rem;
-}
-.comment-ornament { color: var(--gold); opacity: 0.55; font-size: 0.7rem; margin-top: 0.18rem; flex-shrink: 0; }
-.comment-byline { display: flex; flex-direction: column; gap: 0.05rem; }
-.comment-author {
-  font-family: 'Cinzel', serif; font-size: 0.66rem; font-weight: 700;
-  letter-spacing: 0.09em; color: var(--ink-mid); line-height: 1.3;
-}
-.comment-date {
-  font-family: 'Crimson Text', serif; font-size: 0.82rem;
-  color: var(--muted); font-style: italic; line-height: 1.3;
-}
-.comment-body {
-  font-family: 'Crimson Text', serif; font-size: 1.05rem;
-  color: var(--text-mid); line-height: 1.72; margin: 0;
-  padding-left: 1.35rem;
-}
-
-/* ── FOOTER ── */
-footer {
-  text-align: center; padding: 3.2rem 2rem;
-  background: rgba(4,8,18,0.98); position: relative;
-}
-footer::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(to right, transparent, var(--gold) 22%, rgba(201,168,76,0.55) 50%, var(--gold) 78%, transparent);
-}
-.footer-inner { max-width: 540px; margin: 0 auto; }
-.footer-cross { display: block; font-size: 1.6rem; color: var(--gold); margin-bottom: 0.5rem; }
-.footer-verse { font-family: 'Crimson Text', serif; font-style: italic; font-size: 0.96rem; color: rgba(240,217,140,0.58); margin: 0 0 0.8rem; line-height: 1.65; }
-.footer-divider { width: 36px; height: 1px; background: var(--border-gold); margin: 0 auto 0.7rem; }
-.footer-copy { font-family: 'Cinzel', serif; font-size: 0.57rem; letter-spacing: 0.14em; color: rgba(255,255,255,0.25); }
-
-/* ── HAMBURGER ── */
-.nav-hamburger {
-  display: none;
-  background: none; border: 1px solid var(--border-gold);
-  color: var(--gold-pale); font-size: 1.1rem;
-  cursor: pointer; padding: 0.2rem 0.55rem;
-  border-radius: 0.2rem; line-height: 1.4;
-  transition: all 0.18s ease;
-}
-.nav-hamburger:hover { color: var(--gold); border-color: var(--gold); }
-
-/* ── RESPONSIVE ── */
-@media (max-width: 768px) {
-  .site-nav { padding: 0 1.2rem; }
-  .page-header { padding: 3.2rem 1.5rem 2.8rem; }
-  .intro-card { padding: 2rem 1.8rem; }
-  .audio-card-header, .transcript-header { padding: 1.4rem 1.6rem 1.2rem; }
-  .audio-embed { padding: 1.1rem 1.6rem 1.3rem; }
-  .transcript-body { padding: 0 1.6rem 1.8rem; }
-  .expand-btn { padding: 0.9rem 1.6rem; }
-  .transcript-scroll { padding: 1.2rem 1.2rem; }
-  .comments-inner { padding: 1.4rem 1.6rem 1.8rem; }
-}
-@media (max-width: 480px) {
-  .nav-hamburger { display: block; }
-  .nav-links {
-    display: none;
-    position: absolute; top: 42px; left: 0; right: 0;
-    flex-direction: column; gap: 0;
-    background: rgba(7,16,31,0.97);
-    border-bottom: 1px solid var(--border-gold);
-    padding: 0.4rem 0;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-  }
-  .nav-links.open { display: flex; }
-  .nav-links li { border-top: 1px solid rgba(201,168,76,0.08); }
-  .nav-links li:first-child { border-top: none; }
-  .nav-links a { padding: 0.72rem 1.5rem; display: block; font-size: 0.62rem; }
-  .page-header h1 { font-size: 1.2rem; }
-  .intro-card { padding: 1.5rem 1.1rem; }
-  .audio-card-header, .transcript-header { padding: 1.2rem 1.1rem 1rem; }
-  .audio-embed { padding: 0.9rem 1.1rem 1.1rem; }
-  .transcript-body { padding: 0 1.1rem 1.4rem; }
-  .expand-btn { padding: 0.9rem 1.1rem; }
-  .comments-inner { padding: 1.2rem 1.1rem 1.6rem; }
-}
+  .hdr-bg { background-image: url('../HeaderBanner2.jpg'); }
+  main { max-width: 860px; }
 </style>
 <script>
   window.RR = {
@@ -493,7 +54,7 @@ footer::before {
 <main>
 
   <!-- INTRO -->
-  <div class="card intro-card">
+  <div class="card intro-card reveal">
     <p class="intro-eyebrow">Edwin Lewis</p>
     <h2>Audio, Visual &amp; Court Evidence</h2>
     <hr class="title-rule">
@@ -513,7 +74,7 @@ footer::before {
   </div>
 
   <!-- RECORDING 1: Tape 8A — Hebrews 12:25 -->
-  <div class="card audio-card">
+  <div class="card audio-card reveal">
     <div class="audio-card-header">
       <p class="audio-label">Recording 1 of 4 &nbsp;·&nbsp; Audio Evidence &nbsp;·&nbsp; Tape 8A</p>
       <h3>Hebrews 12:25 — Domestic Violence Proceedings, June 1997</h3>
@@ -521,16 +82,19 @@ footer::before {
         The tape begins on the 1st of June 1997 — a time of my life when I was getting pounded by lies. Like Job, who was a righteous man stripped of everything and surrounded by those who accused him falsely, I too found myself standing alone against a torrent of accusations I did not deserve. Job never stopped declaring his innocence before God, and neither did I. I swore on the Bible and on my children's lives that what I am saying is the truth, to which I was told I didn't need to do that. I did it anyway. The transcript is viewable in Chapter 5 of the book.
       </p>
       <p class="audio-desc">
-        What follows is a church service recorded in Cannon Hill, Brisbane. I include it because every word spoken mirrors my own life and calling. I have been given a new identity — to spread the word of Jesus Christ to the world before it is too late. Pastor Don Shepherd draws from Hosea, Habakkuk, and the Psalms and lists the conditions that signal a nation is ripe for awakening: sin abounds, righteousness has vanished, the church has grown lax. Every one of those conditions was present in my own household and in the courtroom on the 1st of June 1997. The years of suffering I endured — the accident, the false accusations, the proceedings on this very tape — they were the preparation, not the end.
+        What follows is a church service recorded in Cannon Hill, Brisbane. I include it because every word spoken mirrors my own life and calling. Pastor Don Shepherd draws from Hosea, Habakkuk, and the Psalms and lists the conditions that signal a nation is ripe for awakening: sin abounds, righteousness has vanished, the church has grown lax. Every one of those conditions was present in my own household and in the courtroom on the 1st of June 1997. The years of suffering I endured — the accident, the false accusations, the proceedings on this very tape — they were the preparation, not the end.
       </p>
       <p class="audio-desc">
-        After Don speaks, Noel Shaw takes the floor — visibly carrying grief over the recent passing of Don's son-in-law Michael, killed in a pushbike accident. Out of that grief, Noel delivers an explosive call to repentance. It is Noel — not Don — who speaks of David and Goliath: a man with no standing in the eyes of the world who stepped forward in faith alone. He warns that a church which tolerates sin is a church crying out for revival whether it knows it or not. William Booth said he wished he could hold every complacent Christian over the mouth of hell so they could watch the lost descend into eternity. I have lived that urgency my entire adult life. On the 16th of March 2001, I met Jesus in person — not in a dream, not in a vision, but face to face. From that moment my role became undeniable: to give people the opportunity to hear the truth so that they may be raptured — caught up — before what is coming. There will be seven years of great tribulation before Jesus returns. The conditions Don and Noel described that night have only deepened in the decades since. What you hear on this tape is not history. It is a warning that is more relevant today than the night it was spoken.
+        I have lived that urgency my entire adult life. On the 16th of March 2001, I met Jesus in person — not in a dream, not in a vision, but face to face. From that moment my role became undeniable: I have been given a new identity — to spread the word of Jesus Christ to the world before it is too late, to give people the opportunity to hear the truth so that they may be raptured — caught up — before what is coming. There will be seven years of great tribulation before Jesus returns. The conditions Don described that night have only deepened in the decades since.
       </p>
       <p class="audio-desc">
-        The tape finishes with Don. The sermon closes on Hebrews 12:25 — the Lord told Don that morning to put it in. I include this recording for the same reason: repent and be empowered, or refuse — <em>"See to it that you do not refuse Him who warns you from Heaven."</em>
+        The tape finishes with Don. The sermon closes on Hebrews 12:25 — the Lord told Don that morning to put it in. That same scripture was being lived out in my own life. On the 1st of June 1997 I stood in that courtroom being pounded by lies — and God was already preparing me for what was to come. Everything I endured was the refining. Hebrews 12:25 is not just a verse Don preached — it is the warning I now carry to you: repent and be empowered, or refuse — <em>"See to it that you do not refuse Him who warns you from Heaven."</em>
       </p>
       <p class="audio-desc" style="font-weight:700; letter-spacing:0.04em;">
         SO HERE I AM. I'M HERE. I'M GOD HERE TO SAVE YOU. LISTEN, REPENT AND BE SAVED OR BE CAST INTO HELL FOR ETERNITY.
+      </p>
+      <p class="audio-desc">
+        After Don speaks, Noel Shaw takes the floor — visibly carrying grief over the recent passing of Don's son-in-law Michael, killed in a pushbike accident. Out of that grief, Noel delivers an explosive call to repentance. It is Noel — not Don — who speaks of David and Goliath: a man with no standing in the eyes of the world who stepped forward in faith alone. He warns that a church which tolerates sin is a church crying out for revival whether it knows it or not. William Booth of the Salvation Army said he wished he could hold every complacent Christian over the mouth of hell so they could watch the lost descend into eternity. What you hear on this tape is not history. It is a warning that is more relevant today than the night it was spoken. The choice is in front of you — life or death.
       </p>
     </div>
     <div class="audio-embed">
@@ -540,7 +104,7 @@ footer::before {
   </div>
 
   <!-- RECORDING 4: Father In Law -->
-  <div class="card audio-card">
+  <div class="card audio-card reveal">
     <div class="audio-card-header">
       <p class="audio-label">Recording 2 of 4 &nbsp;·&nbsp; Audio Evidence</p>
       <h3>Alan Carty — Recorded Conversation</h3>
@@ -567,7 +131,7 @@ footer::before {
   </div>
 
   <!-- COURT TRANSCRIPT -->
-  <div class="card transcript-card">
+  <div class="card transcript-card reveal">
     <div class="transcript-header">
       <p class="transcript-eyebrow">Court Record &nbsp;·&nbsp; Domestic Violence Proceedings — Cleveland Courthouse</p>
       <h3>Transcript — Testimony of Alan Carty</h3>
@@ -805,7 +369,7 @@ footer::before {
   </div>
 
   <!-- RECORDING 2: June Lewis & Mark Beardmore -->
-  <div class="card audio-card">
+  <div class="card audio-card reveal">
     <div class="audio-card-header">
       <p class="audio-label">Recording 3 of 4 &nbsp;·&nbsp; Audio Evidence</p>
       <h3>June Lewis &amp; Officer Mark Beardmore</h3>
@@ -842,7 +406,7 @@ footer::before {
   </div>
 
   <!-- RECORDING 1B -->
-  <div class="card audio-card">
+  <div class="card audio-card reveal">
     <div class="audio-card-header">
       <p class="audio-label">Recording 4 of 4 &nbsp;·&nbsp; Audio Evidence</p>
       <h3>Family Evidence — 1997 to 1998</h3>
@@ -869,7 +433,7 @@ footer::before {
   </div>
 
   <!-- VIDEO: Ed in pool with kids -->
-  <div class="card audio-card">
+  <div class="card audio-card reveal">
     <div class="audio-card-header">
       <p class="audio-label">Video Evidence &nbsp;·&nbsp; 16 September 2000</p>
       <h3>Edwin Lewis — Home Video with Children</h3>
@@ -883,8 +447,41 @@ footer::before {
     </div>
   </div>
 
+  <!-- CD: REVELATION — COMING SOON -->
+  <div class="card audio-card reveal">
+    <div class="audio-card-header">
+      <p class="audio-label">CD Recording &nbsp;·&nbsp; 8 Tracks &nbsp;·&nbsp; Coming Soon</p>
+      <h3>Revelation — The Storage Place of God</h3>
+      <p class="audio-desc">
+        On the 20th of May, the Lord put this C.D. in my drawer, right in front of my computer. I had never seen it before — it was just there. As you listen to what is on this recording, you will be empowered by it. Just keep listening to it. And if you don't feel it — listen again.
+      </p>
+      <p class="audio-desc">
+        This recording speaks of a storage place in Heaven — a place the Lord has been saving up, filled with revelation. It declares: <em>"Go to that storage place. Isn't it time? You've been storing it for such a time as this. For now, we're so in need of revelation. Open the door, Lord. Not just a little crack — swing the door right open. Because the room is so full, Lord God, as soon as you open the door, it's gonna come tumbling out. It's gonna fall from Heaven to earth. Because, Lord, you've been saving it up for a time like this. For the desperate ones, for the hungry ones. Blessed are the desperate ones. Blessed are the hungry ones. Lord God, let it fall."</em>
+      </p>
+      <p class="audio-desc">
+        Track 6 in particular carries a powerful word — a revelation for everyone, the small, the great. God has been waiting for someone to ask.
+      </p>
+      <p class="audio-desc" style="margin-top:1.2rem;">
+        <strong>Track Listing:</strong>
+      </p>
+      <ol style="font-family:'Crimson Text',serif; font-size:1.05rem; color:var(--cream); line-height:2; padding-left:1.6rem; margin:0.4rem 0 1.2rem;">
+        <li>Track 1</li>
+        <li>Track 2</li>
+        <li>Track 3</li>
+        <li>Track 4</li>
+        <li>Track 5</li>
+        <li><strong>Track 6</strong></li>
+        <li>Track 7</li>
+        <li>Track 8</li>
+      </ol>
+      <p class="audio-desc" style="font-style:italic; color:var(--muted);">
+        These recordings are being digitised from the original CD and will be available to listen to here soon. Open your eyes. Open your ears. Isn't it time?
+      </p>
+    </div>
+  </div>
+
   <!-- CLOSING SCRIPTURE -->
-  <div class="card intro-card" style="text-align:center; padding: 2.6rem 3rem;">
+  <div class="card intro-card reveal" style="text-align:center; padding: 2.6rem 3rem;">
     <span style="display:block; font-size:2rem; color:var(--gold); margin-bottom:1rem;">✝</span>
     <p class="intro-text" style="max-width:600px; margin: 0 auto 1.2rem;">
       You have heard it! You have read it! The truth has been laid bare before you — in audio, in court records, in sworn testimony! A lie cannot stand forever. It needs another lie, and then another, until the whole construction collapses under the weight of its own deception! The Spirit of Truth cannot be silenced — it will not be silenced! Stop leaning on what the world tells you and what your own pride tells you! Get on your knees before God Almighty and live by His Spirit — because what is coming will leave no room for excuses!
@@ -897,7 +494,7 @@ footer::before {
   </div>
 
   <!-- COMMENTS & LIKE -->
-  <div class="card comments-card">
+  <div class="card comments-card reveal">
     <div class="comments-inner">
       <div class="comments-heading">
         <span class="ch-ornament">✝</span>
@@ -1061,26 +658,7 @@ function toggleTranscript() {
 })();
 </script>
 
-<script>
-(function(){
-  const btn   = document.getElementById('navHamburger');
-  const links = document.getElementById('navLinks');
-  if (!btn || !links) return;
-  btn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    links.classList.toggle('open');
-    btn.textContent = links.classList.contains('open') ? '\u2715' : '\u2630';
-  });
-  document.addEventListener('click', function() {
-    links.classList.remove('open');
-    btn.textContent = '\u2630';
-  });
-  links.addEventListener('click', function() {
-    links.classList.remove('open');
-    btn.textContent = '\u2630';
-  });
-})();
-</script>
+<script src="../shared.js" defer></script>
 
 </body>
 </html>
