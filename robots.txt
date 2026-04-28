@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /.claude/
+Disallow: /.vscode/
+
+Sitemap: https://www.jesusisthehighwaytoheaven.com/sitemap.xml

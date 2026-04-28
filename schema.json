@@ -1,0 +1,24 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Jesus is the Highway to Heaven",
+  "url": "https://www.jesusisthehighwaytoheaven.com",
+  "description": "The Christian testimony of Edwin Lewis — faith, miracles, and the message of Jesus Christ.",
+  "author": {
+    "@type": "Person",
+    "name": "Edwin Lewis",
+    "alternateName": "Edwin \"Lucky\" Lewis",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Brisbane",
+      "addressRegion": "QLD",
+      "addressCountry": "AU"
+    },
+    "email": "luckyed12@gmail.com",
+    "url": "https://www.jesusisthehighwaytoheaven.com"
+  },
+  "potentialAction": {
+    "@type": "ReadAction",
+    "target": "https://www.jesusisthehighwaytoheaven.com/read.html"
+  }
+}
