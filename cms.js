@@ -7,15 +7,7 @@
  *     matching section on the page automatically.
  *  4. If a doc doesn't exist yet, the static HTML stays as fallback.
  *
- *  Formatting guide for Ed:
- *    - Just type paragraphs with a blank line between each one
- *    - *italic text*          → italic
- *    - **bold text**          → bold
- *    - > "Quote text"         → scripture blockquote
- *    - > — Book 1:2           → citation line (after a quote)
- *    - ## Heading Text         → styled heading
- *    - [link text](url)       → clickable link
- *    - ---                    → horizontal divider
+ *  Ed just types plain text. Blank lines between paragraphs. That's it.
  */
 (function () {
   var API_KEY   = 'AIzaSyDop159M8vugSx8i5JmdCsPgFqkYyqoN3w';
@@ -65,22 +57,12 @@
       });
   }
 
-  /* ── Inline formatting ── */
-  function formatInline(text) {
-    // Links [text](url)
-    text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
-    // Bold **text**
-    text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-    // Italic *text*
-    text = text.replace(/\*(.+?)\*/g, '<em>$1</em>');
-    return text;
-  }
-
   /* ── Parse plain text → HTML ── */
   function parseText(text, pClass) {
     // Normalise line endings
     text = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
 
+    // Split into paragraphs by blank lines
     var blocks = text.split(/\n\s*\n/).filter(function (b) { return b.trim(); });
     var html = '';
     var isFirstP = true;
@@ -88,51 +70,17 @@
     for (var i = 0; i < blocks.length; i++) {
       var block = blocks[i].trim();
 
-      /* ── Divider ── */
-      if (block === '---') {
-        html += '<div style="margin:2rem 0; border-top:1px solid var(--gold); opacity:0.3;"></div>\n';
-        continue;
-      }
-
-      /* ── Heading ## ── */
-      if (/^##\s+/.test(block)) {
-        var heading = block.replace(/^##\s+/, '');
-        html +=
-          '<h4 style="font-family:\'Cinzel\',serif; color:var(--gold); font-size:1.1rem;' +
-          ' letter-spacing:0.1em; text-transform:uppercase; margin:2.5rem 0 1.2rem;' +
-          ' text-align:center;">' + formatInline(heading) + '</h4>\n';
-        continue;
-      }
-
-      /* ── Scripture blockquote ── */
-      if (block.charAt(0) === '>') {
-        var lines = block.split('\n');
-        var quote = '';
-        var cite  = '';
-        for (var j = 0; j < lines.length; j++) {
-          var line = lines[j].replace(/^>\s*/, '').trim();
-          if (/^[\u2014\u2013—–-]{1,2}\s/.test(line)) {
-            cite = line;
-          } else if (line) {
-            quote += (quote ? ' ' : '') + line;
-          }
-        }
-        html += '<div class="opening-scripture"><blockquote>' +
-          formatInline(quote) + '</blockquote>';
-        if (cite) html += '<cite>' + cite + '</cite>';
-        html += '</div>\n';
-        continue;
-      }
-
-      /* ── Regular paragraph ── */
+      // Choose class — first paragraph in home-text sections gets the lead style
       var cls = pClass;
       if (isFirstP && pClass === 'home-text') {
         cls = 'home-text home-text--lead';
         isFirstP = false;
       }
+
       // Collapse internal single newlines into spaces
       var content = block.replace(/\n/g, ' ');
-      html += '<p class="' + cls + '">' + formatInline(content) + '</p>\n';
+
+      html += '<p class="' + cls + '">' + content + '</p>\n';
     }
 
     return html;
