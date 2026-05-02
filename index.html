@@ -100,6 +100,7 @@
     <li><a href="read.html">Read the Book</a></li>
     <li><a href="contents.html">Contents</a></li>
     <li><a href="audios/index.html">Audios</a></li>
+    <li><a href="workcover/index.html">WorkCover</a></li>
   </ul>
   <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">&#9776;</button>
 </nav>
@@ -188,7 +189,7 @@
     I am Edwin Lewis, the younger brother of rugby league legend Wally Lewis. I once had a promising football career of my own — so promising that even my parents believed I had the potential to surpass my famous brother. But a devastating car accident changed everything.
 </p>
           <p class="home-bio">
-    I had just started an apprentice panel beating and spray painting job at Coorparoo United Body Works — I was due back at work the following Monday. That night, my two mates from Brisbane State High — Stephen and Brett — had a flat battery in their car. I swapped my battery into Stephen's car so they could get going, and pushed my car with his dead battery in it. Before I left, Mark Skelton — a member of the surf club and the boyfriend of John Privatero's sister — asked me to get two boys, Gary and Peter, home safely. Mark wanted to stay the night with his girlfriend. I gave him my word: I will get them home safely.
+    I had just started an apprentice panel beating and spray painting job at Coorparoo United Body Works — I was due to start working on the following Monday. On the Saturday night, my two mates from Brisbane State High — Stephen and Brett — had a flat battery in their car. I swapped my battery into Stephen's car so they could get going, and pushed my car with his dead battery in it. Before I left, Mark Skelton asked me to get two boys, Gary and Peter, home safely. He wanted to stay the night with his girlfriend. I gave him my word: I will get them home safely.
 </p>
           <p class="home-bio">
     So I followed Stephen's car with Brett in the passenger seat, and we turned off at the Beenleigh exit on the old Gold Coast route to Brisbane. In the old days, we used to salute the soldier at Yatala for a safe trip home. I cannot remember if we saluted him that day.
@@ -202,19 +203,19 @@
 
           <!-- ── DEATH, COMA & RECOVERY ── -->
           <p class="home-bio">
-    I died multiple times. At the scene I stopped breathing, and by God's providence a nurse happened to be passing by in a car. She slit my throat and placed a straw in my windpipe to keep me alive. From the accident site in Marsden to the PA Hospital, my mother and father were later told by the ambulance crew that I had to be resuscitated seven times — and potentially more times after that. From having my throat cut and the straw, I sustained five broken ribs and two collapsed lungs — and these were only a minor part of the total injuries I incurred.
+    At the scene I stopped breathing, and by God's providence a nurse happened to be passing by in a car. She slit my throat and placed a straw in my windpipe to keep me alive. From the accident site in Marsden to the PA Hospital, my mother and father were later told by the ambulance crew that I had to be resuscitated seven times — and potentially more times after that. From having my throat cut and the straw, I sustained five broken ribs and two collapsed lungs — and these were only a minor part of the total injuries I incurred.
 </p>
           <p class="home-bio">
-    I was in a coma for nine days. Nobody could get me out. Wally came to my bedside and started telling me he was going down to the surf club the next day — Boxing Day — and how many beers he was going to have for me. I didn't respond. But then he said he'd have a couple of rumbos for me — and that's when I acknowledged. My left arm was the only thing not broken, and I squeezed his hand. That squeeze let them know I was okay.
+    I was in a coma for nine days. Nobody could get me out. Wally was overseas in Austria when he was notified that I was dead — or close to it. Not knowing my condition, he came back. He came to my bedside, fearing the worst, and started telling me he was going down to the surf club the next day — Boxing Day — and how many beers he was going to have for me. I didn't respond. But then he said he'd have a couple of rumbos for me — and that's when I acknowledged him. My left arm was the only thing not broken, and I squeezed his hand. That squeeze let them know I was okay. That is when Wally's involvement, and the story told in his book, begins.
 </p>
           <p class="home-bio">
-    When I woke, I couldn't speak. I had to communicate like Skippy: one click for no, two clicks for yes, and many clicks for a big yes. The Lord said, you've got to revert back to Skippy. And so I did, learning to live again one click at a time. Months and months went past, and then I was told the two boys had died.
+    When I woke, I couldn't speak. I had to communicate like Skippy the Bush Kangaroo: one click for no, two clicks for yes, and many clicks for a big yes. The Lord said, you've got to revert back to Skippy. And so I did, learning to live again one click at a time. One day, still in a wheelchair, I got myself to a phone and rang home. Wally answered — he told everyone some lunatic was on the other end of the phone. He had no idea it was me. But as soon as Mum came on, she knew. She knew it was me straight away. Even then, I was trying to communicate with them. Months and months went past, and then I was told the two boys had died.
 </p>
           <p class="home-bio">
-    My parents, no matter what, just kept me living. Wally was overseas in Austria when he was notified that I was dead — or close to it. He came back. That is when Wally's involvement, and the story told in his book, begins.
+    My parents, no matter what, just kept me living.
 </p>
           <p class="home-bio">
-    I gave Mark Skelton my word that I would get those boys home safely. I carry that with me. But through it all, God had a greater purpose: sharing the message of Jesus Christ and the hope of eternal life.
+    I gave my word that I would get those boys home safely. I carry that with me. But through it all, God had a greater purpose: sharing the message of Jesus Christ and the hope of eternal life.
 </p>
 
           <!-- ── LIFE AFTER & FAITH JOURNEY ── -->
@@ -683,6 +684,28 @@
       e.preventDefault();
       if (!hasStarted) { startMusic(); return; }
       togglePlay();
+    }
+  });
+
+  // Pause music when user leaves the tab/site, resume when they return
+  var wasPlayingBeforeHidden = false;
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      wasPlayingBeforeHidden = isPlaying;
+      if (isPlaying) {
+        bgMusic.pause();
+        isPlaying = false;
+        var btn = document.getElementById('playBtn');
+        if (btn) btn.textContent = '▶';
+      }
+    } else {
+      if (wasPlayingBeforeHidden) {
+        bgMusic.play().then(function() {
+          isPlaying = true;
+          var btn = document.getElementById('playBtn');
+          if (btn) btn.textContent = '⏸';
+        }).catch(function() {});
+      }
     }
   });
 
