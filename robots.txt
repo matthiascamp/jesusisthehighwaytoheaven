@@ -4,4 +4,4 @@ Allow: /
 Disallow: /.claude/
 Disallow: /.vscode/
 
-Sitemap: https://www.jesusisthehighwaytoheaven.com/sitemap.xml
+Sitemap: https://jesusisthehighwaytoheaven.com/sitemap.xml
