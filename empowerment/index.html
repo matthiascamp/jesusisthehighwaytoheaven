@@ -14,6 +14,48 @@
 <link rel="stylesheet" href="../style.css">
 <style>
   main { max-width: 860px; }
+  .cd-player {
+    padding: 0 2rem 1rem;
+  }
+  .cd-player audio {
+    width: 100%;
+  }
+  .cd-now-playing {
+    margin: 0.8rem 0 0;
+    color: var(--text-mid);
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .cd-tracklist {
+    display: grid;
+    gap: 0.65rem;
+    padding: 0 2rem 2rem;
+  }
+  .cd-track-btn {
+    width: 100%;
+    border: 1px solid var(--border-gold);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.72);
+    color: var(--text-mid);
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    line-height: 1.4;
+    padding: 0.75rem 0.9rem;
+    text-align: left;
+    transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
+  }
+  .cd-track-btn:hover,
+  .cd-track-btn.is-active {
+    background: rgba(190,145,58,0.12);
+    border-color: var(--gold);
+    color: var(--ink-mid);
+  }
 </style>
 <script>
   window.RR = {
@@ -87,58 +129,25 @@
       </p>
     </div>
 
-    <div class="cd-tracklist" style="padding: 0 2rem 2rem;">
-      <div class="cd-track" style="border-bottom: 1px solid var(--border-gold); padding: 1rem 0;">
-        <p style="font-family:'Cinzel',serif; font-size:0.85rem; color:var(--gold); letter-spacing:0.08em; margin:0 0 0.5rem;"><strong>Track 1</strong> — There Must Be a Place</p>
-        <audio controls preload="none" style="width:100%;">
-          <source src="../audios/tracks/Track 01.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-      <div class="cd-track" style="border-bottom: 1px solid var(--border-gold); padding: 1rem 0;">
-        <p style="font-family:'Cinzel',serif; font-size:0.85rem; color:var(--gold); letter-spacing:0.08em; margin:0 0 0.5rem;"><strong>Track 2</strong> — Make Way</p>
-        <audio controls preload="none" style="width:100%;">
-          <source src="../audios/tracks/Track 02.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-      <div class="cd-track" style="border-bottom: 1px solid var(--border-gold); padding: 1rem 0;">
-        <p style="font-family:'Cinzel',serif; font-size:0.85rem; color:var(--gold); letter-spacing:0.08em; margin:0 0 0.5rem;"><strong>Track 3</strong> — Heaven is Movin' In</p>
-        <audio controls preload="none" style="width:100%;">
-          <source src="../audios/tracks/Track 03.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-      <div class="cd-track" style="border-bottom: 1px solid var(--border-gold); padding: 1rem 0;">
-        <p style="font-family:'Cinzel',serif; font-size:0.85rem; color:var(--gold); letter-spacing:0.08em; margin:0 0 0.5rem;"><strong>Track 4</strong> — Contact</p>
-        <audio controls preload="none" style="width:100%;">
-          <source src="../audios/tracks/Track 04.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-      <div class="cd-track" style="border-bottom: 1px solid var(--border-gold); padding: 1rem 0;">
-        <p style="font-family:'Cinzel',serif; font-size:0.85rem; color:var(--gold); letter-spacing:0.08em; margin:0 0 0.5rem;"><strong>Track 5</strong> — Seven Spirits Burning</p>
-        <audio controls preload="none" style="width:100%;">
-          <source src="../audios/tracks/Track 05.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-      <div class="cd-track" style="border-bottom: 1px solid var(--border-gold); padding: 1rem 0;">
-        <p style="font-family:'Cinzel',serif; font-size:0.85rem; color:var(--gold); letter-spacing:0.08em; margin:0 0 0.5rem;"><strong>Track 6</strong> — Messengers of Fire</p>
-        <audio controls preload="none" style="width:100%;">
-          <source src="../audios/tracks/Track 06.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-      <div class="cd-track" style="border-bottom: 1px solid var(--border-gold); padding: 1rem 0;">
-        <p style="font-family:'Cinzel',serif; font-size:0.85rem; color:var(--gold); letter-spacing:0.08em; margin:0 0 0.5rem;"><strong>Track 7</strong> — Impartation</p>
-        <audio controls preload="none" style="width:100%;">
-          <source src="../audios/tracks/Track 07.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-      <div class="cd-track" style="padding: 1rem 0;">
-        <p style="font-family:'Cinzel',serif; font-size:0.85rem; color:var(--gold); letter-spacing:0.08em; margin:0 0 0.5rem;"><strong>Track 8</strong> — Winds of Fire</p>
-        <audio controls preload="none" style="width:100%;">
-          <source src="../audios/tracks/Track 08.mp3" type="audio/mpeg">
-        </audio>
-      </div>
+    <div class="cd-player">
+      <audio id="cdPlayer" controls preload="auto">
+        <source id="cdPlayerSource" src="../audios/tracks/Track 01.mp3" type="audio/mpeg">
+      </audio>
+      <audio id="cdPreloader" preload="auto" aria-hidden="true" style="display:none;"></audio>
+      <p class="cd-now-playing" id="cdNowPlaying">Track 1 - There Must Be a Place</p>
+    </div>
+
+    <div class="cd-tracklist" aria-label="Messengers of Fire track list">
+      <button class="cd-track-btn is-active" type="button" data-track-index="0"><strong>Track 1</strong> - There Must Be a Place</button>
+      <button class="cd-track-btn" type="button" data-track-index="1"><strong>Track 2</strong> - Make Way</button>
+      <button class="cd-track-btn" type="button" data-track-index="2"><strong>Track 3</strong> - Heaven is Movin' In</button>
+      <button class="cd-track-btn" type="button" data-track-index="3"><strong>Track 4</strong> - Contact</button>
+      <button class="cd-track-btn" type="button" data-track-index="4"><strong>Track 5</strong> - Seven Spirits Burning</button>
+      <button class="cd-track-btn" type="button" data-track-index="5"><strong>Track 6</strong> - Messengers of Fire</button>
+      <button class="cd-track-btn" type="button" data-track-index="6"><strong>Track 7</strong> - Impartation</button>
+      <button class="cd-track-btn" type="button" data-track-index="7"><strong>Track 8</strong> - Winds of Fire</button>
     </div>
   </div>
-
   <!-- ── GOD'S ENGINE ROOM ── -->
   <div class="section-divider"><span class="div-diamond"></span></div>
   <section class="home-section">
@@ -168,5 +177,73 @@
 </footer>
 
 <script src="../shared.js" defer></script>
+<script>
+(function() {
+  const tracks = [
+    { title: 'Track 1 - There Must Be a Place', src: '../audios/tracks/Track 01.mp3' },
+    { title: 'Track 2 - Make Way', src: '../audios/tracks/Track 02.mp3' },
+    { title: "Track 3 - Heaven is Movin' In", src: '../audios/tracks/Track 03.mp3' },
+    { title: 'Track 4 - Contact', src: '../audios/tracks/Track 04.mp3' },
+    { title: 'Track 5 - Seven Spirits Burning', src: '../audios/tracks/Track 05.mp3' },
+    { title: 'Track 6 - Messengers of Fire', src: '../audios/tracks/Track 06.mp3' },
+    { title: 'Track 7 - Impartation', src: '../audios/tracks/Track 07.mp3' },
+    { title: 'Track 8 - Winds of Fire', src: '../audios/tracks/Track 08.mp3' }
+  ];
+
+  const player = document.getElementById('cdPlayer');
+  const source = document.getElementById('cdPlayerSource');
+  const preloader = document.getElementById('cdPreloader');
+  const nowPlaying = document.getElementById('cdNowPlaying');
+  const buttons = Array.from(document.querySelectorAll('[data-track-index]'));
+  let currentTrack = 0;
+  let preloadedTrack = -1;
+
+  function setActiveTrack() {
+    buttons.forEach(function(button) {
+      button.classList.toggle('is-active', Number(button.dataset.trackIndex) === currentTrack);
+    });
+    if (nowPlaying) nowPlaying.textContent = tracks[currentTrack].title;
+  }
+
+  function preloadNextTrack() {
+    const nextTrack = currentTrack + 1;
+    if (!preloader || nextTrack >= tracks.length || preloadedTrack === nextTrack) return;
+    preloader.src = tracks[nextTrack].src;
+    preloader.load();
+    preloadedTrack = nextTrack;
+  }
+
+  function playTrack(index, shouldPlay) {
+    if (!player || !source || !tracks[index]) return;
+    currentTrack = index;
+    source.src = tracks[index].src;
+    player.load();
+    setActiveTrack();
+    preloadNextTrack();
+    if (!shouldPlay) return;
+    const playPromise = player.play();
+    if (playPromise) playPromise.catch(function() {});
+  }
+
+  buttons.forEach(function(button) {
+    button.addEventListener('click', function() {
+      playTrack(Number(button.dataset.trackIndex), true);
+    });
+  });
+
+  if (player) {
+    player.addEventListener('play', preloadNextTrack);
+    player.addEventListener('timeupdate', function() {
+      if (Number.isFinite(player.duration) && player.duration - player.currentTime < 20) preloadNextTrack();
+    });
+    player.addEventListener('ended', function() {
+      if (currentTrack < tracks.length - 1) playTrack(currentTrack + 1, true);
+    });
+  }
+
+  setActiveTrack();
+  preloadNextTrack();
+})();
+</script>
 </body>
 </html>
