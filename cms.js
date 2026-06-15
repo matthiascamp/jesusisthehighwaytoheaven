@@ -1,5 +1,5 @@
-/*  Google Doc CMS for jesusisthehighwaytoheaven.com
- *  ─────────────────────────────────────────────────
+﻿/*  Google Doc CMS for jesusisthehighwaytoheaven.com
+ *  â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
  *  How it works:
  *  1. Ed creates Google Docs in the same Drive folder as the book chapters
  *  2. He names them exactly: "CMS Testimony", "CMS Revelation", or "CMS Welcome"
@@ -14,14 +14,14 @@
   var FOLDER_ID = '1xg0zyukw67FFEyFLYkgcQqEX3GGMUD2X';
   var CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
-  /* ── Section config ── */
+  /* â”€â”€ Section config â”€â”€ */
   var SECTIONS = {
     'CMS Testimony':  { targetId: 'cms-testimony',  pClass: 'home-bio'  },
     'CMS Revelation': { targetId: 'cms-revelation', pClass: 'home-text' },
     'CMS Welcome':    { targetId: 'cms-welcome',    pClass: 'home-text' }
   };
 
-  /* ── Cache helpers ── */
+  /* â”€â”€ Cache helpers â”€â”€ */
   function getCached(docId) {
     try {
       var raw = sessionStorage.getItem('cms_' + docId);
@@ -37,7 +37,7 @@
     } catch (e) {}
   }
 
-  /* ── Fetch a Google Doc as plain text ── */
+  /* â”€â”€ Fetch a Google Doc as plain text â”€â”€ */
   function fetchDocText(docId) {
     var cached = getCached(docId);
     if (cached) return Promise.resolve(cached);
@@ -57,7 +57,7 @@
       });
   }
 
-  /* ── Parse plain text → HTML ── */
+  /* â”€â”€ Parse plain text â†’ HTML â”€â”€ */
   function parseText(text, pClass) {
     // Normalise line endings
     text = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
@@ -86,7 +86,7 @@
     return html;
   }
 
-  /* ── Main loader ── */
+  /* â”€â”€ Main loader â”€â”€ */
   function loadCMS() {
     // Check if any target elements exist on this page
     var hasTargets = false;

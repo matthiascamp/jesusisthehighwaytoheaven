@@ -180,8 +180,9 @@ body::after {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 2.5rem;
-  height: 64px;
+  gap: 1.4rem;
+  padding: 0.75rem 2.2rem;
+  min-height: 82px;
   background: rgba(7,16,31,0.95);
   border-bottom: 1px solid var(--border-gold);
   box-shadow:
@@ -203,12 +204,12 @@ body::after {
 
 .nav-brand {
   font-family: 'Cinzel', serif;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   color: var(--gold-pale);
   text-decoration: none;
-  display: flex;
+  display: none;
   align-items: center;
   gap: 0.6rem;
   white-space: nowrap;
@@ -226,17 +227,20 @@ body::after {
   margin: 0;
   padding: 0;
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
-  gap: clamp(0.9rem, 1.6vw, 2.2rem);
+  justify-content: space-evenly;
+  gap: 0;
   position: relative;
   z-index: 1;
+  width: 100%;
 }
 
 .nav-links a {
   font-family: 'Cinzel', serif;
-  font-size: 0.68rem;
+  font-size: 0.92rem;
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgba(253,249,241,0.75);
   text-decoration: none;
@@ -266,18 +270,26 @@ body::after {
   white-space: nowrap;
   line-height: 1.25;
   text-align: center;
-  font-size: 0.58rem;
-  letter-spacing: 0.08em;
+  font-size: 0.84rem;
+  letter-spacing: 0.065em;
 }
 
-.nav-links a.nav-long span { display: inline; }
+.nav-links a.nav-long span { display: block; }
+
+.nav-links a.nav-testimony {
+  max-width: 260px;
+  white-space: normal;
+  font-size: 0.78rem;
+  line-height: 1.22;
+  letter-spacing: 0.05em;
+}
 
 /* ══════════════════════════════════════════════
    PAGE HEADER / HERO
    ══════════════════════════════════════════════ */
 .page-header {
-  margin-top: -64px;
-  padding: calc(5.5rem + 64px) 2rem 4.5rem;
+  margin-top: -82px;
+  padding: calc(5.5rem + 82px) 2rem 4.5rem;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -1341,22 +1353,33 @@ footer::before {
    RESPONSIVE
    ══════════════════════════════════════════════ */
 @media (max-width: 768px) {
-  .site-nav { padding: 0 1.4rem; }
+  .site-nav { padding: 0 1.4rem; min-height: 64px; }
+  .nav-links { top: 64px; }
   .page-header { padding: 3.5rem 1.5rem 3rem; min-height: 300px; }
   .welcome-card, .inside-card, .author-card { padding: 2.2rem 2rem; }
   .author-inner { flex-direction: column; align-items: center; }
   .author-text { min-width: 0; width: 100%; }
   .scripture-strip { padding: 2.2rem 1.8rem; }
   .comments-card { padding: 2rem 1.8rem; }
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale,
+  .reveal-stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
-@media (max-width: 1120px) {
+@media (max-width: 1350px) {
   .nav-hamburger { display: block; }
+  .nav-brand { display: flex; }
 
   .nav-links {
     display: none;
     position: absolute;
-    top: 54px;
+    top: 82px;
     left: 0;
     right: 0;
     flex-direction: column;
@@ -1381,7 +1404,7 @@ footer::before {
   .nav-links a {
     padding: 0.82rem 1.6rem;
     display: block;
-    font-size: 0.64rem;
+    font-size: 0.72rem;
   }
 
   .nav-links a.nav-long {
@@ -1391,11 +1414,20 @@ footer::before {
 
   .nav-links a.nav-long span { display: inline; }
 
+  .nav-links a.nav-testimony {
+    max-width: none;
+    font-size: 0.64rem;
+    line-height: 1.25;
+  }
+
   .nav-links a::after { display: none; }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+  .nav-links { top: 64px; }
+}
 
+@media (max-width: 480px) {
   .page-header h1 { font-size: 1.25rem; }
   .hdr-cross { font-size: 2.8rem; }
 

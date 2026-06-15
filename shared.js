@@ -1,10 +1,10 @@
-/* ═══════════════════════════════════════════════════════════
+﻿/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    Jesus is the Highway to Heaven — Shared JS
-   ═══════════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
 (function () {
 
-  /* ── SCROLL REVEAL ── */
+  /* â”€â”€ SCROLL REVEAL â”€â”€ */
   var revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-stagger');
   if (revealEls.length && 'IntersectionObserver' in window) {
     var observer = new IntersectionObserver(function (entries) {
@@ -20,7 +20,7 @@
     revealEls.forEach(function (el) { el.classList.add('visible'); });
   }
 
-  /* ── HEADER SLIDESHOW ── */
+  /* â”€â”€ HEADER SLIDESHOW â”€â”€ */
   var hdrSlides = document.querySelectorAll('.hdr-slide');
   if (hdrSlides.length > 1) {
     var activeIdx = 0;
@@ -32,7 +32,7 @@
     }, 7000);
   }
 
-  /* ── HAMBURGER NAV ── */
+  /* â”€â”€ HAMBURGER NAV â”€â”€ */
   var btn = document.getElementById('navHamburger');
   var links = document.getElementById('navLinks');
   if (btn && links) {
@@ -51,7 +51,7 @@
     });
   }
 
-  /* ── NAV SHRINK ON SCROLL ── */
+  /* â”€â”€ NAV SHRINK ON SCROLL â”€â”€ */
   var nav = document.querySelector('.site-nav');
   if (nav) {
     var scrolled = false;
