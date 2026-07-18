@@ -41,6 +41,25 @@
     line-height: 1.3;
     text-transform: uppercase;
   }
+  .featured-audio {
+    padding-bottom: 1.5rem;
+  }
+  .featured-audio .audio-card-header {
+    padding-bottom: 0.75rem;
+  }
+  .featured-audio audio {
+    display: block;
+    width: calc(100% - 2rem);
+    margin: 0 auto;
+  }
+  .church-sign-image {
+    display: block;
+    width: min(100%, 1000px);
+    height: auto;
+    margin: 0 auto 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-gold);
+  }
   .email-section {
     margin-top: 2rem;
   }
@@ -133,6 +152,39 @@
 
 <!-- MAIN -->
 <main>
+  <article class="card audio-card featured-audio reveal">
+    <div class="audio-card-header">
+      <h1>Eddie Confronts Cannon Hill Baptist Church About the Church Property</h1>
+    </div>
+    <audio controls preload="metadata">
+      <source src="eddie-at-cannon-hill-baptist-church.m4a" type="audio/mp4">
+      Your browser does not support the audio player.
+    </audio>
+  </article>
+
+  <article class="card audio-card pdf-card reveal">
+    <div class="audio-card-header">
+      <h1>Affidavit — God&rsquo;s Transcendence</h1>
+    </div>
+    <div class="pdf-wrap">
+      <embed src="../DOC180726-18072026124238.pdf" type="application/pdf">
+      <p style="margin-top:0.6rem; font-size:0.85rem; color:var(--text-mid);">
+        <a href="../DOC180726-18072026124238.pdf" target="_blank" rel="noopener" style="color:var(--gold);">Open in new tab</a>
+      </p>
+    </div>
+  </article>
+
+  <article class="card audio-card reveal">
+    <div class="audio-card-header">
+      <h1>Cannon Hill Baptist and Birkdale Baptist — Churches in Partnership</h1>
+    </div>
+    <img
+      class="church-sign-image"
+      src="cannon-hill-birkdale-churches-in-partnership-sign.png"
+      alt="Churches in Partnership sign for Cannon Hill Baptist Church and Birkdale Baptist Church, since July 2013"
+    >
+  </article>
+
   <article class="card audio-card pdf-card reveal">
     <div class="audio-card-header">
       <h1>God Owns Everything</h1>
