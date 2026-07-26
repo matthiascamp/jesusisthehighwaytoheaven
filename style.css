@@ -1373,8 +1373,17 @@ footer::before {
 }
 
 @media (max-width: 1350px) {
-  .nav-hamburger { display: block; }
-  .nav-brand { display: flex; }
+  .nav-hamburger { display: block; flex: 0 0 auto; }
+  .nav-brand {
+    display: block;
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-right: 0.8rem;
+  }
+  .nav-brand .cross { display: inline; }
 
   .nav-links {
     display: none;
