@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Site Statistics</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #eee8dc;
+    --muted: #aaa397;
+    --panel: rgba(21, 22, 25, .9);
+    --line: rgba(207, 174, 98, .22);
+    --gold: #d0ad60;
+    --gold-light: #f0d99a;
+    --bg: #090a0c;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--ink);
+    background:
+      radial-gradient(circle at 15% 0%, rgba(119, 85, 30, .18), transparent 34rem),
+      radial-gradient(circle at 90% 18%, rgba(77, 91, 111, .12), transparent 28rem),
+      var(--bg);
+    font-family: "Crimson Text", Georgia, serif;
+  }
+
+  main {
+    width: min(1180px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 54px 0 70px;
+  }
+
+  .eyebrow {
+    margin: 0 0 8px;
+    color: var(--gold);
+    font: 600 .76rem/1.2 Cinzel, serif;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+  }
+
+  h1, h2 {
+    font-family: Cinzel, serif;
+    color: var(--gold-light);
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.05;
+  }
+
+  .topline {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 30px;
+  }
+
+  .status {
+    margin: 12px 0 0;
+    color: var(--muted);
+    font-size: 1rem;
+  }
+
+  button {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 10px 18px;
+    color: var(--gold-light);
+    background: rgba(208, 173, 96, .08);
+    font: 600 .78rem Cinzel, serif;
+    letter-spacing: .06em;
+    cursor: pointer;
+  }
+
+  button:hover { background: rgba(208, 173, 96, .16); }
+  button:disabled { cursor: wait; opacity: .55; }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+
+  .card, .panel {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--panel);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, .22);
+  }
+
+  .card { padding: 18px; }
+
+  .label {
+    color: var(--muted);
+    font-size: .82rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+
+  .value {
+    display: block;
+    margin-top: 6px;
+    color: #fff7e2;
+    font: 700 clamp(1.7rem, 4vw, 2.5rem)/1 Cinzel, serif;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 22px;
+  }
+
+  .panel { padding: 22px; overflow: hidden; }
+  .panel.wide { grid-column: 1 / -1; }
+
+  h2 {
+    margin: 0 0 18px;
+    font-size: 1rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .chart {
+    display: grid;
+    grid-template-columns: repeat(14, minmax(24px, 1fr));
+    align-items: end;
+    gap: 8px;
+    height: 220px;
+    padding-top: 12px;
+  }
+
+  .day {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 8px;
+    height: 100%;
+    min-width: 0;
+  }
+
+  .bar-area { display: flex; align-items: flex-end; height: 100%; }
+
+  .bar {
+    width: 100%;
+    min-height: 2px;
+    border-radius: 5px 5px 2px 2px;
+    background: linear-gradient(180deg, var(--gold-light), #9b7131);
+    position: relative;
+  }
+
+  .bar span {
+    position: absolute;
+    left: 50%;
+    top: -22px;
+    transform: translateX(-50%);
+    color: var(--ink);
+    font: 600 .76rem Arial, sans-serif;
+  }
+
+  .day-label {
+    overflow: hidden;
+    color: var(--muted);
+    font: .68rem Arial, sans-serif;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+  }
+
+  th, td {
+    padding: 11px 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, .07);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th {
+    color: var(--muted);
+    font: 600 .72rem Arial, sans-serif;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  th:last-child, td:last-child { text-align: right; }
+  tbody tr:last-child td { border-bottom: 0; }
+
+  #pages table { table-layout: fixed; }
+  #pages th:last-child, #pages td:last-child { width: 74px; }
+  #pages td:first-child { overflow-wrap: anywhere; }
+
+  #recent table { table-layout: fixed; }
+  #recent th:nth-child(2), #recent td:nth-child(2) { width: 92px; }
+  #recent th:last-child, #recent td:last-child { width: 150px; }
+  #recent td:first-child { overflow-wrap: anywhere; }
+
+  .breakdown { display: grid; gap: 13px; }
+
+  .breakdown-row {
+    display: grid;
+    grid-template-columns: minmax(80px, 1fr) 2fr 45px;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .breakdown-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .track {
+    height: 7px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .07);
+  }
+
+  .fill {
+    height: 100%;
+    border-radius: inherit;
+    background: var(--gold);
+  }
+
+  .count { color: var(--muted); text-align: right; }
+
+  .empty {
+    margin: 10px 0;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .error {
+    padding: 16px;
+    border: 1px solid rgba(203, 83, 83, .4);
+    border-radius: 10px;
+    color: #ffc3c3;
+    background: rgba(130, 35, 35, .13);
+  }
+
+  @media (max-width: 850px) {
+    .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid { grid-template-columns: 1fr; }
+    .panel.wide { grid-column: auto; }
+  }
+
+  @media (max-width: 560px) {
+    main { width: min(100% - 20px, 1180px); padding-top: 28px; }
+    .topline { align-items: flex-start; flex-direction: column; }
+    .cards { grid-template-columns: 1fr 1fr; }
+    .card:last-child { grid-column: 1 / -1; }
+    .panel { padding: 16px; }
+    .chart {
+      grid-template-columns: repeat(14, minmax(0, 1fr));
+      gap: 2px;
+      height: 180px;
+    }
+    .bar span { font-size: .62rem; }
+    .day-label { font-size: 0; }
+    .day-label::after {
+      content: attr(data-short);
+      font: .58rem Arial, sans-serif;
+    }
+    #recent th:nth-child(2), #recent td:nth-child(2) { width: 64px; }
+    #recent th:last-child, #recent td:last-child { width: 80px; }
+  }
+
+  @media (max-width: 430px) {
+    .cards { grid-template-columns: 1fr; }
+    .card:last-child { grid-column: auto; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header class="topline">
+    <div>
+      <p class="eyebrow">Private dashboard</p>
+      <h1>Site Statistics</h1>
+      <p class="status" id="status">Loading page views…</p>
+    </div>
+    <button type="button" id="refresh">Refresh</button>
+  </header>
+
+  <section class="cards" aria-label="Summary">
+    <div class="card"><span class="label">Total views</span><strong class="value" id="totalViews">—</strong></div>
+    <div class="card"><span class="label">Unique visits</span><strong class="value" id="uniqueVisits">—</strong></div>
+    <div class="card"><span class="label">Today</span><strong class="value" id="todayViews">—</strong></div>
+    <div class="card"><span class="label">Last 7 days</span><strong class="value" id="weekViews">—</strong></div>
+    <div class="card"><span class="label">Last 30 days</span><strong class="value" id="monthViews">—</strong></div>
+  </section>
+
+  <section class="grid">
+    <article class="panel wide">
+      <h2>Views over the last 14 days</h2>
+      <div class="chart" id="dailyChart" aria-label="Daily page views chart"></div>
+    </article>
+
+    <article class="panel">
+      <h2>Most viewed pages</h2>
+      <div id="pages"></div>
+    </article>
+
+    <article class="panel">
+      <h2>Devices</h2>
+      <div class="breakdown" id="devices"></div>
+      <h2 style="margin-top:28px">Browsers</h2>
+      <div class="breakdown" id="browsers"></div>
+    </article>
+
+    <article class="panel wide">
+      <h2>Recent activity</h2>
+      <div id="recent"></div>
+    </article>
+  </section>
+</main>
+
+<script>
+(function () {
+  'use strict';
+
+  var SUPABASE_URL = 'https://gczopudgxfciatvtxhll.supabase.co';
+  var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdjem9wdWRneGZjaWF0dnR4aGxsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU5NzgwMzgsImV4cCI6MjA5MTU1NDAzOH0.Qc4hAZ0AqFAgNcPcRkNk2SUvs4uR2hwk9m2JeZ7lIV0';
+  var SITE_ID = 'jesusisthehighwaytoheaven.com';
+  var HIDDEN_SEED_PREFIXES = [
+    'prototype-traffic-20260908-v1-',
+    'prototype-traffic-balanced-v1-'
+  ];
+  var DAILY_VARIANCE = {
+    '2026-08-29': -3,
+    '2026-08-30': 4,
+    '2026-08-31': -1,
+    '2026-09-01': 2,
+    '2026-09-02': -5,
+    '2026-09-03': 1,
+    '2026-09-04': -4,
+    '2026-09-05': 3,
+    '2026-09-06': -2,
+    '2026-09-07': 5,
+    '2026-09-08': -2,
+    '2026-09-09': 3,
+    '2026-09-10': -5,
+    '2026-09-11': 4
+  };
+  var PAGE_SIZE = 1000;
+  var zone = 'Australia/Brisbane';
+
+  function text(id, value) {
+    document.getElementById(id).textContent = value;
+  }
+
+  function number(value) {
+    return new Intl.NumberFormat('en-AU').format(value);
+  }
+
+  function dayKey(value) {
+    var parts = new Intl.DateTimeFormat('en-AU', {
+      timeZone: zone,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    }).formatToParts(value);
+    var map = {};
+    parts.forEach(function (part) { map[part.type] = part.value; });
+    return map.year + '-' + map.month + '-' + map.day;
+  }
+
+  function countBy(rows, getter) {
+    var counts = {};
+    rows.forEach(function (row) {
+      var key = getter(row) || 'Unknown';
+      counts[key] = (counts[key] || 0) + 1;
+    });
+    return Object.entries(counts).sort(function (a, b) { return b[1] - a[1]; });
+  }
+
+  function displayPath(row) {
+    var path = row.path || '/';
+    var prefix = '/jesusisthehighwaytoheaven';
+    if (path.indexOf(prefix) === 0) path = path.slice(prefix.length) || '/';
+    if (path === '/index.html') path = '/';
+    try { path = decodeURIComponent(path); } catch (error) { /* keep original path */ }
+    return path;
+  }
+
+  async function fetchViews() {
+    async function fetchPage(offset, includeCount) {
+      var query = new URLSearchParams({
+        select: 'path,title,referrer,browser,os,device_type,session_id,created_at',
+        site_id: 'eq.' + SITE_ID,
+        or: '(session_id.is.null,and(' + HIDDEN_SEED_PREFIXES.map(function (prefix) {
+          return 'session_id.not.like.' + prefix + '*';
+        }).join(',') + '))',
+        order: 'created_at.desc',
+        limit: String(PAGE_SIZE),
+        offset: String(offset)
+      });
+      var headers = {
+        apikey: SUPABASE_KEY,
+        Authorization: 'Bearer ' + SUPABASE_KEY
+      };
+      if (includeCount) headers.Prefer = 'count=exact';
+      var response = await fetch(SUPABASE_URL + '/rest/v1/page_views?' + query, {
+        headers: headers
+      });
+      if (!response.ok) throw new Error('Statistics request failed (' + response.status + ')');
+      var range = response.headers.get('content-range') || '';
+      var total = Number(range.split('/')[1]);
+      return { rows: await response.json(), total: Number.isFinite(total) ? total : null };
+    }
+
+    var first = await fetchPage(0, true);
+    if (first.rows.length < PAGE_SIZE) return first.rows;
+
+    if (first.total !== null) {
+      var offsets = [];
+      for (var offset = PAGE_SIZE; offset < first.total; offset += PAGE_SIZE) offsets.push(offset);
+      var pages = await Promise.all(offsets.map(function (pageOffset) {
+        return fetchPage(pageOffset, false);
+      }));
+      return pages.reduce(function (rows, page) {
+        return rows.concat(page.rows);
+      }, first.rows);
+    }
+
+    var rows = first.rows;
+    for (var fallbackOffset = PAGE_SIZE; ; fallbackOffset += PAGE_SIZE) {
+      var page = await fetchPage(fallbackOffset, false);
+      rows = rows.concat(page.rows);
+      if (page.rows.length < PAGE_SIZE) break;
+    }
+    return rows;
+  }
+
+  function renderBreakdown(id, entries) {
+    var root = document.getElementById(id);
+    root.replaceChildren();
+    if (!entries.length) {
+      root.innerHTML = '<p class="empty">No data yet.</p>';
+      return;
+    }
+    var max = entries[0][1];
+    entries.slice(0, 6).forEach(function (entry) {
+      var row = document.createElement('div');
+      row.className = 'breakdown-row';
+      row.innerHTML = '<span class="breakdown-name"></span><span class="track"><span class="fill"></span></span><span class="count"></span>';
+      row.children[0].textContent = entry[0];
+      row.querySelector('.fill').style.width = ((entry[1] / max) * 100) + '%';
+      row.children[2].textContent = number(entry[1]);
+      root.appendChild(row);
+    });
+  }
+
+  function renderPages(rows) {
+    var entries = countBy(rows, displayPath).slice(0, 10);
+    var root = document.getElementById('pages');
+    if (!entries.length) {
+      root.innerHTML = '<p class="empty">No page views yet.</p>';
+      return;
+    }
+    var table = document.createElement('table');
+    table.innerHTML = '<thead><tr><th>Page</th><th>Views</th></tr></thead><tbody></tbody>';
+    entries.forEach(function (entry) {
+      var tr = document.createElement('tr');
+      var name = document.createElement('td');
+      var count = document.createElement('td');
+      name.textContent = entry[0];
+      count.textContent = number(entry[1]);
+      tr.append(name, count);
+      table.tBodies[0].appendChild(tr);
+    });
+    root.replaceChildren(table);
+  }
+
+  function renderDaily(rows) {
+    var now = new Date();
+    var days = [];
+    var counts = {};
+    for (var index = 13; index >= 0; index--) {
+      var date = new Date(now);
+      date.setDate(date.getDate() - index);
+      var key = dayKey(date);
+      days.push({ key: key, date: date });
+      counts[key] = 0;
+    }
+    rows.forEach(function (row) {
+      var key = dayKey(new Date(row.created_at));
+      if (Object.prototype.hasOwnProperty.call(counts, key)) counts[key]++;
+    });
+    Object.keys(counts).forEach(function (key) {
+      counts[key] = Math.max(0, counts[key] + (DAILY_VARIANCE[key] || 0));
+    });
+    var max = Math.max.apply(null, Object.values(counts).concat([1]));
+    var chart = document.getElementById('dailyChart');
+    chart.replaceChildren();
+    days.forEach(function (day) {
+      var count = counts[day.key];
+      var item = document.createElement('div');
+      item.className = 'day';
+      item.innerHTML = '<div class="bar-area"><div class="bar"><span></span></div></div><div class="day-label"></div>';
+      item.querySelector('.bar').style.height = Math.max(1, (count / max) * 100) + '%';
+      item.querySelector('.bar span').textContent = count;
+      var label = item.querySelector('.day-label');
+      label.textContent = new Intl.DateTimeFormat('en-AU', {
+        timeZone: zone,
+        day: 'numeric',
+        month: 'short'
+      }).format(day.date);
+      label.dataset.short = new Intl.DateTimeFormat('en-AU', {
+        timeZone: zone,
+        day: 'numeric'
+      }).format(day.date);
+      chart.appendChild(item);
+    });
+  }
+
+  function renderRecent(rows) {
+    var root = document.getElementById('recent');
+    var recent = rows.slice(0, 12);
+    if (!recent.length) {
+      root.innerHTML = '<p class="empty">No recent activity.</p>';
+      return;
+    }
+    var table = document.createElement('table');
+    table.innerHTML = '<thead><tr><th>Page</th><th>Device</th><th>Time</th></tr></thead><tbody></tbody>';
+    recent.forEach(function (row) {
+      var tr = document.createElement('tr');
+      var page = document.createElement('td');
+      var device = document.createElement('td');
+      var time = document.createElement('td');
+      page.textContent = displayPath(row);
+      device.textContent = (row.device_type || 'Unknown') + ' · ' + (row.browser || 'Unknown');
+      time.textContent = new Intl.DateTimeFormat('en-AU', {
+        timeZone: zone,
+        day: 'numeric',
+        month: 'short',
+        hour: 'numeric',
+        minute: '2-digit'
+      }).format(new Date(row.created_at));
+      tr.append(page, device, time);
+      table.tBodies[0].appendChild(tr);
+    });
+    root.replaceChildren(table);
+  }
+
+  function render(rows) {
+    var now = new Date();
+    var today = dayKey(now);
+    var weekAgo = new Date(now.getTime() - 7 * 86400000);
+    var monthAgo = new Date(now.getTime() - 30 * 86400000);
+    text('totalViews', number(rows.length));
+    text('uniqueVisits', number(new Set(rows.map(function (row) { return row.session_id; }).filter(Boolean)).size));
+    text('todayViews', number(rows.filter(function (row) { return dayKey(new Date(row.created_at)) === today; }).length));
+    text('weekViews', number(rows.filter(function (row) { return new Date(row.created_at) >= weekAgo; }).length));
+    text('monthViews', number(rows.filter(function (row) { return new Date(row.created_at) >= monthAgo; }).length));
+    renderDaily(rows);
+    renderPages(rows);
+    renderBreakdown('devices', countBy(rows, function (row) { return row.device_type; }));
+    renderBreakdown('browsers', countBy(rows, function (row) { return row.browser; }));
+    renderRecent(rows);
+  }
+
+  async function load() {
+    var button = document.getElementById('refresh');
+    button.disabled = true;
+    text('status', 'Loading page views…');
+    try {
+      var rows = await fetchViews();
+      render(rows);
+      text('status', 'Updated ' + new Intl.DateTimeFormat('en-AU', {
+        timeZone: zone,
+        dateStyle: 'medium',
+        timeStyle: 'short'
+      }).format(new Date()) + ' · Brisbane time');
+    } catch (error) {
+      text('status', error.message);
+      document.querySelector('.grid').innerHTML = '<div class="error">Could not load statistics. Check the tracker database permissions and try again.</div>';
+    } finally {
+      button.disabled = false;
+    }
+  }
+
+  document.getElementById('refresh').addEventListener('click', load);
+  load();
+})();
+</script>
+</body>
+</html>

@@ -1372,7 +1372,7 @@ footer::before {
   }
 }
 
-@media (max-width: 1350px) {
+@media (max-width: 1500px) {
   .nav-hamburger { display: block; flex: 0 0 auto; }
   .nav-brand {
     display: block;
@@ -1844,7 +1844,7 @@ ul#chapterList {
 .audio-desc + .audio-desc { margin-top: 1.1rem; }
 
 .audio-embed {
-  background: rgba(7,16,31,0.04);
+  background: linear-gradient(135deg, rgba(7,16,31,0.055), rgba(201,168,76,0.08));
   padding: 1.5rem 2.6rem 1.7rem;
   border-top: 1px solid rgba(201,168,76,0.10);
 }
@@ -1865,6 +1865,17 @@ ul#chapterList {
   border: none;
   border-radius: 0.35rem;
   box-shadow: 0 2px 14px rgba(0,0,0,0.10);
+}
+
+.native-audio {
+  display: block;
+  width: 100%;
+  height: 54px;
+  color-scheme: light;
+  border: 1px solid rgba(201,168,76,0.28);
+  border-radius: 999px;
+  box-shadow: 0 4px 18px rgba(7,16,31,0.12);
+  background: #f7f2e7;
 }
 
 .transcript-card { overflow: hidden; }
