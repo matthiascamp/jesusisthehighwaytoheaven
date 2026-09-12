@@ -77,7 +77,8 @@
       ['empowerment', 'empowerment'],
       ['church-worldliness-corruption', 'gods-roadmap'],
       ['i%20am%20holy%20spirit%20god%20and%20this%20is%20my%20personal%20testimony', 'personal-testimony'],
-      ['i am holy spirit god and this is my personal testimony', 'personal-testimony']
+      ['i am holy spirit god and this is my personal testimony', 'personal-testimony'],
+      ['gods-spectrum-to-life', 'gods-spectrum-to-life']
     ];
     for (var i = 0; i < pages.length; i++) {
       if (path.indexOf(pages[i][0]) !== -1) return pages[i][1];
