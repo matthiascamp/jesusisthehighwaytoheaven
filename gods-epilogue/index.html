@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
 <style>
-  main { max-width: 1180px; }
+  main { width: 100%; max-width: 1180px; min-width: 0; }
   .pdf-wrap { padding: 0 1rem 2rem; }
   .pdf-wrap embed {
     width: 100%;
@@ -45,7 +45,53 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
+  .epilogue-audio-box {
+    width: 100%;
+    max-width: 780px;
+    min-width: 0;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  .epilogue-audio-box .audio-card-header,
+  .epilogue-audio-box .audio-embed {
+    min-width: 0;
+  }
+  .epilogue-audio-box .audio-card-header {
+    padding: 1.6rem 2rem 1.35rem;
+  }
+  .epilogue-audio-box .audio-card-header h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: var(--ink-mid);
+    letter-spacing: 0.055em;
+    line-height: 1.35;
+    margin: 0 0 0.7rem;
+  }
+  .epilogue-audio-box .audio-embed {
+    padding: 1.25rem 2rem 1.45rem;
+  }
+  .epilogue-audio-box .native-audio {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+  .autoplay-note {
+    margin: 0.65rem 0 0;
+    color: var(--muted);
+    font-size: 0.85rem;
+    line-height: 1.4;
+    text-align: center;
+  }
   @media (max-width: 768px) {
+    .epilogue-audio-box .audio-card-header,
+    .epilogue-audio-box .audio-embed {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+    .epilogue-audio-box .audio-card-header h2 {
+      font-size: 0.95rem;
+      overflow-wrap: anywhere;
+    }
     .pdf-wrap {
       padding: 0 1rem 1.4rem;
     }
@@ -104,7 +150,6 @@
   </a>
     <ul class="nav-links" id="navLinks">
     <li><a href="../index.html">Introduction</a></li>
-    <li><a href="../pastor-don/index.html">Pastor Don</a></li>
     <li><a href="index.html" class="nav-long active">GOD'S <span>EPILOGUE</span></a></li>
     <li><a href="../to-god-be-the-glory/index.html" class="nav-long" title="To God Be the Glory Through Jesus Christ">TO GOD BE <span>THE GLORY</span></a></li>
     <li><a href="../gods-transcendence/index.html" class="nav-long">GOD'S <span>TRANSCENDENCE</span></a></li>
@@ -136,6 +181,24 @@
 
 <!-- MAIN -->
 <main>
+  <aside class="card audio-card epilogue-audio-box reveal" id="pastor-don">
+    <div class="audio-card-header">
+      <p class="audio-label">Cannon Hill Church Service</p>
+      <h2>Pastor Don Shepherd</h2>
+      <p class="audio-desc">In this sermon, I hear Pastor Don draw on Habakkuk, Hosea 6, and Hebrews 12 to explain why the conditions for spiritual awakening are already present: sin and fear abound, the nation has forgotten God, and the church itself has become complacent. His message is not condemnation without hope. It is a call for us to return, repent, acknowledge the Lord, unite in prayer, and seek His presence.</p>
+      <p class="audio-desc">I hear Don speaking directly to our church at Cannon Hill, warning us not to let our love disappear like the morning mist or become cold and indifferent to people outside God&rsquo;s kingdom.</p>
+      <p class="audio-desc">His warning to Cannon Hill was plain: return to God and reject complacency. The church did not listen. It moved away from God and, when I most needed fellowship and support, it abandoned me as well. For me, this recording preserves both Pastor Don&rsquo;s call and the cost of the church&rsquo;s refusal to listen.</p>
+    </div>
+    <div class="audio-embed">
+      <p class="audio-embed-label">Now Playing</p>
+      <audio class="native-audio" id="pastorDonAudio" controls autoplay preload="metadata">
+        <source src="pastor-don-sermon-only.mp3" type="audio/mpeg">
+        Your browser does not support the audio player.
+      </audio>
+      <p class="autoplay-note" id="pastorDonAutoplayNote">If your browser blocks sound, the recording will begin after your first click.</p>
+    </div>
+  </aside>
+
   <article class="card audio-card pdf-card reveal">
     <div class="audio-card-header">
       <h1>God's Epilogue</h1>
@@ -143,6 +206,21 @@
     <div class="pdf-wrap">
       <embed src="Edwin%20Lewis%20Resume%20-%20stamped.pdf" type="application/pdf">
       <p class="pdf-link"><a href="Edwin%20Lewis%20Resume%20-%20stamped.pdf" target="_blank" rel="noopener">Open in new tab</a></p>
+    </div>
+  </article>
+
+  <article class="card audio-card epilogue-audio-box reveal" id="lighthorse-anointing">
+    <div class="audio-card-header">
+      <p class="audio-label">Cannon Hill Baptist Church &nbsp;&middot;&nbsp; 1 September 2002</p>
+      <h2>The Lighthorse Anointing</h2>
+      <p class="audio-desc">This message uses the Australian Light Horse charge at Beersheba as a picture of courageous Christian mission. It calls believers to act with compassion, share God&rsquo;s gifts without seeking personal glory, and carry His love and power into Australia and beyond.</p>
+    </div>
+    <div class="audio-embed">
+      <p class="audio-embed-label">Play Recording</p>
+      <audio class="native-audio" controls preload="metadata">
+        <source src="lighthorse-anointing.mp3" type="audio/mpeg">
+        Your browser does not support the audio player.
+      </audio>
     </div>
   </article>
 </main>
@@ -158,6 +236,26 @@
   </div>
 </footer>
 
+<script>
+  (function () {
+    var audio = document.getElementById('pastorDonAudio');
+    var note = document.getElementById('pastorDonAutoplayNote');
+    if (!audio) return;
+
+    function playPastorDon() {
+      var attempt = audio.play();
+      if (attempt && typeof attempt.then === 'function') {
+        attempt.then(function () {
+          if (note) note.hidden = true;
+        }).catch(function () {});
+      }
+    }
+
+    playPastorDon();
+    document.addEventListener('pointerdown', playPastorDon, { once: true });
+    document.addEventListener('keydown', playPastorDon, { once: true });
+  }());
+</script>
 <script src="../shared.js" defer></script>
 
 </body>
