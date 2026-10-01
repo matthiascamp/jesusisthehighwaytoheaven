@@ -37,12 +37,37 @@
     color: var(--text-mid);
   }
   .pdf-link a { color: var(--gold); }
+  .video-card { overflow: hidden; }
+  .video-card .audio-card-header { text-align: center; }
+  .video-card .audio-card-header h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1rem, 2.1vw, 1.35rem);
+    color: var(--ink-mid);
+    line-height: 1.45;
+    letter-spacing: 0.035em;
+    margin: 0;
+  }
+  .video-embed {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(7,16,31,0.055), rgba(201,168,76,0.08));
+  }
+  .video-embed iframe {
+    display: block;
+    width: min(100%, 420px);
+    aspect-ratio: 9 / 16;
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 0 10px 34px rgba(7,16,31,0.22);
+  }
   @media (max-width: 700px) {
     .page-header h1 {
       font-size: 1rem;
       letter-spacing: 0.025em;
     }
     .pdf-wrap embed { min-height: 520px; }
+    .video-embed { padding: 1.25rem; }
   }
 </style>
 <script>
@@ -100,6 +125,21 @@
     <div class="pdf-wrap">
       <embed src="eclipsation.pdf" type="application/pdf">
       <p class="pdf-link"><a href="eclipsation.pdf" target="_blank" rel="noopener">Open in new tab</a></p>
+    </div>
+  </article>
+
+  <article class="card audio-card video-card reveal" id="video">
+    <div class="audio-card-header">
+      <h2>God has an assignment for you</h2>
+    </div>
+    <div class="video-embed">
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/QFrAYjX7whQ"
+        title="God has an assignment for you"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
     </div>
   </article>
 </main>
