@@ -69,6 +69,7 @@
   function commentsPageId() {
     var path = window.location.pathname.toLowerCase();
     var pages = [
+      ['victory-pending', 'victory-pending'],
       ['eclipsation', 'eclipsation'],
       ['to-god-be-the-glory', 'to-god-be-the-glory'],
       ['gods-transcendence', 'gods-transcendence'],

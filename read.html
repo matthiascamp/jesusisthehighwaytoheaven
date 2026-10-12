@@ -43,6 +43,7 @@
   </a>
     <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Introduction</a></li>
+    <li><a href="victory-pending/index.html" class="nav-long">VICTORY <span>PENDING</span></a></li>
     <li><a href="gods-spectrum-to-life/index.html" class="nav-long" title="God's Spectrum to Life">GOD'S <span>SPECTRUM</span></a></li>
     <li><a href="eclipsation/index.html">ECLIPSATION!</a></li>
     <li><a href="gods-epilogue/index.html" class="nav-long">GOD'S <span>EPILOGUE</span></a></li>
@@ -183,7 +184,30 @@
     return data.files || [];
   }
 
-  function previewURL(id) { return `https://drive.google.com/file/d/${id}/preview`; }
+  // Updated document scans, 13 October 2026. Keep the original Drive IDs so
+  // chapter links, ordering, and comments stay attached to the same documents.
+  // To revert any entry, remove its line from CHAPTER_PDF_OVERRIDES.
+  // Originals:
+  // 20 ANNEXURE 2.pdf: https://drive.google.com/file/d/1UpjexUkyS2l-tuygLzE2uN4NScHm5dBB/view
+  // 85 2.pdf: https://drive.google.com/file/d/1vfVnwR9FNmUkewoLwM7ELV9mp24z3maF/view
+  // 10 NOT TO BE A COVER UP.pdf: https://drive.google.com/file/d/1_0BVZaS2ob96UP9qc7pEWtIQo4dAjh2N/view
+  // 113 29.pdf (Not to Be a Cover Up): https://drive.google.com/file/d/1--TK4mrWxvq-bFPEXvQA0BBvHg1-useX/view
+  // 11 POLICE FAMILY SERVICES CORRUPTION.pdf: https://drive.google.com/file/d/1ywCV3HkihZ2b8_5cA5M46uiW-xLtQZzV/view
+  // 114 30.pdf (Police - Family Services - Corruption): https://drive.google.com/file/d/1aAnfF2-SP9hhSN7SneOW2VDn2pT6U8CH/view
+  // 115 31.pdf (To the Magistrates Court of Australia): https://drive.google.com/file/d/1ITEGc763GjBd7nnzgZGUY_e2Uff8G8N6/view
+  const CHAPTER_PDF_OVERRIDES = {
+    '1UpjexUkyS2l-tuygLzE2uN4NScHm5dBB': 'DOC101026-10102026144013.pdf',
+    '1vfVnwR9FNmUkewoLwM7ELV9mp24z3maF': 'DOC101026-10102026144013.pdf',
+    '1_0BVZaS2ob96UP9qc7pEWtIQo4dAjh2N': 'DOC101026-10102026144117.pdf',
+    '1--TK4mrWxvq-bFPEXvQA0BBvHg1-useX': 'DOC101026-10102026144117.pdf',
+    '1ywCV3HkihZ2b8_5cA5M46uiW-xLtQZzV': 'DOC101026-10102026144138.pdf',
+    '1aAnfF2-SP9hhSN7SneOW2VDn2pT6U8CH': 'DOC101026-10102026144138.pdf',
+    '1ITEGc763GjBd7nnzgZGUY_e2Uff8G8N6': 'DOC101026-10102026144202.pdf'
+  };
+
+  function previewURL(id) {
+    return CHAPTER_PDF_OVERRIDES[id] || `https://drive.google.com/file/d/${id}/preview`;
+  }
   function leadingNumber(name) {
     const m = name.match(/^(\d+(?:\.\d+)?)/);
     return m ? parseFloat(m[1]) : Infinity;
