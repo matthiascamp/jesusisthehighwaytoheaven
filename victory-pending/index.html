@@ -21,8 +21,18 @@
   }
   .page-header h1 { text-align: center; }
   .pdf-card { min-width: 0; overflow: hidden; }
+  .pdf-card .audio-card-header h1,
+  .pdf-card .audio-card-header h2 {
+    margin: 0;
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+    font-weight: 600;
+    color: var(--ink-mid);
+    letter-spacing: 0.04em;
+  }
   .pdf-wrap { min-width: 0; padding: 0 1rem 2rem; }
-  .pdf-wrap embed {
+  .pdf-wrap embed,
+  .pdf-wrap iframe {
     display: block;
     width: 100%;
     height: 90vh;
@@ -42,7 +52,8 @@
       font-size: 1rem;
       letter-spacing: 0.025em;
     }
-    .pdf-wrap embed { min-height: 520px; }
+    .pdf-wrap embed,
+    .pdf-wrap iframe { min-height: 520px; }
   }
 </style>
 <script>
@@ -101,6 +112,34 @@
     <div class="pdf-wrap">
       <embed src="victory-pending.pdf" type="application/pdf" title="Victory Pending document">
       <p class="pdf-link"><a href="victory-pending.pdf" target="_blank" rel="noopener">Open in new tab</a> &middot; <a href="../Victory%20Pending..rtf" download>Download original RTF</a></p>
+    </div>
+  </article>
+  <article class="card audio-card pdf-card reveal">
+    <div class="audio-card-header"><h2>Annexure 1: Edwin Lewis Personal Notes</h2></div>
+    <div class="pdf-wrap">
+      <iframe src="DOC101026-10102026144013.pdf" title="Annexure 1: Edwin Lewis Personal Notes PDF" loading="lazy"></iframe>
+      <p class="pdf-link"><a href="DOC101026-10102026144013.pdf" target="_blank" rel="noopener">Open in new tab</a></p>
+    </div>
+  </article>
+  <article class="card audio-card pdf-card reveal">
+    <div class="audio-card-header"><h2>Annexure 2.1: Not to Be a Cover Up</h2></div>
+    <div class="pdf-wrap">
+      <iframe src="DOC101026-10102026144117.pdf" title="Annexure 2.1: Not to Be a Cover Up PDF" loading="lazy"></iframe>
+      <p class="pdf-link"><a href="DOC101026-10102026144117.pdf" target="_blank" rel="noopener">Open in new tab</a></p>
+    </div>
+  </article>
+  <article class="card audio-card pdf-card reveal">
+    <div class="audio-card-header"><h2>Annexure 3: Police, Family Services and Corruption</h2></div>
+    <div class="pdf-wrap">
+      <iframe src="DOC101026-10102026144138.pdf" title="Annexure 3: Police, Family Services and Corruption PDF" loading="lazy"></iframe>
+      <p class="pdf-link"><a href="DOC101026-10102026144138.pdf" target="_blank" rel="noopener">Open in new tab</a></p>
+    </div>
+  </article>
+  <article class="card audio-card pdf-card reveal">
+    <div class="audio-card-header"><h2>Annexure 4: To the Magistrates Court of Australia</h2></div>
+    <div class="pdf-wrap">
+      <iframe src="DOC101026-10102026144202.pdf" title="Annexure 4: To the Magistrates Court of Australia PDF" loading="lazy"></iframe>
+      <p class="pdf-link"><a href="DOC101026-10102026144202.pdf" target="_blank" rel="noopener">Open in new tab</a></p>
     </div>
   </article>
 </main>
