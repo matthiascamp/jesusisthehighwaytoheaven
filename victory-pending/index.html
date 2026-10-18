@@ -22,7 +22,8 @@
   .page-header h1 { text-align: center; }
   .pdf-card { min-width: 0; overflow: hidden; }
   .pdf-card .audio-card-header h1,
-  .pdf-card .audio-card-header h2 {
+  .pdf-card .audio-card-header h2,
+  .context-card .audio-card-header h2 {
     margin: 0;
     font-family: 'Cinzel', serif;
     font-size: clamp(1.1rem, 2.2vw, 1.5rem);
@@ -47,6 +48,18 @@
     color: var(--text-mid);
   }
   .pdf-link a { color: var(--gold); }
+  .context-card .audio-card-header { border-bottom: 0; }
+  .context-card .audio-card-header h2 { margin-bottom: 1rem; }
+  .context-card blockquote {
+    margin: 1.25rem 0 0;
+    padding: 0.9rem 1.2rem;
+    border-left: 3px solid var(--gold);
+    background: rgba(201,168,76,0.08);
+    color: var(--ink-mid);
+    font-family: 'Crimson Text', serif;
+    font-size: 1.15rem;
+    line-height: 1.6;
+  }
   @media (max-width: 700px) {
     .page-header h1 {
       font-size: 1rem;
@@ -119,7 +132,6 @@
       <p class="audio-label">Audio Evidence &nbsp;&middot;&nbsp; Tape One A</p>
       <h2>June Lewis &amp; Officer Mark Beardmore</h2>
       <p class="audio-desc">June Lewis presses Officer Beardmore about disputes over Edwin&rsquo;s court-ordered visits with his children and the investigation into abuse allegations involving Justin.</p>
-      <p class="audio-desc">In his written account, Edwin says he told his brother Wally about the investigation while Wally was looking into it himself. Edwin recalls Wally&rsquo;s response after Edwin alleged Beardmore and his former wife had tried to frame him: &ldquo;He is dead-set porking your misses!&rdquo;</p>
     </div>
     <div class="audio-embed">
       <p class="audio-embed-label">Play Recording</p>
@@ -127,6 +139,15 @@
         <source src="tape-one-a-june-lewis-mark-beardon.mp3" type="audio/mpeg">
         Your browser does not support audio playback.
       </audio>
+    </div>
+  </article>
+  <article class="card audio-card context-card reveal">
+    <div class="audio-card-header">
+      <p class="audio-label">From Edwin&rsquo;s Written Account</p>
+      <h2>Wally Lewis&rsquo;s Statement</h2>
+      <p class="audio-desc">Edwin writes that his former sister-in-law Kylie gave a statement at Fremantle Police Station about Justin&rsquo;s allegation of sexual abuse by Alan Carty. He says Officer Michael Jenkins later told him he could not believe Carty had never been charged.</p>
+      <p class="audio-desc">Edwin says he told his brother Wally what was happening while Wally was conducting his own investigation. After Edwin believed Beardmore and his former wife had tried to frame him, Edwin recalls Wally saying:</p>
+      <blockquote>&ldquo;He is dead-set porking your misses!&rdquo;</blockquote>
     </div>
   </article>
   <article class="card audio-card pdf-card reveal">
